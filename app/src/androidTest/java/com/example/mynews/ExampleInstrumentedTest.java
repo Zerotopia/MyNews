@@ -2,12 +2,14 @@ package com.example.mynews;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.contrib.RecyclerViewActions;
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.mynews.controller.MainActivity;
+import com.example.mynews.controller.RecyclerFragment;
+import com.example.mynews.controller.WebActivity;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -16,11 +18,15 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
+import static android.support.test.espresso.contrib.ViewPagerActions.scrollRight;
+import static android.support.test.espresso.intent.Intents.init;
+import static android.support.test.espresso.intent.Intents.intended;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.assertEquals;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.junit.Assert.assertEquals;
 
 //import static android.support.test.espresso.action.ViewActions.click;
 //import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -33,12 +39,15 @@ import static org.hamcrest.core.AllOf.allOf;
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
 
+
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
 
-//  @Before
-//    public void clickSearch() {
+    @Before
+    public void setUp() {
+        IdlingRegistry.getInstance().register(RecyclerFragment.getCount());
+    }
 //        onView(withId(R.id.btn))
 //               .perform(click());
 //
@@ -54,13 +63,40 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
-    public void checkIfRemovingUserIsWorking() {
+    public void checkCount() {
 //        try {
 //            Thread.sleep(5000);
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        onView(allOf((withId(R.id.recyclerview)), isCompletelyDisplayed())).check(new RecyclerViewUtils.ItemCount(20));
+
+        onView(withId(R.id.viewpager)).perform(scrollRight()).perform(scrollRight());
+        onView(allOf(withId(R.id.recyclerview), isDisplayed()))
+                .check(new RecyclerViewUtils.ItemCount(10));
+    }
+
+    @Test
+    public void checkNavigation() {
+        onView(withText("TOP STORIES")).perform(click());
+        onView(allOf(withId(R.id.recyclerview), isDisplayed()))
+                .check(new RecyclerViewUtils.ItemCount(36));
+        onView(withText("POPULAR")).perform(click());
+        onView(allOf(withId(R.id.recyclerview), isDisplayed()))
+                .check(new RecyclerViewUtils.ItemCount(20));
+        onView(withText("SEARCH")).perform(click());
+        onView(allOf(withId(R.id.recyclerview), isDisplayed()))
+                .check(new RecyclerViewUtils.ItemCount(10));
+
+    }
+
+    @Test
+    public void checkClick() {
+
+        init();
+        onView(allOf(withId(R.id.recyclerview), isDisplayed()))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+
+        intended(hasComponent(WebActivity.class.getName()));
     }
 
 

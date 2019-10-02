@@ -24,14 +24,19 @@ import static org.junit.Assert.assertEquals;
  */
 public class ExampleUnitTest {
 
-    private Results mResults;
+    private Results mResults0;
+    private Results mResults1;
+    private Results mResults2;
 
     @Before
     public void initResults() {
         NYService nyService = RetrofitClient.getMock();
 
-        Observable<Results> observable = nyService.searchArticle("", NYService.APIKEY);
-        observable.subscribeOn(Schedulers.trampoline())
+        Observable<Results> observable0 = nyService.popularArticle(NYService.APIKEY);
+        Observable<Results> observable1 = nyService.topArticle(NYService.APIKEY);
+        Observable<Results> observable2 = nyService.searchArticle("", NYService.APIKEY);
+
+        observable0.subscribeOn(Schedulers.trampoline())
                 .observeOn(Schedulers.trampoline())
                 .subscribe(new Observer<Results>() {
 
@@ -42,7 +47,55 @@ public class ExampleUnitTest {
 
                     @Override
                     public void onNext(Results results) {
-                        mResults = results;
+                        mResults0 = results;
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+        observable1.subscribeOn(Schedulers.trampoline())
+                .observeOn(Schedulers.trampoline())
+                .subscribe(new Observer<Results>() {
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Results results) {
+                        mResults1 = results;
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+        observable2.subscribeOn(Schedulers.trampoline())
+                .observeOn(Schedulers.trampoline())
+                .subscribe(new Observer<Results>() {
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Results results) {
+                        mResults2 = results;
                     }
 
                     @Override
@@ -64,28 +117,41 @@ public class ExampleUnitTest {
 
     @Test
     public void test_status() {
-        assertEquals("statusOK", mResults.getStatus());
+        assertEquals("statusOK", mResults0.getStatus());
     }
 
 
     @Test
     public void test_url() {
-        String url =  mResults.getResponse().getDocs().get(0).getUrl();
+        String url =  mResults1.listArticle().get(0).urlArticle();
         assertEquals("https://www.nytimes.com/", url);
     }
 
     @Test
     public void test_title() {
-        String title =  mResults.getResponse().getDocs().get(4).getHeadline().getMain();
-        assertEquals("Titre 4", title);
+        String title =  mResults2.listArticle().get(4).topicArticle();
+        assertEquals("Culture > Theatre", title);
     }
 
     @Test
-    public void test_resume() {
-        String resume = mResults.getResponse().getDocs().get(9).getSnippet();
-        assertEquals("resume 9", resume);
+    public void test_resume0() {
+        String resume = mResults0.listArticle().get(8).resumeArticle();
+        assertEquals("POPULAR : 8", resume);
     }
 
+
+    @Test
+    public void test_resume1() {
+        String resume = mResults1.listArticle().get(5).resumeArticle();
+        assertEquals("TOP : 5", resume);
+    }
+
+
+    @Test
+    public void test_resume2() {
+        String resume = mResults2.listArticle().get(9).resumeArticle();
+        assertEquals("SEARCH : 9", resume);
+    }
 
 
 }

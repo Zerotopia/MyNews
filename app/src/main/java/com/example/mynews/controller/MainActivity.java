@@ -2,6 +2,7 @@ package com.example.mynews.controller;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -17,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
     //private EditText mEditText;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
+    //public static final String
     // private static final String APIKEY = "QXGOAUP24YZUfNIg4Drn3qaYAnpuV6dh";
     //private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
+
 
     @Override
     protected void onStop() {
@@ -34,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.viewpager);
         mTabLayout = findViewById(R.id.tablayout);
 
+        //mCount.increment();
         mViewPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
 
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+      //  mCount.decrement();
 
      //   getSupportFragmentManager().beginTransaction()
        //         .add(R.id.fragment,new RecyclerFragment())

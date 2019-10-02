@@ -77,25 +77,25 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.Articl
         articlesViewHolder.titleArticle.setText(article.topicArticle());
         articlesViewHolder.resumeArticle.setText(article.resumeArticle());
         articlesViewHolder.dateArticle.setText(article.dateArtice());
-        if (article.urlImage().equals("undefined")) {
-            Glide.with(articlesViewHolder.itemView)
-                    .load(R.mipmap.ic_launcher_round)
-                    .into(articlesViewHolder.imageArticle);
-        } else {
-            Glide.with(articlesViewHolder.itemView)
-                    .load(article.urlImage())
-                    .into(articlesViewHolder.imageArticle);
-        }
+//        if (article.urlImage().equals("undefined")) {
+//            Glide.with(articlesViewHolder.itemView)
+//                    .load(R.mipmap.ic_launcher_round)
+//                    .into(articlesViewHolder.imageArticle);
+//        } else {
+//            Glide.with(articlesViewHolder.itemView)
+//                    .load(article.urlImage())
+//                    .into(articlesViewHolder.imageArticle);
+//        }
 
-//        RequestOptions options = new RequestOptions().centerCrop()
-//                .placeholder(R.drawable.default_avatar)
-//                .error(R.drawable.default_avatar)
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .priority(Priority.HIGH);
-//        Glide.with(mContext)
-//                .load(imgUrl)
-//                .apply(options)
-//                .into(picThumbnail);
+        RequestOptions options = new RequestOptions().centerCrop()
+                .placeholder(R.mipmap.ic_launcher_round)
+                .error(R.mipmap.ic_launcher_round)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.HIGH);
+        Glide.with(articlesViewHolder.itemView)
+                .load(article.urlImage())
+                .apply(options)
+                .into(articlesViewHolder.imageArticle);
     }
 
     @Override

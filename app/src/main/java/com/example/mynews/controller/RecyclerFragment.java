@@ -4,6 +4,7 @@ package com.example.mynews.controller;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +31,12 @@ import io.reactivex.schedulers.Schedulers;
 public class RecyclerFragment extends Fragment {
 
     private final static String POSITION = "posiion";
+    private static CountingIdlingResource mCount = new CountingIdlingResource("RXPROCESS");
+
+    public static CountingIdlingResource getCount() {
+        return mCount;
+    }
+
 
     public static RecyclerFragment newInstance(int position) {
         RecyclerFragment fragment = new RecyclerFragment();
@@ -56,8 +63,8 @@ public class RecyclerFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv.addItemDecoration(new CustomItemDecoration(getContext()));
 
-        NYService nyService = RetrofitClient.getInstance();
-        // NYService nyService = RetrofitClient.getMock();
+        //NYService nyService = RetrofitClient.getInstance();
+        NYService nyService = RetrofitClient.getMock();
         int pos = getArguments().getInt(POSITION);
 
 
@@ -66,6 +73,7 @@ public class RecyclerFragment extends Fragment {
         Observable<Results> observable;
 
         Log.d("TAG", "onViewCreated: debut observable");
+        mCount.increment();
         switch (pos) {
             case 0:
                 observable = nyService.popularArticle(NYService.APIKEY);
@@ -105,11 +113,13 @@ public class RecyclerFragment extends Fragment {
 //                        }
                         Log.d("TAG", "onNext: " + art.size());
                         rv.setAdapter(new ArticlesAdapter(art));
+                        mCount.decrement();
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Log.d("TAG", "onError: "+ e.getMessage());
+                        mCount.decrement();
                     }
 
                     @Override

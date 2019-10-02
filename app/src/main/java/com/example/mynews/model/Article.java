@@ -42,10 +42,11 @@ public class Article {
     private Object media;
     private ArrayList<DataPicture> multimedia;
 
-    public Article(String url, String snippet, String desk, String date, ArrayList<DataPicture> multimedia) {
+    public Article(String url, String snippet, String section, String subsection, String date, ArrayList<DataPicture> multimedia) {
         this.url = url;
         this.snippet = snippet;
-        this.desk = desk;
+        this.section = section;
+        this.subsection = subsection;
         this.date = date;
         this.multimedia = multimedia;
     }
@@ -125,18 +126,18 @@ public class Article {
         } else return "undefined";
 
         int i = 0;
-        DataPicture picture = arrayPicture.get(i);
-        boolean goodSize = ((picture.getHeight() == 75) && (picture.getWidth() == 75));
+        DataPicture picture; //= arrayPicture.get(i);
+        boolean goodSize = false; // ((picture.getHeight() == 75) && (picture.getWidth() == 75));
 
         while (!goodSize && i < arrayPicture.size()) {
-            i++;
             picture = arrayPicture.get(i);
             goodSize = ((picture.getHeight() == 75) && (picture.getWidth() == 75));
+            i++;
         }
 
         String prefixUrl = (existString(webUrl)) ? "https://www.nytimes.com/" : "";
 
-        if (goodSize) return prefixUrl + picture.getUrl();
+        if (goodSize) return prefixUrl + arrayPicture.get(0).getUrl();
         else return prefixUrl + multimedia.get(0).getUrl();
     }
 

@@ -20,32 +20,37 @@ public class NYServiceMock implements NYService {
 
     @Override
     public Observable<Results> searchArticle(String topic, String apikey) {
+        Results results = genrateCode("SEARCH : ");
+        return  mBehaviorDelegate.returningResponse(results).searchArticle(topic,apikey);
+    }
+
+    @Override
+    public Observable<Results> topArticle(String apikey) {
+        Results results = genrateCode("TOP : ");
+        return  mBehaviorDelegate.returningResponse(results).topArticle(apikey);
+    }
+
+    @Override
+    public Observable<Results> popularArticle(String apikey) {
+        Results results = genrateCode("POPULAR : ");
+        return  mBehaviorDelegate.returningResponse(results).popularArticle(apikey);
+    }
+
+    private Results genrateCode (String nameService) {
         ArrayList<Article> articles = new ArrayList<>();
         ArrayList<DataPicture> dp = new ArrayList<>();
         for (int j =0; j < 20; j++) {
             dp.add(new DataPicture("url"));
         }
         String resume = "";
-        String date = "02/11/2008";
+        String date = "2002/11/21blabla";
         String url = "https://www.nytimes.com/";
         for (int i=0; i<10; i++) {
-            resume = "resume " + i;
-            articles.add(new Article(url,resume,"Culture",date,dp));
+            resume = nameService + i;
+            articles.add(new Article(url,resume,"Culture","Theatre",date,dp));
         }
 
         Data data = new Data(articles);
-        Results results = new Results("statusOK",data, new ArrayList<Article>());
-
-        return  mBehaviorDelegate.returningResponse(results).searchArticle(topic,apikey);
-    }
-
-    @Override
-    public Observable<Results> topArticle(String apikey) {
-        return null;
-    }
-
-    @Override
-    public Observable<Results> popularArticle(String apikey) {
-        return null;
+        return new Results("statusOK",data, new ArrayList<Article>());
     }
 }
