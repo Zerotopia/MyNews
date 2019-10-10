@@ -23,4 +23,4 @@ licenses:
   - 'google-gdk-license-.+'
 
 script:
-  - ./gradlew build check
+  - ./gradlew build check --stacktrace
