@@ -18,7 +18,8 @@ licenses:
   - 'android-sdk-preview-license-.+'
   - 'android-sdk-license-.+'
   - 'google-gdk-license-.+'
-
+before_script:
+  - yes | sdkmanager --licenses 
 script:
   - ./gradlew build assembleAndroidTest
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
