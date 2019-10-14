@@ -61,4 +61,4 @@ before_install:
    - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION"
 
 script:
-  - ./gradlew build check
+  - ./gradlew --stacktrace build check
