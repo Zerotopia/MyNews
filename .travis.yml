@@ -57,8 +57,8 @@ android:
 #     - sys-img-
     
 before_install:
-   - yes | sdkmanager "platforms-android-$ANDROID_TOOLS_VERSION"
-   - yes | sdkmanager "build-tools-$ANDROID_BUILD_TOOLS_VERSION"
+   - yes | sdkmanager "platforms;android-$ANDROID_TOOLS_VERSION"
+   - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION"
 # script:
 #   - export $ANDROID
 #   - ./gradlew --stacktrace build check
