@@ -79,10 +79,10 @@ public class ExampleInstrumentedTest {
     public void checkNavigation() {
         onView(withText("TOP STORIES")).perform(click());
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
-                .check(new RecyclerViewUtils.ItemCount(36));
+                .check(new RecyclerViewUtils.ItemCount(10));
         onView(withText("POPULAR")).perform(click());
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
-                .check(new RecyclerViewUtils.ItemCount(20));
+                .check(new RecyclerViewUtils.ItemCount(10));
         onView(withText("SEARCH")).perform(click());
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .check(new RecyclerViewUtils.ItemCount(10));

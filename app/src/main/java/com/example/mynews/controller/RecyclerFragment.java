@@ -63,7 +63,7 @@ public class RecyclerFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv.addItemDecoration(new CustomItemDecoration(getContext()));
 
-        //NYService nyService = RetrofitClient.getInstance();
+       // NYService nyService = RetrofitClient.getInstance();
         NYService nyService = RetrofitClient.getMock();
         int pos = getArguments().getInt(POSITION);
 
@@ -113,7 +113,6 @@ public class RecyclerFragment extends Fragment {
 //                        }
                         Log.d("TAG", "onNext: " + art.size());
                         rv.setAdapter(new ArticlesAdapter(art));
-                        mCount.decrement();
                     }
 
                     @Override
@@ -124,6 +123,7 @@ public class RecyclerFragment extends Fragment {
 
                     @Override
                     public void onComplete() {
+                        mCount.decrement();
 
                     }
                 });
