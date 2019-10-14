@@ -21,10 +21,10 @@ android:
      - addon-google_apis-google-$ANDROID_API_LEVEL
 #    - sys-img-${ANDROID_ABI}-${ANDROID_API_LEVEL}
 
-licenses:
-  - 'android-sdk-preview-license-.+'
-  - 'android-sdk-license-.+'
-  - 'google-gdk-license-.+'
+# licenses:
+#   - 'android-sdk-preview-license-.+'
+#   - 'android-sdk-license-.+'
+#   - 'google-gdk-license-.+'
 
 before_install:
    - yes | sdkmanager "platforms;android-$ANDROID_TOOLS_VERSION"
