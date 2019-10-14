@@ -54,7 +54,8 @@ android:
 #     - addon-google_apis-google-$ANDROID_API_LEVEL
 #     - sys-img-
     
-
+install:
+  - echo yes | sdkmanager "build-tools-$ANDROID_BUILD_TOOLS_VERSION"
 
 # script:
 #   - export $ANDROID
