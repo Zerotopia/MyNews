@@ -1,5 +1,5 @@
 language: android
-jdk: openjdk8
+jdk: oraclejdk8
 # env:
 #   global:
 #     - ANDROID_TARGET=android-22
@@ -44,8 +44,8 @@ env:
 
 android:
   components:
-#     - tools
-#     - platform-tools
+     - tools
+     - platform-tools
      - build-tools-$ANDROID_BUILD_TOOLS_VERSION
 #     - android-$ANDROID_API_LEVEL
 #     - extra-google-google_play_services
@@ -54,8 +54,8 @@ android:
 #     - addon-google_apis-google-$ANDROID_API_LEVEL
 #     - sys-img-
     
-install:
-  - echo yes | sdkmanager "build-tools-$ANDROID_BUILD_TOOLS_VERSION"
+before_install:
+  - yes | sdkmanager "platforms.android-$ANDROID_BUILD_TOOLS_VERSION"
 
 # script:
 #   - export $ANDROID
