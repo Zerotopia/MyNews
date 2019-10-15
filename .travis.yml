@@ -36,7 +36,7 @@ script:
   - android list targets
   - android list avd
   - android list device
-  - android list sdk
+  - android list sdk --extended --no-ui --all
   - echo no | android create avd --force -n test -t android-$ANDROID_API_LEVEL
   #--abi google_apis/$ANDROID_ABI
   - emulator -avd test -no-skin -no-audio -no-window &
