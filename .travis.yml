@@ -7,6 +7,7 @@ env:
     - ANDROID_BUILD_TOOLS_VERSION=28.0.3
     - ANDROID_TOOLS_VERSION=28
     - ANDROID_ABI=armeabi-v7a
+    - ANDROID_TAG=google_apis
 
 android:
   licenses:
@@ -23,7 +24,7 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     - addon-google_apis-google-$ANDROID_API_LEVEL
-    - sys-img-${ANDROID_ABI}-addon-google_apis-google-${ANDROID_API_LEVEL}
+    - sys-img-${ANDROID_ABI}-${ANDROID_TAG}-${ANDROID_API_LEVEL}
 
 
 before_install:
@@ -32,7 +33,7 @@ before_install:
 
 script:
   - ./gradlew build assembleAndroidTest
-  - echo no | android create avd --force -n test -t android-$ANDROID_API_LEVEL --abi google_apis/$ANDROID_ABI
+  - echo no | android create avd --force -n test -t android-$ANDROID_API_LEVEL --abi google_apis/$ANDROID_ABI --tag $ANDROID_TAG
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
