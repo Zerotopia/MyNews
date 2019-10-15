@@ -24,7 +24,6 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     - addon-google_apis-google-$ANDROID_API_LEVEL
-    - sys-img-${ANDROID_ABI}-${ANDROID_TAG}-${ANDROID_API_LEVEL}
 
 
 before_install:
@@ -37,6 +36,7 @@ script:
   - android list avd
   - android list device
   - android list sdk --extended --no-ui --all
+  - echo "y" | android update sdk -a --no-ui --filter sys-img-${ANDROID_ABI}-${ANDROID_TAG}-${ANDROID_API_LEVEL}
   - echo no | android create avd --force -n test -t android-$ANDROID_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
