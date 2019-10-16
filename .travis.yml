@@ -6,7 +6,7 @@ env:
     - ANDROID_API_LEVEL=28
     - ANDROID_BUILD_TOOLS_VERSION=28.0.3
     - ANDROID_TOOLS_VERSION=28
-    - ANDROID_ABI=x86_64
+    - ANDROID_ABI=x86
     - ANDROID_TAG=google_apis
 
 android:
