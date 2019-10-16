@@ -1,22 +1,9 @@
 //package com.example.mynews;
 
-import android.os.AsyncTask;
-import android.support.test.espresso.IdlingResource;
-import android.support.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
-import android.support.test.internal.util.AndroidRunnerParams;
-import android.support.test.runner.AndroidJUnit4;
-import android.support.test.runner.AndroidJUnitRunner;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-
-import org.junit.runners.model.InitializationError;
-
-import io.reactivex.Scheduler;
-import io.reactivex.functions.Function;
-import io.reactivex.plugins.RxJavaPlugins;
-import io.reactivex.schedulers.Schedulers;
-
-
+import androidx.test.espresso.IdlingResource;
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
+import androidx.test.internal.util.AndroidRunnerParams;
+import androidx.test.runner.AndroidJUnitRunner;
 
 
 //public class RxTestRunner extends AndroidJUnitRunner {

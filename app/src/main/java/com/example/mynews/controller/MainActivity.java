@@ -1,13 +1,10 @@
 package com.example.mynews.controller;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.test.espresso.idling.CountingIdlingResource;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
-import android.widget.EditText;
+import com.google.android.material.tabs.TabLayout;
+import androidx.test.espresso.idling.CountingIdlingResource;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mynews.R;
 
