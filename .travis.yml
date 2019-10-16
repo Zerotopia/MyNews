@@ -24,7 +24,7 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     - addon-google_apis-google-$ANDROID_API_LEVEL
-
+    - sys-img-${ANDROID_ABI}-${ANDROID_TAG}-${ANDROID_API_LEVEL}
 
 before_install:
   - yes | sdkmanager "platforms;android-$ANDROID_TOOLS_VERSION"
