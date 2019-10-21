@@ -1,11 +1,12 @@
 package com.example.mynews;
 
 import android.content.Context;
-import androidx.test.platform.app.InstrumentationRegistry;
+
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.contrib.RecyclerViewActions;
-import androidx.test.rule.ActivityTestRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.rule.ActivityTestRule;
 
 import com.example.mynews.controller.MainActivity;
 import com.example.mynews.controller.RecyclerFragment;
@@ -64,13 +65,10 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void checkCount() {
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
 
         onView(withId(R.id.viewpager)).perform(scrollRight()).perform(scrollRight());
+
+        sleep();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .check(new RecyclerViewUtils.ItemCount(10));
     }
@@ -78,12 +76,17 @@ public class ExampleInstrumentedTest {
     @Test
     public void checkNavigation() {
         onView(withText("TOP STORIES")).perform(click());
+        sleep();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .check(new RecyclerViewUtils.ItemCount(10));
+        sleep();
         onView(withText("POPULAR")).perform(click());
+        sleep();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .check(new RecyclerViewUtils.ItemCount(10));
+        sleep();
         onView(withText("SEARCH")).perform(click());
+        sleep();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .check(new RecyclerViewUtils.ItemCount(10));
 
@@ -95,10 +98,17 @@ public class ExampleInstrumentedTest {
         init();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-
+        sleep();
         intended(hasComponent(WebActivity.class.getName()));
     }
 
+    private void sleep() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
 
