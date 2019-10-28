@@ -49,6 +49,7 @@ script:
   - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST" #Print out pull request number.
   - android-wait-for-emulator
   - adb devices #Display list of devices
+  - sleep 500
   - adb shell input keyevent 82 &
   - ./gradlew clean test connectedAndroidTest -PdisablePreDex --stacktrace
 # before_install:
