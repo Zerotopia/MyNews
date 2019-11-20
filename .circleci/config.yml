@@ -1,7 +1,7 @@
 version: 2
 jobs:
   test:
-    working_directory: ~/code
+    working_directory: ~/AndroidStudio/MyNews
     docker:
       - image: circleci/android:api-29  # gcloud is baked into this image
     environment:
@@ -34,7 +34,7 @@ jobs:
 #           sudo pip install -U crcmod
 #           sudo gsutil -m cp -r -U `sudo gsutil ls gs://[BUCKET_NAME]/[OBJECT_NAME] | tail -1` ${CIRCLE_ARTIFACTS}/ | true
   build:
-    working_directory: ~/code
+    working_directory: ~/AndroidStudio/MyNews
     docker:
       - image: circleci/android:api-29
     steps:
