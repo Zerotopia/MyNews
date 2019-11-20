@@ -4,9 +4,6 @@ jobs:
     working_directory: ~/AndroidStudio/MyNews
     docker:
       - image: circleci/android:api-29  # gcloud is baked into this image
-    environment:
-      GCLOUD_SERVICE_KEY: mynews-259608-70e8a4a012de.json
-      GOOGLE_PROJECT_ID: 70e8a4a012de93394a19b051eccb9bd1f8d80794
     steps:
       - checkout
       - run:
@@ -26,9 +23,9 @@ jobs:
           name: Test with Firebase Test Lab
           command: >
             sudo gcloud firebase test android run \ 
-              --app <local_server_path>/<app_apk>.apk \ 
-              --test <local_server_path>/<app_test_apk>.apk \ 
-              --results-bucket cloud-test-${GOOGLE_PROJECT_ID}
+              --app app/build/outputs/apk/debug/app-debug.apk \ 
+              --test app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk \ 
+#              --results-bucket cloud-test-${GOOGLE_PROJECT_ID}
 #     - run:
 #         name: Install gsutil dependency and copy test results data
 #         command: |
