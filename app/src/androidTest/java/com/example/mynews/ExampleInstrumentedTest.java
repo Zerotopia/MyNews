@@ -70,7 +70,7 @@ public class ExampleInstrumentedTest {
 
         sleep();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
-                .check(new RecyclerViewUtils.ItemCount(9));
+                .check(new RecyclerViewUtils.ItemCount(10));
     }
 
     @Test
