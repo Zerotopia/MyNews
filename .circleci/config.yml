@@ -8,6 +8,7 @@ jobs:
       GCLOUD_SERVICE_KEY: mynews-259608-70e8a4a012de.json
       GOOGLE_PROJECT_ID: 70e8a4a012de93394a19b051eccb9bd1f8d80794
     steps:
+      - checkout
       - run:
           name: Build debug APK and release APK
           command: |
@@ -38,8 +39,7 @@ jobs:
     docker:
       - image: circleci/android:api-29
     steps:
-      - checkout:
-          path: ~/AndroidStudio
+      - checkout
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 #      - run:
