@@ -1,32 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".controller.MainActivity"
-    android:id="@+id/main_layout">
+    tools:context=".controller.MainActivity">
+
+    <EditText
+        android:id="@+id/editText_rec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="Search"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <EditText
-            android:id="@+id/editText_rec"
+            android:id="@+id/start_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
-        <Button
-            android:id="@+id/btn"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:hint="Begin date"
+            android:focusable="false"/>
+        <EditText
+            android:id="@+id/end_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Recherche"
-            android:layout_weight="2"/>
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:hint="End date"/>
     </LinearLayout>
 
-    <FrameLayout
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/arts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Arts" />
+            <CheckBox
+                android:id="@+id/politics"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Politics"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/business"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Business" />
+            <CheckBox
+                android:id="@+id/sports"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sports"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/entrepreneur"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Entrepreneur" />
+            <CheckBox
+                android:id="@+id/travel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Travel"/>
+        </TableRow>
+
+    </GridLayout>
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SEARCH"/>
 </LinearLayout>
