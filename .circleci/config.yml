@@ -7,15 +7,16 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Create Service
+          command: echo $GOOGLE_SERVICE > app/google-services.json
+      - run:
           name: Build debug APK and release APK
           command: |
             ./gradlew :app:assembleDebug
             ./gradlew :app:assembleDebugAndroidTest
       - run:
           name: Store Google Service Account
-          command: |
-            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
-            echo $GOOGLE_SERVICE > app/google-services.json
+          command: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
       - run:
           name: Authorize gcloud and set config defaults
           command: |
