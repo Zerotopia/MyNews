@@ -1,5 +1,6 @@
 package com.example.mynews.controller;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -9,10 +10,11 @@ public class PageAdapter extends FragmentPagerAdapter {
 
 
     public PageAdapter(FragmentManager fm) {
-        super(fm);
+        super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
     }
 
     @Override
+    @NonNull
     public Fragment getItem(int position) {
         return RecyclerFragment.newInstance(position);
     }
