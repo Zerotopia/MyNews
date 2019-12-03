@@ -31,6 +31,7 @@ public class RetrofitClient {
         NetworkBehavior localNetwork = NetworkBehavior.create();
         localNetwork.setDelay(1000, TimeUnit.MILLISECONDS);
         localNetwork.setVariancePercent(90);
+        localNetwork.setFailurePercent(0);
 
         MockRetrofit mockRetrofit = new MockRetrofit.Builder(buildRetrofit())
                 .networkBehavior(localNetwork)

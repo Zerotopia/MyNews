@@ -59,7 +59,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-
         assertEquals("com.example.mynews", appContext.getPackageName());
     }
 
@@ -67,8 +66,6 @@ public class ExampleInstrumentedTest {
     public void checkCount() {
 
         onView(withId(R.id.viewpager)).perform(scrollRight()).perform(scrollRight());
-
-        sleep();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .check(new RecyclerViewUtils.ItemCount(10));
     }
@@ -76,17 +73,12 @@ public class ExampleInstrumentedTest {
     @Test
     public void checkNavigation() {
         onView(withText("TOP STORIES")).perform(click());
-        sleep();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .check(new RecyclerViewUtils.ItemCount(10));
-        sleep();
         onView(withText("POPULAR")).perform(click());
-        sleep();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .check(new RecyclerViewUtils.ItemCount(10));
-        sleep();
         onView(withText("SEARCH")).perform(click());
-        sleep();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .check(new RecyclerViewUtils.ItemCount(10));
 
@@ -98,16 +90,7 @@ public class ExampleInstrumentedTest {
         init();
         onView(allOf(withId(R.id.recyclerview), isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-        sleep();
         intended(hasComponent(WebActivity.class.getName()));
-    }
-
-    private void sleep() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
 }

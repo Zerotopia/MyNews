@@ -2,11 +2,12 @@ package com.example.mynews;
 
 import android.util.Log;
 
+
 import com.example.mynews.controller.NYService;
 import com.example.mynews.model.Results;
 import com.example.mynews.model.RetrofitClient;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import io.reactivex.Observable;
@@ -24,86 +25,115 @@ import static org.junit.Assert.assertEquals;
  */
 public class ExampleUnitTest {
 
-    private Results mResults0;
-    private Results mResults1;
-    private Results mResults2;
+    private static Results mResults0;
+    private static Results mResults1;
+    private static Results mResults2;
 
-    @Before
-    public void initResults() {
+    @BeforeClass
+    public static void initResults() {
         NYService nyService = RetrofitClient.getMock();
 
         Observable<Results> observable0 = nyService.popularArticle(NYService.APIKEY);
         Observable<Results> observable1 = nyService.topArticle(NYService.APIKEY);
         Observable<Results> observable2 = nyService.searchArticle("", NYService.APIKEY);
 
+        System.out.println("initResults: -----------R0----------------");
         observable0.subscribeOn(Schedulers.trampoline())
                 .observeOn(Schedulers.trampoline())
                 .subscribe(new Observer<Results>() {
 
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        System.out.println("suscribe");
                     }
 
                     @Override
                     public void onNext(Results results) {
+                        System.out.println("next enter");
                         mResults0 = results;
+                        if (mResults0 == null) {
+                            System.out.println("mR0 NULL");
+                        } else {
+                            System.out.println("mR0 OK");
+                        }
+                        System.out.println("next exit");
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        System.out.println("erreur :" + e.toString());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        System.out.println("complet");
                     }
                 });
 
+        System.out.println("initResults: -----------R1----------------");
         observable1.subscribeOn(Schedulers.trampoline())
                 .observeOn(Schedulers.trampoline())
                 .subscribe(new Observer<Results>() {
 
                     @Override
                     public void onSubscribe(Disposable d) {
+                        System.out.println("suscribe");
 
                     }
 
                     @Override
                     public void onNext(Results results) {
+                        System.out.println("next enter");
                         mResults1 = results;
+                        if (mResults1 == null) {
+                            System.out.println("mR1 NULL");
+                        } else {
+                            System.out.println("mR1 OK");
+                        }System.out.println("next exit");
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        System.out.println("erreur :" + e.toString());
                     }
 
                     @Override
                     public void onComplete() {
+                        System.out.println("complet");
 
                     }
                 });
 
+        System.out.println("initResults: -----------R2----------------");
         observable2.subscribeOn(Schedulers.trampoline())
                 .observeOn(Schedulers.trampoline())
                 .subscribe(new Observer<Results>() {
 
                     @Override
                     public void onSubscribe(Disposable d) {
+                        System.out.println("suscribe");
 
                     }
 
                     @Override
                     public void onNext(Results results) {
+                        System.out.println("next enter");
                         mResults2 = results;
+                        if (mResults2 == null) {
+                            System.out.println("mR2 NULL");
+                        } else {
+                            System.out.println("mR2 OK");
+                        }System.out.println("next exit");
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        System.out.println("erreur :" + e.toString());
                     }
 
                     @Override
                     public void onComplete() {
+                        System.out.println("complet");
 
                     }
                 });

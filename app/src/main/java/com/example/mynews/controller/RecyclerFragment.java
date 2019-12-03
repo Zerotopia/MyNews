@@ -2,12 +2,14 @@ package com.example.mynews.controller;
 
 
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.espresso.idling.CountingIdlingResource;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +39,7 @@ public class RecyclerFragment extends Fragment {
         return mCount;
     }
 
-
+    @NonNull
     public static RecyclerFragment newInstance(int position) {
         RecyclerFragment fragment = new RecyclerFragment();
 
@@ -63,9 +65,9 @@ public class RecyclerFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv.addItemDecoration(new CustomItemDecoration(getContext()));
 
-       // NYService nyService = RetrofitClient.getInstance();
+        // NYService nyService = RetrofitClient.getInstance();
         NYService nyService = RetrofitClient.getMock();
-        int pos = getArguments().getInt(POSITION);
+        int pos = (getArguments() == null) ? -1 : getArguments().getInt(POSITION,-1);
 
 
         Log.d("TAG", "onViewCreated: Entrer : " + pos);
@@ -117,7 +119,7 @@ public class RecyclerFragment extends Fragment {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("TAG", "onError: "+ e.getMessage());
+                        Log.d("TAG", "onError: " + e.getMessage());
                         mCount.decrement();
                     }
 

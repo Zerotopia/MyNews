@@ -42,7 +42,7 @@ public class NYServiceMock implements NYService {
         for (int j =0; j < 20; j++) {
             dp.add(new DataPicture("url"));
         }
-        String resume = "";
+        String resume;
         String date = "2002/11/21blabla";
         String url = "https://www.nytimes.com/";
         for (int i=0; i<10; i++) {
