@@ -13,7 +13,9 @@ jobs:
             ./gradlew :app:assembleDebugAndroidTest
       - run:
           name: Store Google Service Account
-          command: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+          command: |
+            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+            echo $GOOGLE_SERVICE > app/google-services.json
       - run:
           name: Authorize gcloud and set config defaults
           command: |
