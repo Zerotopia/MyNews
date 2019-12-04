@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -122,8 +123,18 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.search_item:
-                Intent intent = new Intent(this, SearchActivity.class);
-                startActivity(intent);
+                Intent intent_search = new Intent(this, SearchActivity.class);
+                startActivity(intent_search);
+                return true;
+            case R.id.notif_item:
+                Intent intent_notif = new Intent(this, NotificationActivity.class);
+                startActivity(intent_notif);
+                return true;
+            case R.id.help_item:
+                Toast.makeText(this,"HELP",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.about_item:
+                Toast.makeText(this,"ABOUT",Toast.LENGTH_SHORT).show();
                 return true;
             default: return super.onOptionsItemSelected(item);
         }
