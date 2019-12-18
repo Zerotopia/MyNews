@@ -33,7 +33,7 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 1:
                 return "TOP STORIES";
             case 2:
-                return "SEARCH";
+                return "BOOKS";
             default:
                 return super.getPageTitle(position);
         }

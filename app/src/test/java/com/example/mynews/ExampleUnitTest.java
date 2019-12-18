@@ -34,7 +34,7 @@ public class ExampleUnitTest {
         NYService nyService = RetrofitClient.getMock();
 
         Observable<Results> observable0 = nyService.popularArticle(NYService.APIKEY);
-        Observable<Results> observable1 = nyService.topArticle(NYService.APIKEY);
+        Observable<Results> observable1 = nyService.topArticle("home", NYService.APIKEY);
         Observable<Results> observable2 = nyService.searchArticle("", NYService.APIKEY);
 
         System.out.println("initResults: -----------R0----------------");

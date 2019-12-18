@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -52,9 +53,22 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
                              Bundle savedInstanceState) {
         View inflate_search = inflater.inflate(R.layout.search_fragment, container, false);
         LinearLayout dateLayout = inflate_search.findViewById(R.id.date_search);
+        Button button = inflate_search.findViewById(R.id.search_button);
+        LinearLayout notif_layout = inflate_search.findViewById(R.id.notification_switch);
+
         if (mactivity) {
             dateLayout.setVisibility(View.GONE);
+            button.setVisibility(View.GONE);
+        } else {
+            notif_layout.setVisibility(View.GONE);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
+
         return inflate_search;
     }
 

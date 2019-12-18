@@ -6,17 +6,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.test.espresso.idling.CountingIdlingResource;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mynews.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //private Button mButton;
     //private RecyclerView mRecyclerView;
@@ -24,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private Toolbar mToolbar;
+    private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
     //public static final String
     // private static final String APIKEY = "QXGOAUP24YZUfNIg4Drn3qaYAnpuV6dh";
     //private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
@@ -40,9 +46,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setElevation(0);
-//        mToolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(mToolbar);
+        // getSupportActionBar().setElevation(0);
+        mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        mDrawerLayout = findViewById(R.id.drawer_view);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,
+                mDrawerLayout,
+                mToolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+        mDrawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        mNavigationView = findViewById(R.id.nav_draw);
+        mNavigationView.setNavigationItemSelectedListener(this);
 
         mViewPager = findViewById(R.id.viewpager);
         mTabLayout = findViewById(R.id.tablayout);
@@ -121,22 +140,56 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent = new Intent(this, SearchActivity.class);
         switch (item.getItemId()) {
             case R.id.search_item:
-                Intent intent_search = new Intent(this, SearchActivity.class);
-                startActivity(intent_search);
+                intent.putExtra("NOTIF",false);
+                startActivity(intent);
                 return true;
             case R.id.notif_item:
-                Intent intent_notif = new Intent(this, NotificationActivity.class);
-                startActivity(intent_notif);
+                intent.putExtra("NOTIF",true);
+                startActivity(intent);
                 return true;
             case R.id.help_item:
-                Toast.makeText(this,"HELP",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "HELP", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.about_item:
-                Toast.makeText(this,"ABOUT",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ABOUT", Toast.LENGTH_SHORT).show();
                 return true;
-            default: return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else super.onBackPressed();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.art_item:
+                break;
+            case R.id.book_item:
+                break;
+            case R.id.entrepreneur_item:
+                break;
+            case R.id.politics_item:
+                break;
+            case R.id.sport_item:
+                break;
+            case R.id.travel_item:
+                break;
+            case R.id.search_item:
+                break;
+            case R.id.notif_item:
+                break;
+        }
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

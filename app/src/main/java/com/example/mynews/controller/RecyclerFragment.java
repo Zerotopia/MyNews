@@ -65,8 +65,8 @@ public class RecyclerFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv.addItemDecoration(new CustomItemDecoration(getContext()));
 
-        // NYService nyService = RetrofitClient.getInstance();
-        NYService nyService = RetrofitClient.getMock();
+         NYService nyService = RetrofitClient.getInstance();
+        //NYService nyService = RetrofitClient.getMock();
         int pos = (getArguments() == null) ? -1 : getArguments().getInt(POSITION,-1);
 
 
@@ -81,13 +81,13 @@ public class RecyclerFragment extends Fragment {
                 observable = nyService.popularArticle(NYService.APIKEY);
                 break;
             case 1:
-                observable = nyService.topArticle(NYService.APIKEY);
+                observable = nyService.topArticle("home", NYService.APIKEY);
                 break;
             case 2:
-                observable = nyService.searchArticle("politic", NYService.APIKEY);
+                observable = nyService.topArticle("books", NYService.APIKEY);
                 break;
             default:
-                observable = nyService.searchArticle("math", NYService.APIKEY);
+                observable = nyService.topArticle("home", NYService.APIKEY);
                 Log.d("SWITCH", "onViewCreated: ANOMALIE");
         }
         //Observable<Results> observable = nyService.searchArticle("math", NYService.APIKEY);

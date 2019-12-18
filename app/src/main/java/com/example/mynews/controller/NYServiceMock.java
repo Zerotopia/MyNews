@@ -19,15 +19,15 @@ public class NYServiceMock implements NYService {
     }
 
     @Override
-    public Observable<Results> searchArticle(String topic, String apikey) {
+    public Observable<Results> searchArticle(String topic, String beginDate, String endDate, String theme, String apikey) {
         Results results = genrateCode("SEARCH : ");
-        return  mBehaviorDelegate.returningResponse(results).searchArticle(topic,apikey);
+        return  mBehaviorDelegate.returningResponse(results).searchArticle(topic,beginDate,endDate,theme,apikey);
     }
 
     @Override
-    public Observable<Results> topArticle(String apikey) {
+    public Observable<Results> topArticle(String topic, String apikey) {
         Results results = genrateCode("TOP : ");
-        return  mBehaviorDelegate.returningResponse(results).topArticle(apikey);
+        return  mBehaviorDelegate.returningResponse(results).topArticle(topic, apikey);
     }
 
     @Override
