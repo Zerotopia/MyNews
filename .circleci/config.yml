@@ -12,6 +12,7 @@ jobs:
       - run:
           name: Build debug APK and release APK
           command: |
+            chmod +x ./gradlew
             ./gradlew :app:assembleDebug
             ./gradlew :app:assembleDebugAndroidTest
       - run:
