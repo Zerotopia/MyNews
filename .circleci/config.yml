@@ -48,7 +48,9 @@ jobs:
          command: echo $GOOGLE_SERVICE > app/google-services.json
       - run:
           name: Download Dependencies
-          command: ./gradlew androidDependencies
+          command: |
+            chmod +x ./gradlew
+            ./gradlew androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
