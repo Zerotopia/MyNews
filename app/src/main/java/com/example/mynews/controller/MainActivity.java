@@ -1,8 +1,10 @@
-package com.example.mynews;
+package com.example.mynews.controller;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mynews.R;
 
 public class MainActivity extends AppCompatActivity {
     @Override
