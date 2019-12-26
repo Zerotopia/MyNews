@@ -30,7 +30,7 @@ public class ExampleUnitTest {
         Gson gson = new Gson();
         sSearchResults = gson.fromJson(new FileReader("search.json"),Results.class);
         sPopularResults = gson.fromJson(new FileReader("mostpopular.json"),Results.class);
-        sTopResults = gson.fromJson(new FileReader("topstories.json)"),Results.class);
+        sTopResults = gson.fromJson(new FileReader("topstories.json"),Results.class);
     }
 /*
     @Test
