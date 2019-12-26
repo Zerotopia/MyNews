@@ -1,0 +1,1298 @@
+{
+	"status": "OK",
+	"copyright": "Copyright (c) 2019 The New York Times Company.  All Rights Reserved.",
+	"num_results": 486,
+	"results": [
+		{
+			"url": "most url0",
+			"adx_keywords": "Meditation;Buddhism;Anxiety and Stress",
+			"subsection": "most subsection0",
+			"email_count": 3,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "most section0",
+			"id": 100000006866112,
+			"asset_id": 100000006866112,
+			"nytdsection": "well",
+			"byline": "By TARA PARKER-POPE",
+			"type": "Article",
+			"title": "For the Holidays, the Gift of Self-Care",
+			"abstract": "most abstract0",
+			"published_date": "2019-12-10",
+			"source": "The New York Times",
+			"updated": "2019-12-17 06:29:03",
+			"des_facet": [
+				"MEDITATION",
+				"BUDDHISM",
+				"ANXIETY AND STRESS"
+			],
+			"org_facet": "",
+			"per_facet": "",
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Haemin Sunim",
+					"copyright": "&copy; Seyhen Jo.",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "most urlimg0",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/17/well/well-sunim/well-sunim-mediumThreeByTwo210-v3.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/17/well/well-sunim/well-sunim-mediumThreeByTwo440-v3.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/b503ac4e-9732-5372-afde-ec4d11957fb7"
+		},
+		{
+			"url": "",
+			"adx_keywords": "Trump, Donald J;Impeachment;Republican Party;Democratic Party;Conservatism (US Politics);Constitution (US);Lincoln, Abraham;House of Representatives;Senate;United States Politics and Government",
+			"subsection": "",
+			"email_count": 1,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "most section1",
+			"id": 100000006877679,
+			"asset_id": 100000006877679,
+			"nytdsection": "opinion",
+			"byline": "By GEORGE T. CONWAY III, STEVE SCHMIDT, JOHN WEAVER and RICK WILSON",
+			"type": "most type1",
+			"title": "most title1",
+			"abstract": "",
+			"published_date": "",
+			"source": "The New York Times",
+			"updated": "2019-12-20 16:56:47",
+			"des_facet": [
+				"CONSERVATISM (US POLITICS)",
+				"CONSTITUTION (US)",
+				"UNITED STATES POLITICS AND GOVERNMENT"
+			],
+			"org_facet": [
+				"IMPEACHMENT",
+				"REPUBLICAN PARTY",
+				"DEMOCRATIC PARTY",
+				"HOUSE OF REPRESENTATIVES",
+				"SENATE"
+			],
+			"per_facet": [
+				"TRUMP, DONALD J",
+				"LINCOLN, ABRAHAM"
+			],
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": " ",
+					"copyright": "Samuel Corum for The New York Times",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16Weaver2/16Weaver2-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 76,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16Weaver2/16Weaver2-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16Weaver2/16Weaver2-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/78a9dc74-9f18-540d-9f23-a9a91b429d2c"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/16/opinion/FBI-Trump-russia-investigation.html",
+			"adx_keywords": "Russian Interference in 2016 US Elections and Ties to Trump Associates;Inspectors General;Federal Bureau of Investigation;Justice Department;Barr, William P;Wray, Christopher A;Russia;Trump, Donald J",
+			"subsection": "most subsection2",
+			"email_count": 2,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "",
+			"id": 100000006875559,
+			"asset_id": 100000006875559,
+			"nytdsection": "opinion",
+			"byline": "By WILLIAM WEBSTER",
+			"type": "most type2",
+			"title": "",
+			"abstract": "",
+			"published_date": "2019-12-16",
+			"source": "The New York Times",
+			"updated": "2019-12-20 16:56:44",
+			"des_facet": [
+				"RUSSIAN INTERFERENCE IN 2016 US ELECTIONS AND TIES TO TRUMP ASSOCIATES"
+			],
+			"org_facet": [
+				"INSPECTORS GENERAL",
+				"FEDERAL BUREAU OF INVESTIGATION",
+				"JUSTICE DEPARTMENT"
+			],
+			"per_facet": [
+				"BARR, WILLIAM P",
+				"WRAY, CHRISTOPHER A",
+				"TRUMP, DONALD J"
+			],
+			"geo_facet": [
+				"RUSSIA"
+			],
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Christopher Wray, the director of the F.B.I., speaking at the Department of Justice in Washington in July.",
+					"copyright": "Saul Loeb/Agence France-Presse — Getty Images",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16webster/merlin_163910355_fa50244e-1882-4add-bad1-ea314264bba0-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16webster/merlin_163910355_fa50244e-1882-4add-bad1-ea314264bba0-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/54dc0e5e-b49b-5dcd-938d-2f6f09af4c81"
+		},
+		
+		{
+			"url": "https://www.nytimes.com/2019/12/13/opinion/sunday/trump-democracy.html",
+			"adx_keywords": "Russian Interference in 2016 US Elections and Ties to Trump Associates;United States Politics and Government;Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry;Grief (Emotion);Anxiety and Stress;Psychology and Psychologists;Democracy (Theory and Philosophy);Impeachment;Putin, Vladimir V;Trump, Donald J;Russia;Rumors and Misinformation",
+			"subsection": "",
+			"email_count": 4,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "most section3",
+			"id": 100000006862658,
+			"asset_id": 100000006862658,
+			"nytdsection": "opinion",
+			"byline": "By MICHELLE GOLDBERG",
+			"type": "",
+			"title": "Democracy Grief Is Real",
+			"abstract": "Seeing what Trump is doing to America, many find it hard to fight off despair.",
+			"published_date": "2019-12-13",
+			"source": "The New York Times",
+			"updated": "2019-12-15 01:22:24",
+			"des_facet": [
+				"RUSSIAN INTERFERENCE IN 2016 US ELECTIONS AND TIES TO TRUMP ASSOCIATES",
+				"UNITED STATES POLITICS AND GOVERNMENT",
+				"TRUMP-UKRAINE WHISTLE-BLOWER COMPLAINT AND IMPEACHMENT INQUIRY",
+				"RUMORS AND MISINFORMATION"
+			],
+			"org_facet": [
+				"GRIEF (EMOTION)",
+				"ANXIETY AND STRESS",
+				"PSYCHOLOGY AND PSYCHOLOGISTS",
+				"DEMOCRACY (THEORY AND PHILOSOPHY)",
+				"IMPEACHMENT"
+			],
+			"per_facet": [
+				"PUTIN, VLADIMIR V",
+				"TRUMP, DONALD J"
+			],
+			"geo_facet": [
+				"RUSSIA"
+			],
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "",
+					"copyright": "T.J. Kirkpatrick for The New York Times",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/13/opinion/13goldberg2/merlin_165758757_737cee73-a2f0-4388-af10-55bb54f4cb72-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/13/opinion/13goldberg2/merlin_165758757_737cee73-a2f0-4388-af10-55bb54f4cb72-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/9e717db5-7922-53d2-9d62-0b212a4dd476"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/11/04/business/economy/economy-consumers-business.html",
+			"adx_keywords": "Consumer Behavior;United States Economy;Factories and Manufacturing;Consumer Confidence (Economic Indicator);Shopping Centers and Malls",
+			"subsection": "",
+			"email_count": 5,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "",
+			"id": 100000006802614,
+			"asset_id": 100000006802614,
+			"nytdsection": "business",
+			"byline": "By PATRICIA COHEN",
+			"type": "most type4",
+			"title": "Companies Cut Back, but Consumers Party On, Driving the Economy",
+			"abstract": "Things feel chillier in the executive suite than they do at the mall, and the future of a record expansion hangs in the balance.",
+			"published_date": "2019-11-04",
+			"source": "The New York Times",
+			"updated": "2019-11-05 04:38:20",
+			"des_facet": [
+				"CONSUMER BEHAVIOR",
+				"UNITED STATES ECONOMY"
+			],
+			"org_facet": [
+				"FACTORIES AND MANUFACTURING",
+				"CONSUMER CONFIDENCE (ECONOMIC INDICATOR)",
+				"SHOPPING CENTERS AND MALLS"
+			],
+			"per_facet": "",
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Even as business sentiment has become more cautious, consumers have remained bullish about spending. Shoppers in Manhattan were no exception.",
+					"copyright": "Marian Carrasquero for The New York Times",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/11/03/business/03econ1/00econ1-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/11/03/business/03econ1/merlin_163688859_fde177f7-5037-43ec-8716-00e275852219-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/11/03/business/03econ1/merlin_163688859_fde177f7-5037-43ec-8716-00e275852219-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/164d5daa-a2c8-5c50-af77-c011c54b412c"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/16/health/emergency-room-medicine.html",
+			"adx_keywords": "Hospitals;Nursing Homes;Skin;Doctors;Infections;Catheters;Emergency Medical Treatment;your-feed-science;Elder Care;Drug Abuse and Traffic;Mental Health and Disorders;Bed Sores;University of Colorado;your-feed-health",
+			"subsection": "",
+			"email_count": 6,
+			"count_type": "EMAILED",
+			"column": "Essay",
+			"eta_id": 0,
+			"section": "",
+			"id": 100000006664742,
+			"asset_id": 100000006664742,
+			"nytdsection": "health",
+			"byline": "By GINA SIDDIQUI and GOLDEN COSMOS",
+			"type": "",
+			"title": "A Doctor’s Diary: The Overnight Shift in the E.R.",
+			"abstract": "In the typical emergency room, demand far outpaces the care that workers can provide. Can the E.R. be fixed?",
+			"published_date": "2019-12-16",
+			"source": "The New York Times",
+			"updated": "2019-12-17 20:26:14",
+			"des_facet": [
+				"HOSPITALS",
+				"NURSING HOMES",
+				"YOUR-FEED-SCIENCE",
+				"YOUR-FEED-HEALTH"
+			],
+			"org_facet": [
+				"SKIN",
+				"DOCTORS",
+				"INFECTIONS",
+				"CATHETERS",
+				"EMERGENCY MEDICAL TREATMENT",
+				"ELDER CARE",
+				"DRUG ABUSE AND TRAFFIC",
+				"MENTAL HEALTH AND DISORDERS",
+				"BED SORES",
+				"UNIVERSITY OF COLORADO"
+			],
+			"per_facet": "",
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "",
+					"copyright": "Golden Cosmos",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/17/science/17ER-03/17ER-03-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/17/science/17ER-03/17ER-03-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/17/science/17ER-03/17ER-03-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/58db3099-d472-5582-b814-6e47c4becbea"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/17/opinion/impeachment-trump.html",
+			"adx_keywords": "Trump, Donald J;Impeachment;Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry;United States Politics and Government",
+			"subsection": "",
+			"email_count": 7,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Opinion",
+			"id": 100000006879354,
+			"asset_id": 100000006879354,
+			"nytdsection": "opinion",
+			"byline": "By FRANK BRUNI",
+			"type": "Article",
+			"title": "’Twas the Eve of Impeachment",
+			"abstract": "Finding verse in this curse.",
+			"published_date": "2019-12-17",
+			"source": "The New York Times",
+			"updated": "2019-12-18 19:12:23",
+			"des_facet": [
+				"IMPEACHMENT",
+				"TRUMP-UKRAINE WHISTLE-BLOWER COMPLAINT AND IMPEACHMENT INQUIRY",
+				"UNITED STATES POLITICS AND GOVERNMENT"
+			],
+			"org_facet": "",
+			"per_facet": [
+				"TRUMP, DONALD J"
+			],
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "",
+					"copyright": "Illustration by The New York Times; photo by Al Drago for The New York Times",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/17/opinion/17bruniWeb/17bruniWeb-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/17/opinion/17bruniWeb/17bruniWeb-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/17/opinion/17bruniWeb/17bruniWeb-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/0260c949-c493-5f28-924c-0827af898bed"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/13/opinion/uk-election-trump-2020.html",
+			"adx_keywords": "Great Britain Withdrawal from EU (Brexit);Great Britain;Politics and Government;Johnson, Boris;Corbyn, Jeremy (1949- );Conservative Party (Great Britain);Labour Party (Great Britain);Liberal Democrats (Great Britain);European Union;England;Scotland;Scottish National Party;Trump, Donald J;United States Politics and Government;Presidential Election of 2020",
+			"subsection": "",
+			"email_count": 8,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Opinion",
+			"id": 100000006874186,
+			"asset_id": 100000006874186,
+			"nytdsection": "opinion",
+			"byline": "By ROGER COHEN",
+			"type": "Article",
+			"title": "Boris Johnson and the Coming Trump Victory in 2020",
+			"abstract": "In the postindustrial wasteland, the working class embraced an old Etonian mouthing about unleashed British potential.",
+			"published_date": "2019-12-13",
+			"source": "The New York Times",
+			"updated": "2019-12-14 23:18:23",
+			"des_facet": [
+				"GREAT BRITAIN WITHDRAWAL FROM EU (BREXIT)",
+				"POLITICS AND GOVERNMENT",
+				"UNITED STATES POLITICS AND GOVERNMENT"
+			],
+			"org_facet": [
+				"CONSERVATIVE PARTY (GREAT BRITAIN)",
+				"LABOUR PARTY (GREAT BRITAIN)",
+				"LIBERAL DEMOCRATS (GREAT BRITAIN)",
+				"EUROPEAN UNION",
+				"SCOTTISH NATIONAL PARTY",
+				"PRESIDENTIAL ELECTION OF 2020"
+			],
+			"per_facet": [
+				"JOHNSON, BORIS",
+				"CORBYN, JEREMY (1949- )",
+				"TRUMP, DONALD J"
+			],
+			"geo_facet": [
+				"GREAT BRITAIN",
+				"ENGLAND",
+				"SCOTLAND"
+			],
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Exit poll results predicting Boris Johnson’s victory projected on Broadcasting House in London on Thursday.",
+					"copyright": "Jeff Overs/BBC, via Associated Press",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/13/opinion/13cohenWeb/13cohenWeb-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/13/opinion/13cohenWeb/13cohenWeb-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/13/opinion/13cohenWeb/13cohenWeb-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/1b415936-4811-55ac-9452-de163f072430"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/15/opinion/gdp-america.html",
+			"adx_keywords": "United States Economy;Gross Domestic Product;Economics (Theory and Philosophy);Law and Legislation;Income;United States Politics and Government;Economic Conditions and Trends;Income Inequality;Schumer, Charles E;Kuznets, Simon S;Commerce Department",
+			"subsection": "",
+			"email_count": 9,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Opinion",
+			"id": 100000006874729,
+			"asset_id": 100000006874729,
+			"nytdsection": "opinion",
+			"byline": "By DAVID LEONHARDT",
+			"type": "Article",
+			"title": "Why You Shouldn’t Believe Those G.D.P. Numbers",
+			"abstract": "The statistics keep on rising, but they don’t track the well-being of most Americans.",
+			"published_date": "2019-12-15",
+			"source": "The New York Times",
+			"updated": "2019-12-20 16:56:44",
+			"des_facet": [
+				"UNITED STATES ECONOMY",
+				"GROSS DOMESTIC PRODUCT",
+				"ECONOMICS (THEORY AND PHILOSOPHY)",
+				"ECONOMIC CONDITIONS AND TRENDS",
+				"INCOME INEQUALITY"
+			],
+			"org_facet": [
+				"LAW AND LEGISLATION",
+				"INCOME",
+				"UNITED STATES POLITICS AND GOVERNMENT",
+				"COMMERCE DEPARTMENT"
+			],
+			"per_facet": [
+				"SCHUMER, CHARLES E",
+				"KUZNETS, SIMON S"
+			],
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "",
+					"copyright": "Ricardo Santos",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/11/03/opinion/sunday/03Leonhardt/03Leonhardt-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/11/03/opinion/sunday/03Leonhardt/03Leonhardt-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/11/03/opinion/sunday/03Leonhardt/03Leonhardt-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/1ff21a3a-2ef9-5646-8549-6ce5fa5d978c"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/14/opinion/sunday/modern-art-museum.html",
+			"adx_keywords": "Art;Philanthropy;Museums;High Net Worth Individuals;Museum of Modern Art;Black, Leon D;Cohen, Steven A;Metropolitan Museum of Art",
+			"subsection": "sunday review",
+			"email_count": 10,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Opinion",
+			"id": 100000006862554,
+			"asset_id": 100000006862554,
+			"nytdsection": "opinion",
+			"byline": "By MICHAEL MASSING",
+			"type": "Article",
+			"title": "How the Superrich Took Over the Museum World",
+			"abstract": "The wealthy have always influenced the art scene. But in recent years, they’ve dominated it.",
+			"published_date": "2019-12-14",
+			"source": "The New York Times",
+			"updated": "2019-12-20 16:56:38",
+			"des_facet": [
+				"ART",
+				"PHILANTHROPY"
+			],
+			"org_facet": [
+				"MUSEUMS",
+				"HIGH NET WORTH INDIVIDUALS",
+				"MUSEUM OF MODERN ART",
+				"METROPOLITAN MUSEUM OF ART"
+			],
+			"per_facet": [
+				"BLACK, LEON D",
+				"COHEN, STEVEN A"
+			],
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The newly reopened Museum of Modern Art.",
+					"copyright": "Karsten Moran for The New York Times",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/15/opinion/15Massing1/15Massing1-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/15/opinion/15Massing1/merlin_163035081_d11b3038-62fe-47c6-9d14-a2dee386bac3-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/15/opinion/15Massing1/merlin_163035081_d11b3038-62fe-47c6-9d14-a2dee386bac3-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/e8a5d6d1-0fad-559b-885e-bcf6960687f9"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/12/magazine/aspirin-exacerbated-respiratory-disease-aerd.html",
+			"adx_keywords": "Respiratory Diseases;Asthma;Allergies;Nonsteroidal Anti-inflammatory Drugs (NSAIDs);Aspirin;Tough Mudder",
+			"subsection": "",
+			"email_count": 11,
+			"count_type": "EMAILED",
+			"column": "Diagnosis",
+			"eta_id": 0,
+			"section": "Magazine",
+			"id": 100000006863283,
+			"asset_id": 100000006863283,
+			"nytdsection": "magazine",
+			"byline": "By LISA SANDERS, M.D.",
+			"type": "Article",
+			"title": "A Runner Suddenly Developed Asthma. It Was Stranger Than It Seemed.",
+			"abstract": "A 34-year-old woman goes to the emergency room for chest pain. Her reaction to painkillers provides a clue to what is really wrong.",
+			"published_date": "2019-12-12",
+			"source": "The New York Times",
+			"updated": "2019-12-13 23:01:25",
+			"des_facet": [
+				"RESPIRATORY DISEASES",
+				"ASTHMA",
+				"ALLERGIES"
+			],
+			"org_facet": [
+				"NONSTEROIDAL ANTI-INFLAMMATORY DRUGS (NSAIDS)",
+				"ASPIRIN",
+				"TOUGH MUDDER"
+			],
+			"per_facet": "",
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "",
+					"copyright": "Photo illustration by Ina Jang",
+					"approved_for_syndication": 0,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/15/magazine/15mag-diagnosis-1/15mag-diagnosis-1-thumbStandard-v3.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/15/magazine/15mag-diagnosis-1/15mag-diagnosis-1-mediumThreeByTwo210-v4.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/15/magazine/15mag-diagnosis-1/15mag-diagnosis-1-mediumThreeByTwo440-v4.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/69292591-6ff4-5d03-a33d-ef4a02bf5701"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/11/well/what-to-do-about-an-overtalker.html",
+			"adx_keywords": "Narcissism",
+			"subsection": "",
+			"email_count": 12,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Well",
+			"id": 100000006866002,
+			"asset_id": 100000006866002,
+			"nytdsection": "well",
+			"byline": "By NANCY WARTIK",
+			"type": "Article",
+			"title": "What to Do About an Overtalker",
+			"abstract": "Here’s what to do if you get stuck at the receiving end of a one way conversation.",
+			"published_date": "2019-12-11",
+			"source": "The New York Times",
+			"updated": "2019-12-21 19:27:58",
+			"des_facet": [
+				"NARCISSISM"
+			],
+			"org_facet": "",
+			"per_facet": "",
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "",
+					"copyright": "Getty Images",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/10/smarter-living/00overtalkers/00overtalkers-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/10/smarter-living/00overtalkers/00overtalkers-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/10/smarter-living/00overtalkers/00overtalkers-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/64a254a0-fb98-51f8-8c8e-ad52e33653b3"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/18/opinion/trump-impeachment-vote.html",
+			"adx_keywords": "Trump, Donald J;Impeachment;Republican Party;House of Representatives;Senate;McConnell, Mitch;Constitution (US);Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry;United States Politics and Government",
+			"subsection": "",
+			"email_count": 13,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Opinion",
+			"id": 100000006882296,
+			"asset_id": 100000006882296,
+			"nytdsection": "opinion",
+			"byline": "By THE EDITORIAL BOARD",
+			"type": "Article",
+			"title": "Trump Has Been Impeached. Republicans Are Following Him Down.",
+			"abstract": "Ignoring facts and trashing the impeachment process is no way to protect democracy.",
+			"published_date": "2019-12-18",
+			"source": "The New York Times",
+			"updated": "2019-12-20 01:13:13",
+			"des_facet": [
+				"TRUMP-UKRAINE WHISTLE-BLOWER COMPLAINT AND IMPEACHMENT INQUIRY",
+				"UNITED STATES POLITICS AND GOVERNMENT"
+			],
+			"org_facet": [
+				"IMPEACHMENT",
+				"REPUBLICAN PARTY",
+				"HOUSE OF REPRESENTATIVES",
+				"SENATE",
+				"CONSTITUTION (US)"
+			],
+			"per_facet": [
+				"TRUMP, DONALD J",
+				"MCCONNELL, MITCH"
+			],
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "",
+					"copyright": "Damon Winter/The New York Times",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/18/opinion/18impeachNew/18impeachNew-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/18/opinion/18impeachNew/18impeachNew-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/18/opinion/18impeachNew/18impeachNew-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/b001ca8a-a76b-53a6-a8c8-4398d2b96007"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/16/t-magazine/brisket-recipe-batsheva-hay.html",
+			"adx_keywords": "Batsheva (Fashion Label);Food;Recipes;Cooking and Cookbooks;Meat;Upper West Side (Manhattan, NY);tmagholiday2019",
+			"subsection": "",
+			"email_count": 14,
+			"count_type": "EMAILED",
+			"column": "One Good Meal",
+			"eta_id": 0,
+			"section": "T Magazine",
+			"id": 100000006861317,
+			"asset_id": 100000006861317,
+			"nytdsection": "t magazine",
+			"byline": "By NICK MARINO",
+			"type": "Article",
+			"title": "How to Cook Brisket Like a ‘Jewish Grandma Fashion Designer’",
+			"abstract": "At Batsheva Hay’s Upper West Side apartment, Fridays are dedicated to serving this simple stovetop supper.",
+			"published_date": "2019-12-16",
+			"source": "The New York Times",
+			"updated": "2019-12-16 11:11:10",
+			"des_facet": [
+				"FOOD",
+				"RECIPES",
+				"COOKING AND COOKBOOKS",
+				"MEAT"
+			],
+			"org_facet": [
+				"BATSHEVA (FASHION LABEL)"
+			],
+			"per_facet": "",
+			"geo_facet": [
+				"UPPER WEST SIDE (MANHATTAN, NY)"
+			],
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The designer Batsheva Hay at her home on the Upper West Side of Manhattan.",
+					"copyright": "Paul Quitoriano",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/t-magazine/16tmag-batsheva-slide-OUA7-copy/16tmag-batsheva-slide-OUA7-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/t-magazine/16tmag-batsheva-slide-OUA7-copy/16tmag-batsheva-slide-OUA7-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/t-magazine/16tmag-batsheva-slide-OUA7-copy/16tmag-batsheva-slide-OUA7-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/c4054f68-2352-51e9-8196-7818f1a20d3b"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/16/science/feral-pigs-canada-texas.html",
+			"adx_keywords": "Pigs;Invasive Species;Livestock Diseases;Hunting and Trapping;Livestock;Canada;Montana;Southern States (US);Texas;your-feed-science",
+			"subsection": "",
+			"email_count": 15,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Science",
+			"id": 100000006872498,
+			"asset_id": 100000006872498,
+			"nytdsection": "science",
+			"byline": "By JIM ROBBINS",
+			"type": "Article",
+			"title": "Feral Pigs Roam the South. Now Even Northern States Aren’t Safe.",
+			"abstract": "The swine have established themselves in Canada and are encroaching on border states like Montana and North Dakota.",
+			"published_date": "2019-12-16",
+			"source": "The New York Times",
+			"updated": "2019-12-20 16:57:25",
+			"des_facet": [
+				"PIGS",
+				"INVASIVE SPECIES",
+				"LIVESTOCK DISEASES",
+				"YOUR-FEED-SCIENCE"
+			],
+			"org_facet": [
+				"HUNTING AND TRAPPING",
+				"LIVESTOCK"
+			],
+			"per_facet": "",
+			"geo_facet": [
+				"CANADA",
+				"MONTANA",
+				"SOUTHERN STATES (US)",
+				"TEXAS"
+			],
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Foraging feral pigs in Myakka River State Park in Sarasota, Fla.",
+					"copyright": "Stephanie Starr/Alamy",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/18/science/16SCI-HOGS2/16SCI-HOGS2-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/18/science/16SCI-HOGS2/16SCI-HOGS2-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/18/science/16SCI-HOGS2/16SCI-HOGS2-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/061ea2d8-75a1-5eec-b12a-e31b26296f7a"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/16/opinion/young-black-people-suicide.html",
+			"adx_keywords": "Blacks;Mental Health and Disorders;Depression (Mental);Suicides and Suicide Attempts;Youth;United States",
+			"subsection": "",
+			"email_count": 16,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Opinion",
+			"id": 100000006823627,
+			"asset_id": 100000006823627,
+			"nytdsection": "opinion",
+			"byline": "By INGER E. BURNETT-ZEIGLER",
+			"type": "Article",
+			"title": "Young Black People Are Killing Themselves",
+			"abstract": "The numbers are shocking.",
+			"published_date": "2019-12-16",
+			"source": "The New York Times",
+			"updated": "2019-12-20 16:56:33",
+			"des_facet": [
+				"BLACKS",
+				"MENTAL HEALTH AND DISORDERS",
+				"DEPRESSION (MENTAL)",
+				"SUICIDES AND SUICIDE ATTEMPTS"
+			],
+			"org_facet": [
+				"YOUTH"
+			],
+			"per_facet": "",
+			"geo_facet": [
+				"UNITED STATES"
+			],
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "",
+					"copyright": "Getty Images",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16burnettWeb/16burnettWeb-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16burnettWeb/16burnettWeb-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16burnettWeb/16burnettWeb-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/bc449085-61b2-5546-9e4f-478b8a478afa"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/16/opinion/trump-china-trade.html",
+			"adx_keywords": "International Trade and World Market;United States Politics and Government;United States Economy;Customs (Tariff);Trump, Donald J;China;United States",
+			"subsection": "",
+			"email_count": 17,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Opinion",
+			"id": 100000006877455,
+			"asset_id": 100000006877455,
+			"nytdsection": "opinion",
+			"byline": "By PAUL KRUGMAN",
+			"type": "Article",
+			"title": "How Trump Lost His Trade War",
+			"abstract": "On speaking loudly and carrying a small stick.",
+			"published_date": "2019-12-16",
+			"source": "The New York Times",
+			"updated": "2019-12-20 16:56:44",
+			"des_facet": [
+				"INTERNATIONAL TRADE AND WORLD MARKET",
+				"UNITED STATES POLITICS AND GOVERNMENT",
+				"UNITED STATES ECONOMY"
+			],
+			"org_facet": [
+				"CUSTOMS (TARIFF)"
+			],
+			"per_facet": [
+				"TRUMP, DONALD J"
+			],
+			"geo_facet": [
+				"CHINA",
+				"UNITED STATES"
+			],
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "President Trump walked away from his stated goals to make his China trade deal.",
+					"copyright": "Pete Marovich for The New York Times",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16krugmanNew/16krugmanNew-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16krugmanNew/16krugmanNew-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16krugmanNew/16krugmanNew-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/fc3e2fc5-0c9b-5780-bd90-53b5055828d0"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/15/technology/amazon-aws-cloud-competition.html",
+			"adx_keywords": "Cloud Computing;Computers and the Internet;Open-Source Software;Antitrust Laws and Competition Issues;Start-ups;Innovation;Suits and Litigation (Civil);Regulation and Deregulation of Industry;Amazon.com Inc;Elastic NV",
+			"subsection": "",
+			"email_count": 18,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Technology",
+			"id": 100000006849037,
+			"asset_id": 100000006849037,
+			"nytdsection": "technology",
+			"byline": "By DAISUKE WAKABAYASHI",
+			"type": "Article",
+			"title": "Prime Leverage: How Amazon Wields Power in the Technology World",
+			"abstract": "Software start-ups have a phrase for what Amazon is doing to them: ‘strip-mining’ them of their innovations.",
+			"published_date": "2019-12-15",
+			"source": "The New York Times",
+			"updated": "2019-12-16 16:23:54",
+			"des_facet": [
+				"CLOUD COMPUTING",
+				"COMPUTERS AND THE INTERNET",
+				"OPEN-SOURCE SOFTWARE"
+			],
+			"org_facet": [
+				"ANTITRUST LAWS AND COMPETITION ISSUES",
+				"START-UPS",
+				"INNOVATION",
+				"SUITS AND LITIGATION (CIVIL)",
+				"REGULATION AND DEREGULATION OF INDUSTRY",
+				"AMAZON.COM INC",
+				"ELASTIC NV"
+			],
+			"per_facet": "",
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "",
+					"copyright": "Nolan Pelletier ",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/business/00amazoncloud/00amazoncloud-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/business/00amazoncloud/00amazoncloud-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/16/business/00amazoncloud/00amazoncloud-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/4c7aced4-6ffb-593f-83a8-58f2825638dd"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/14/opinion/sunday/trump-afghanistan-report-boeing.html",
+			"adx_keywords": "Trump, Donald J;Impeachment;Federal Bureau of Investigation;Boeing 737 Max Groundings and Safety Concerns (2019);Movies;The Report (Movie);Afghanistan War (2001- );Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry;United States Politics and Government",
+			"subsection": "sunday review",
+			"email_count": 19,
+			"count_type": "EMAILED",
+			"column": null,
+			"eta_id": 0,
+			"section": "Opinion",
+			"id": 100000006875290,
+			"asset_id": 100000006875290,
+			"nytdsection": "opinion",
+			"byline": "By MAUREEN DOWD",
+			"type": "Article",
+			"title": "Trump’s Bad. Sadly, He’s Not Alone.",
+			"abstract": "Another wild week for the president, but does it lead to rejection or re-election?",
+			"published_date": "2019-12-14",
+			"source": "The New York Times",
+			"updated": "2019-12-16 18:10:13",
+			"des_facet": [
+				"BOEING 737 MAX GROUNDINGS AND SAFETY CONCERNS (2019)",
+				"MOVIES",
+				"AFGHANISTAN WAR (2001- )",
+				"TRUMP-UKRAINE WHISTLE-BLOWER COMPLAINT AND IMPEACHMENT INQUIRY",
+				"UNITED STATES POLITICS AND GOVERNMENT"
+			],
+			"org_facet": [
+				"IMPEACHMENT",
+				"FEDERAL BUREAU OF INVESTIGATION"
+			],
+			"per_facet": [
+				"TRUMP, DONALD J"
+			],
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "President Trump and his wife, Melania, arriving at the Congressional Ball on Thursday.",
+					"copyright": "Al Drago for The New York Times",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/15/opinion/15Dowd/15Dowd-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/15/opinion/15Dowd/15Dowd-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/15/opinion/15Dowd/15Dowd-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/f6a37734-eddf-5e1f-b5e8-da92f089c51c"
+		},
+		{
+			"url": "https://www.nytimes.com/2019/12/19/arts/design/kent-monkman-metropolitan-museum.html",
+			"adx_keywords": "Art;Metropolitan Museum of Art;Museums;Monkman, Kent;Native Americans;Indigenous People;Wagstaff, Sheena (1952- );Hollein, Max",
+			"subsection": "art & design",
+			"email_count": 20,
+			"count_type": "EMAILED",
+			"column": "Critic’s Pick",
+			"eta_id": 0,
+			"section": "Arts",
+			"id": 100000006874536,
+			"asset_id": 100000006874536,
+			"nytdsection": "arts",
+			"byline": "By HOLLAND COTTER",
+			"type": "Article",
+			"title": "A Cree Artist Redraws History",
+			"abstract": "With humor and fantasy, Kent Monkman disrupts clichés of Native victimhood at the Met.",
+			"published_date": "2019-12-19",
+			"source": "The New York Times",
+			"updated": "2019-12-21 11:48:24",
+			"des_facet": [
+				"ART",
+				"MUSEUMS"
+			],
+			"org_facet": [
+				"METROPOLITAN MUSEUM OF ART",
+				"NATIVE AMERICANS",
+				"INDIGENOUS PEOPLE"
+			],
+			"per_facet": [
+				"MONKMAN, KENT",
+				"WAGSTAFF, SHEENA (1952- )",
+				"HOLLEIN, MAX"
+			],
+			"geo_facet": "",
+			"media": [
+				{
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Mr. Monkman&rsquo;s &ldquo;Resurgence of the People,&rdquo; from 2019, references art history, from &ldquo;Washington Crossing the Delaware&rdquo; to Delacroix&rsquo;s &ldquo;The Natchez.&rdquo; The artist&rsquo;s alter ego, Miss Chief Eagle Testickle, stands tall, based on a gender non-binary figure in Indigenous cultures.",
+					"copyright": "",
+					"approved_for_syndication": 1,
+					"media-metadata": [
+						{
+							"url": "https://static01.nyt.com/images/2019/12/20/arts/20monkman-met2/20monkman-met2-thumbStandard.jpg",
+							"format": "Standard Thumbnail",
+							"height": 75,
+							"width": 75
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/20/arts/20monkman-met2/20monkman-met2-mediumThreeByTwo210.jpg",
+							"format": "mediumThreeByTwo210",
+							"height": 140,
+							"width": 210
+						},
+						{
+							"url": "https://static01.nyt.com/images/2019/12/20/arts/20monkman-met2/20monkman-met2-mediumThreeByTwo440.jpg",
+							"format": "mediumThreeByTwo440",
+							"height": 293,
+							"width": 440
+						}
+					]
+				}
+			],
+			"uri": "nyt://article/9e50d373-74a9-57da-9824-6fb4a4e74809"
+		}
+	]
+}

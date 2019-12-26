@@ -1,0 +1,748 @@
+{
+	"status": "OK",
+	"copyright": "Copyright (c) 2019 The New York Times Company. All Rights Reserved.",
+	"section": "arts",
+	"last_updated": "2019-12-21T15:07:18-05:00",
+	"num_results": 10,
+	"results": [
+		{
+			"section": "top section0",
+			"subsection": "top subsection0",
+			"title": "top title0",
+			"abstract": "top abstract0",
+			"url": "top url0",
+			"byline": "By DAVE ITZKOFF",
+			"item_type": "top itype0",
+			"updated_date": "2019-12-11T05:00:32-05:00",
+			"created_date": "2019-12-11T05:00:32-05:00",
+			"published_date": "2019-12-11T05:00:32-05:00",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Movies",
+				"Star Wars: The Rise of Skywalker (Movie)",
+				"The Mandalorian (TV Program)"
+			],
+			"org_facet": [
+				"Walt Disney Company",
+				"Lucasfilm Ltd"
+			],
+			"per_facet": [
+				"Abrams, J J",
+				"Kennedy, Kathleen (1953- )",
+				"Boyega, John (1992- )",
+				"Isaac, Oscar",
+				"Ridley, Daisy (1992- )"
+			],
+			"geo_facet": [],
+			"multimedia": [
+				{
+					"url": "top urlimg0",
+					"format": "Standard Thumbnail",
+					"height": 75,
+					"width": 75,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The droids BB-8 and D-O in Pasadena this month.",
+					"copyright": "Bryan Derballa for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15STAR-WARS/15STAR-WARS-thumbLarge.jpg",
+					"format": "thumbLarge",
+					"height": 150,
+					"width": 150,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The droids BB-8 and D-O in Pasadena this month.",
+					"copyright": "Bryan Derballa for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15STAR-WARS/15STAR-WARS-articleInline.jpg",
+					"format": "Normal",
+					"height": 238,
+					"width": 190,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The droids BB-8 and D-O in Pasadena this month.",
+					"copyright": "Bryan Derballa for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15STAR-WARS/15STAR-WARS-mediumThreeByTwo210.jpg",
+					"format": "mediumThreeByTwo210",
+					"height": 140,
+					"width": 210,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The droids BB-8 and D-O in Pasadena this month.",
+					"copyright": "Bryan Derballa for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15STAR-WARS/15STAR-WARS-superJumbo.jpg",
+					"format": "superJumbo",
+					"height": 2048,
+					"width": 1639,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The droids BB-8 and D-O in Pasadena this month.",
+					"copyright": "Bryan Derballa for The New York Times"
+				}
+			],
+			"short_url": "https://nyti.ms/2RMLGh3"
+		},
+		{
+			"section": "top section1",
+			"subsection": "",
+			"title": "top title1",
+			"abstract": "",
+			"url": "",
+			"byline": "By JON PARELES and JON CARAMANICA",
+			"item_type": "top itype1",
+			"updated_date": "2019-12-11T10:27:39-05:00",
+			"created_date": "2019-12-11T05:00:29-05:00",
+			"published_date": "",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Pop and Rock Music",
+				"Country Music",
+				"Rap and Hip-Hop",
+				"Two Thousand Nineteen"
+			],
+			"org_facet": [
+				"Black Keys (Music Group)",
+				"Prettymuch (Music Group)",
+				"Tame Impala (Music Group)"
+			],
+			"per_facet": [
+				"Banos, Omar (Cuco)",
+				"Bourelly, Bibi (1994- )",
+				"Cano, Natanael",
+				"Cave, Nick (1959- )",
+				"Clairo (Singer)",
+				"Cohen, Leonard"
+			],
+			"geo_facet": [],
+			"multimedia": [
+				{
+					"url": "",
+					"format": "Standard Thumbnail",
+					"height": 75,
+					"width": 75,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Clockwise from left: Lizzo, Ava Max and Post Malone made some of our critics’ favorite songs of the year.",
+					"copyright": "Clockwise from left: Alex Welsh for The New York Times; Matthew Stockman via Getty Images; Nina Westervelt for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/08/arts/00songs-year-end-promo/00songs-year-end-promo-thumbLarge.jpg",
+					"format": "thumbLarge",
+					"height": 150,
+					"width": 150,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Clockwise from left: Lizzo, Ava Max and Post Malone made some of our critics’ favorite songs of the year.",
+					"copyright": "Clockwise from left: Alex Welsh for The New York Times; Matthew Stockman via Getty Images; Nina Westervelt for The New York Times"
+				}	
+			],
+			"short_url": "https://nyti.ms/2rztoFb"
+		},
+		{
+			"section": "top section2",
+			"subsection": "",
+			"title": "",
+			"abstract": "",
+			"url": "https://www.nytimes.com/2019/12/11/arts/television/glenda-jackson-elizabeth-is-missing.html",
+			"byline": "By ROSLYN SULCAS",
+			"item_type": "",
+			"updated_date": "2019-12-11T12:00:10-05:00",
+			"created_date": "",
+			"published_date": "",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Dementia",
+				"Movies"
+			],
+			"org_facet": [],
+			"per_facet": [
+				"Jackson, Glenda"
+			],
+			"geo_facet": [],
+			"multimedia": [
+				{
+					"url": "https://static01.nyt.com/images/2019/12/12/arts/12jackson1/12jackson1-thumbLarge.jpg",
+					"format": "thumbLarge",
+					"height": 150,
+					"width": 150,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Glenda Jackson said she was drawn in by the way “Elizabeth Is Missing” explored the “appalling damage” of dementia.",
+					"copyright": "Mark Mainz/STV Productions"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/12/arts/12jackson1/12jackson1-articleInline.jpg",
+					"format": "Normal",
+					"height": 126,
+					"width": 190,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Glenda Jackson said she was drawn in by the way “Elizabeth Is Missing” explored the “appalling damage” of dementia.",
+					"copyright": "Mark Mainz/STV Productions"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/12/arts/12jackson1/12jackson1-mediumThreeByTwo210.jpg",
+					"format": "mediumThreeByTwo210",
+					"height": 140,
+					"width": 210,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Glenda Jackson said she was drawn in by the way “Elizabeth Is Missing” explored the “appalling damage” of dementia.",
+					"copyright": "Mark Mainz/STV Productions"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/12/arts/12jackson1/merlin_165737013_2cb46361-9e83-49cf-bc08-b77fe59784b3-superJumbo.jpg",
+					"format": "superJumbo",
+					"height": 1365,
+					"width": 2048,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Glenda Jackson said she was drawn in by the way “Elizabeth Is Missing” explored the “appalling damage” of dementia.",
+					"copyright": "Mark Mainz/STV Productions"
+				}
+			],
+			"short_url": "https://nyti.ms/2PDsAa7"
+		},
+		{
+			"section": "",
+			"subsection": "top subsection3",
+			"title": "The Decade in Jazz: 10 Definitive Moments",
+			"abstract": "Esperanza Spalding upset Justin Bieber at the Grammys, #MeToo shook the scene and Jason Moran made giant leaps. A look back at how the music moved forward.",
+			"url": "https://www.nytimes.com/2019/12/11/arts/music/jazz-decade.html",
+			"byline": "By GIOVANNI RUSSONELLO",
+			"item_type": "top itype3",
+			"updated_date": "",
+			"created_date": "",
+			"published_date": "",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Jazz",
+				"Two Thousand Tens (Decade)",
+				"#MeToo Movement"
+			],
+			"org_facet": [
+				"Snarky Puppy (Music Group)",
+				"Stone, The (Manhattan, NY, Performance Space)"
+			],
+			"per_facet": [
+				"Coleman, Ornette",
+				"Glasper, Robert",
+				"McBride, Christian",
+				"Moran, Jason (1975- )",
+				"Payton, Nicholas",
+				"Iyer, Vijay",
+				"Spalding, Esperanza",
+				"Washington, Kamasi"
+			],
+			"geo_facet": [],
+			"multimedia": [
+				{
+					"url": "https://static01.nyt.com/images/2019/12/10/arts/11decade-jazz5/11decade-jazz5-thumbStandard.jpg",
+					"format": "Standard Thumbnail",
+					"height": 75,
+					"width": 75,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Kamasi Washington was a star of Kendrick Lamar’s “To Pimp a Butterfly,” before he released his own “The Epic.”",
+					"copyright": "Lauren Lancaster for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/10/arts/11decade-jazz5/11decade-jazz5-thumbLarge.jpg",
+					"format": "thumbLarge",
+					"height": 150,
+					"width": 150,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Kamasi Washington was a star of Kendrick Lamar’s “To Pimp a Butterfly,” before he released his own “The Epic.”",
+					"copyright": "Lauren Lancaster for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/10/arts/11decade-jazz5/merlin_98309641_78851077-27a7-4ef2-8298-c7a709e22f5d-articleInline.jpg",
+					"format": "Normal",
+					"height": 127,
+					"width": 190,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Kamasi Washington was a star of Kendrick Lamar’s “To Pimp a Butterfly,” before he released his own “The Epic.”",
+					"copyright": "Lauren Lancaster for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/10/arts/11decade-jazz5/merlin_98309641_78851077-27a7-4ef2-8298-c7a709e22f5d-mediumThreeByTwo210.jpg",
+					"format": "mediumThreeByTwo210",
+					"height": 140,
+					"width": 210,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Kamasi Washington was a star of Kendrick Lamar’s “To Pimp a Butterfly,” before he released his own “The Epic.”",
+					"copyright": "Lauren Lancaster for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/10/arts/11decade-jazz5/merlin_98309641_78851077-27a7-4ef2-8298-c7a709e22f5d-superJumbo.jpg",
+					"format": "superJumbo",
+					"height": 1365,
+					"width": 2048,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Kamasi Washington was a star of Kendrick Lamar’s “To Pimp a Butterfly,” before he released his own “The Epic.”",
+					"copyright": "Lauren Lancaster for The New York Times"
+				}
+			],
+			"short_url": "https://nyti.ms/34d4HvB"
+		},
+		{
+			"section": "",
+			"subsection": "",
+			"title": "Meet the Kids Who’ll Make ‘Sing Street’ Rock",
+			"abstract": "One was in “Game of Thrones.” One is still in high school. They all act and play instruments. And in a new show they portray scrappy Dubliners creating a band.",
+			"url": "https://www.nytimes.com/2019/12/11/theater/sing-street-cast.html",
+			"byline": "By ELYSA GARDNER",
+			"item_type": "top itype3",
+			"updated_date": "2019-12-11T11:57:40-05:00",
+			"created_date": "2019-12-11T10:00:11-05:00",
+			"published_date": "2019-12-11T10:00:11-05:00",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Actors and Actresses",
+				"Theater",
+				"Sing Street (Play)"
+			],
+			"org_facet": [
+				"New York Theater Workshop"
+			],
+			"per_facet": [
+				"Taichman, Rebecca Bayla",
+				"O'Connor, Brenock",
+				"Devlin, Zara",
+				"Hart, Jakeim",
+				"Perez, Gian",
+				"Bartos, Max William",
+				"Callahan, Brendan C.",
+				"Poon, Sam"
+			],
+			"geo_facet": [],
+			"multimedia": [
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15SING-CAST-N/15SING-CAST-N-thumbStandard.jpg",
+					"format": "Standard Thumbnail",
+					"height": 75,
+					"width": 75,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Key members of the “Sing Street” ensemble, from left: Sam Poon, Brendan C. Callahan, Zara Devlin, Brenock O’Connor, Gian Perez, Jakeim Hart and Max William Bartos.",
+					"copyright": "Timothy O'Connell for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15SING-CAST-N/15SING-CAST-N-thumbLarge.jpg",
+					"format": "thumbLarge",
+					"height": 150,
+					"width": 150,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Key members of the “Sing Street” ensemble, from left: Sam Poon, Brendan C. Callahan, Zara Devlin, Brenock O’Connor, Gian Perez, Jakeim Hart and Max William Bartos.",
+					"copyright": "Timothy O'Connell for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15SING-CAST-N/merlin_165409254_b227f28b-9fc0-40eb-a036-560b8c7655a2-articleInline.jpg",
+					"format": "Normal",
+					"height": 136,
+					"width": 190,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Key members of the “Sing Street” ensemble, from left: Sam Poon, Brendan C. Callahan, Zara Devlin, Brenock O’Connor, Gian Perez, Jakeim Hart and Max William Bartos.",
+					"copyright": "Timothy O'Connell for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15SING-CAST-N/15SING-CAST-N-mediumThreeByTwo210.jpg",
+					"format": "mediumThreeByTwo210",
+					"height": 140,
+					"width": 210,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Key members of the “Sing Street” ensemble, from left: Sam Poon, Brendan C. Callahan, Zara Devlin, Brenock O’Connor, Gian Perez, Jakeim Hart and Max William Bartos.",
+					"copyright": "Timothy O'Connell for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15SING-CAST-N/merlin_165409254_b227f28b-9fc0-40eb-a036-560b8c7655a2-superJumbo.jpg",
+					"format": "superJumbo",
+					"height": 1463,
+					"width": 2048,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Key members of the “Sing Street” ensemble, from left: Sam Poon, Brendan C. Callahan, Zara Devlin, Brenock O’Connor, Gian Perez, Jakeim Hart and Max William Bartos.",
+					"copyright": "Timothy O'Connell for The New York Times"
+				}
+			],
+			"short_url": "https://nyti.ms/35e66TI"
+		},
+		{
+			"section": "Arts",
+			"subsection": "Music",
+			"title": "Reeve Carney’s Week: Pedal Boards and Peloton Ads",
+			"abstract": "The star of “Hadestown” shares what he watched, read and listened to last weekend.",
+			"url": "https://www.nytimes.com/2019/12/11/arts/music/reeve-carney-diary.html",
+			"byline": "By ALEXIS SOLOSKI",
+			"item_type": "Article",
+			"updated_date": "2019-12-11T10:00:07-05:00",
+			"created_date": "2019-12-11T10:00:07-05:00",
+			"published_date": "2019-12-11T10:00:07-05:00",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Hadestown (Play)",
+				"Theater",
+				"Actors and Actresses",
+				"Music"
+			],
+			"org_facet": [],
+			"per_facet": [
+				"Carney, Reeve"
+			],
+			"geo_facet": [],
+			"multimedia": [
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15recently-viewed-2/merlin_165541110_10ca78ba-b605-4081-8d10-94cb5c6a03ec-thumbStandard.jpg",
+					"format": "Standard Thumbnail",
+					"height": 75,
+					"width": 75,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Reeve Carney at 30th Street Guitars in Manhattan trying out a new instrument and working on his pedal board.",
+					"copyright": "George Etheredge for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15recently-viewed-2/merlin_165541110_10ca78ba-b605-4081-8d10-94cb5c6a03ec-thumbLarge.jpg",
+					"format": "thumbLarge",
+					"height": 150,
+					"width": 150,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Reeve Carney at 30th Street Guitars in Manhattan trying out a new instrument and working on his pedal board.",
+					"copyright": "George Etheredge for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15recently-viewed-2/merlin_165541110_10ca78ba-b605-4081-8d10-94cb5c6a03ec-articleInline.jpg",
+					"format": "Normal",
+					"height": 136,
+					"width": 190,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Reeve Carney at 30th Street Guitars in Manhattan trying out a new instrument and working on his pedal board.",
+					"copyright": "George Etheredge for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15recently-viewed-2/merlin_165541110_10ca78ba-b605-4081-8d10-94cb5c6a03ec-mediumThreeByTwo210.jpg",
+					"format": "mediumThreeByTwo210",
+					"height": 140,
+					"width": 210,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Reeve Carney at 30th Street Guitars in Manhattan trying out a new instrument and working on his pedal board.",
+					"copyright": "George Etheredge for The New York Times"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/15/arts/15recently-viewed-2/merlin_165541110_10ca78ba-b605-4081-8d10-94cb5c6a03ec-superJumbo.jpg",
+					"format": "superJumbo",
+					"height": 1463,
+					"width": 2048,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Reeve Carney at 30th Street Guitars in Manhattan trying out a new instrument and working on his pedal board.",
+					"copyright": "George Etheredge for The New York Times"
+				}
+			],
+			"short_url": "https://nyti.ms/35ozG96"
+		},
+		{
+			"section": "Arts",
+			"subsection": "",
+			"title": "Marionettes at Play",
+			"abstract": "A Los Angeles institution has a new home. Join us for a behind-the-scenes tour.",
+			"url": "https://www.nytimes.com/2019/12/10/arts/bob-baker-marionette-theater.html",
+			"byline": "By NOLWEN CIFUENTES and MARGY ROCHLIN",
+			"item_type": "Article",
+			"updated_date": "2019-12-10T15:02:40-05:00",
+			"created_date": "2019-12-10T13:50:07-05:00",
+			"published_date": "2019-12-10T13:50:07-05:00",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Puppets",
+				"Theater"
+			],
+			"org_facet": [
+				"Baker, Bob, Marionette Theater"
+			],
+			"per_facet": [],
+			"geo_facet": [
+				"Los Angeles (Calif)"
+			],
+			"multimedia": [],
+			"short_url": "https://nyti.ms/345GYNB"
+		},
+		{
+			"section": "Movies",
+			"subsection": "",
+			"title": "‘She’s Gotta Have It’ and ‘Purple Rain’ Join National Film Registry",
+			"abstract": "The  movies are among  25  selected by the Library of Congress and include breakthrough works by female directors and several musical features.",
+			"url": "https://www.nytimes.com/2019/12/11/movies/shes-gotta-have-it-and-purple-rain-national-film-registry.html",
+			"byline": "By DAVE ITZKOFF",
+			"item_type": "Article",
+			"updated_date": "2019-12-11T03:00:08-05:00",
+			"created_date": "2019-12-11T03:00:07-05:00",
+			"published_date": "2019-12-11T03:00:07-05:00",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Movies",
+				"Purple Rain (Movie)",
+				"She's Gotta Have It (Movie)"
+			],
+			"org_facet": [
+				"Library of Congress",
+				"National Film Registry"
+			],
+			"per_facet": [],
+			"geo_facet": [],
+			"multimedia": [
+				{
+					"url": "https://static01.nyt.com/images/2019/12/11/arts/11film-registry1/11film-registry1-thumbStandard.jpg",
+					"format": "Standard Thumbnail",
+					"height": 75,
+					"width": 75,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Tracy Camilla Johns and Spike Lee in “She’s Gotta Have It.”",
+					"copyright": "40 Acres and a Mule"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/11/arts/11film-registry1/merlin_132899927_26e5852a-5807-49b9-81c0-ae900678116a-mediumThreeByTwo210.jpg",
+					"format": "mediumThreeByTwo210",
+					"height": 140,
+					"width": 210,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Tracy Camilla Johns and Spike Lee in “She’s Gotta Have It.”",
+					"copyright": "40 Acres and a Mule"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/11/arts/11film-registry1/merlin_132899927_26e5852a-5807-49b9-81c0-ae900678116a-superJumbo.jpg",
+					"format": "superJumbo",
+					"height": 1000,
+					"width": 1461,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Tracy Camilla Johns and Spike Lee in “She’s Gotta Have It.”",
+					"copyright": "40 Acres and a Mule"
+				}
+			],
+			"short_url": "https://nyti.ms/2YBW6RT"
+		},
+		{
+			"section": "Arts",
+			"subsection": "Art & Design",
+			"title": "Following in the Footsteps of Leonardo da Vinci",
+			"abstract": "Many of the artist’s works have traveled from around the world to a major show at the Louvre. But many more remain in Italy, in cities and small towns alike.",
+			"url": "https://www.nytimes.com/2019/12/10/arts/design/leonardo-da-vinci-italy.html",
+			"byline": "By ELISABETTA POVOLEDO",
+			"item_type": "Article",
+			"updated_date": "2019-12-10T15:13:25-05:00",
+			"created_date": "2019-12-10T09:24:26-05:00",
+			"published_date": "2019-12-10T09:24:26-05:00",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Art",
+				"Museums"
+			],
+			"org_facet": [
+				"Louvre Museum"
+			],
+			"per_facet": [
+				"da Vinci, Leonardo"
+			],
+			"geo_facet": [
+				"Italy",
+				"Milan (Italy)",
+				"Paris (France)"
+			],
+			"multimedia": [],
+			"short_url": "https://nyti.ms/38lxJfT"
+		},
+		{
+			"section": "Arts",
+			"subsection": "Art & Design",
+			"title": "What to See Right Now in New York Art Galleries",
+			"abstract": "Andra Ursuta’s glass sculptures, Brice Marden’s latest paintings, portraits from Henry Taylor; Baseera Khan’s photo-collage constructions; and Jill Mulleady’s Neo-Surrealist works.",
+			"url": "https://www.nytimes.com/2019/12/11/arts/design/art-galleries-new-york-city.html",
+			"byline": "",
+			"item_type": "Article",
+			"updated_date": "2019-12-11T16:41:21-05:00",
+			"created_date": "2019-12-11T16:41:21-05:00",
+			"published_date": "2019-12-11T16:41:21-05:00",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Art",
+				"Sculpture"
+			],
+			"org_facet": [
+				"Ramiken (Brooklyn, NY, Gallery)",
+				"Gagosian Gallery",
+				"Blum & Poe (Manhattan, NY)",
+				"Simone Subal (Manhattan, NY)",
+				"Swiss Institute"
+			],
+			"per_facet": [
+				"Ursuta, Andra",
+				"Marden, Brice",
+				"Taylor, Henry (1958- )",
+				"Khan, Baseera",
+				"Mulleady, Jill"
+			],
+			"geo_facet": [],
+			"multimedia": [
+				{
+					"url": "https://static01.nyt.com/images/2019/12/05/arts/05galleries-Ursuta/05galleries-Ursuta-thumbStandard.jpg",
+					"format": "Standard Thumbnail",
+					"height": 75,
+					"width": 75,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Installation view of Andra Ursuta’s “Predators’r us,” (2019) at Ramiken.",
+					"copyright": "via Ramiken; Dario Lasagni"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/05/arts/05galleries-Ursuta/05galleries-Ursuta-thumbLarge.jpg",
+					"format": "thumbLarge",
+					"height": 150,
+					"width": 150,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Installation view of Andra Ursuta’s “Predators’r us,” (2019) at Ramiken.",
+					"copyright": "via Ramiken; Dario Lasagni"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/05/arts/05galleries-Ursuta/05galleries-Ursuta-articleInline.jpg",
+					"format": "Normal",
+					"height": 142,
+					"width": 190,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Installation view of Andra Ursuta’s “Predators’r us,” (2019) at Ramiken.",
+					"copyright": "via Ramiken; Dario Lasagni"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/05/arts/05galleries-Ursuta/05galleries-Ursuta-mediumThreeByTwo210.jpg",
+					"format": "mediumThreeByTwo210",
+					"height": 140,
+					"width": 210,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Installation view of Andra Ursuta’s “Predators’r us,” (2019) at Ramiken.",
+					"copyright": "via Ramiken; Dario Lasagni"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/05/arts/05galleries-Ursuta/05galleries-Ursuta-superJumbo.jpg",
+					"format": "superJumbo",
+					"height": 1536,
+					"width": 2048,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "Installation view of Andra Ursuta’s “Predators’r us,” (2019) at Ramiken.",
+					"copyright": "via Ramiken; Dario Lasagni"
+				}
+			],
+			"short_url": "https://nyti.ms/2E7qTwt"
+		},
+		{
+			"section": "Fashion",
+			"subsection": "",
+			"title": "Terry de Havilland, Cobbler to the Stars, Is Dead at 81",
+			"abstract": "He made python boots for Nureyev, black leather thigh-high boots for Jacqueline Onassis and platforms for Kate Moss that spelled out a vulgarity in crystals.",
+			"url": "https://www.nytimes.com/2019/12/11/fashion/terry-de-havilland-dead.html",
+			"byline": "By KATHARINE Q. SEELYE",
+			"item_type": "Article",
+			"updated_date": "2019-12-11T16:08:49-05:00",
+			"created_date": "2019-12-11T16:08:49-05:00",
+			"published_date": "2019-12-11T16:08:49-05:00",
+			"material_type_facet": "",
+			"kicker": "",
+			"des_facet": [
+				"Deaths (Obituaries)",
+				"Shoes and Boots",
+				"Fashion and Apparel"
+			],
+			"org_facet": [],
+			"per_facet": [
+				"de Havilland, Terry"
+			],
+			"geo_facet": [
+				"London (England)"
+			],
+			"multimedia": [
+				{
+					"url": "https://static01.nyt.com/images/2019/12/11/obituaries/11deHavilland1/11deHavilland1-thumbStandard.jpg",
+					"format": "Standard Thumbnail",
+					"height": 75,
+					"width": 75,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The shoe designer Terry de Havilland in his London store, Cobblers to the World, in 1974. Over the years his clientele included the Beatles, Elton John, Cher, Madonna and many others.",
+					"copyright": "Reveille/Mirrorpix, via Getty Images"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/11/obituaries/11deHavilland1/11deHavilland1-thumbLarge.jpg",
+					"format": "thumbLarge",
+					"height": 150,
+					"width": 150,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The shoe designer Terry de Havilland in his London store, Cobblers to the World, in 1974. Over the years his clientele included the Beatles, Elton John, Cher, Madonna and many others.",
+					"copyright": "Reveille/Mirrorpix, via Getty Images"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/11/obituaries/11deHavilland1/11deHavilland1-articleInline.jpg",
+					"format": "Normal",
+					"height": 135,
+					"width": 190,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The shoe designer Terry de Havilland in his London store, Cobblers to the World, in 1974. Over the years his clientele included the Beatles, Elton John, Cher, Madonna and many others.",
+					"copyright": "Reveille/Mirrorpix, via Getty Images"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/11/obituaries/11deHavilland1/11deHavilland1-mediumThreeByTwo210.jpg",
+					"format": "mediumThreeByTwo210",
+					"height": 140,
+					"width": 210,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The shoe designer Terry de Havilland in his London store, Cobblers to the World, in 1974. Over the years his clientele included the Beatles, Elton John, Cher, Madonna and many others.",
+					"copyright": "Reveille/Mirrorpix, via Getty Images"
+				},
+				{
+					"url": "https://static01.nyt.com/images/2019/12/11/obituaries/11deHavilland1/11deHavilland1-superJumbo.jpg",
+					"format": "superJumbo",
+					"height": 1452,
+					"width": 2048,
+					"type": "image",
+					"subtype": "photo",
+					"caption": "The shoe designer Terry de Havilland in his London store, Cobblers to the World, in 1974. Over the years his clientele included the Beatles, Elton John, Cher, Madonna and many others.",
+					"copyright": "Reveille/Mirrorpix, via Getty Images"
+				}
+			],
+			"short_url": "https://nyti.ms/2tbEwst"
+		}
+	]
+}

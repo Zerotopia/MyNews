@@ -1,0 +1,846 @@
+{
+	"status": "OK",
+	"copyright": "Copyright (c) 2019 The New York Times Company. All Rights Reserved.",
+	"response": {
+		"docs": [
+			{
+				"abstract": "search abstract0",
+				"web_url": "search url0",
+				"snippet": "search snippet0",
+				"lead_paragraph": "search lpar0",
+				"print_section": "BR",
+				"print_page": "30",
+				"source": "The New York Times",
+				"multimedia": [
+					{
+						"rank": 0,
+						"subtype": "videoSixteenByNine225",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2014/08/03/books/review/0803-bks-SHORT/0803-bks-SHORT-videoSixteenByNine225.jpg",
+						"height": 126,
+						"width": 225,
+						"legacy": {},
+						"subType": "videoSixteenByNine225",
+						"crop_name": "videoSixteenByNine225"
+					},
+					{
+						"rank": 0,
+						"subtype": "videoSixteenByNine96",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2014/08/03/books/review/0803-bks-SHORT/0803-bks-SHORT-videoSixteenByNine96.jpg",
+						"height": 54,
+						"width": 96,
+						"legacy": {},
+						"subType": "videoSixteenByNine96",
+						"crop_name": "videoSixteenByNine96"
+					},
+					{
+						"rank": 0,
+						"subtype": "videoSixteenByNine1050",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2014/08/03/books/review/0803-bks-SHORT/0803-bks-SHORT-videoSixteenByNine1050.jpg",
+						"height": 591,
+						"width": 1050,
+						"legacy": {},
+						"subType": "videoSixteenByNine1050",
+						"crop_name": "videoSixteenByNine1050"
+					},
+					{
+						"rank": 0,
+						"subtype": "thumbnail",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "search urlimg0",
+						"height": 75,
+						"width": 75,
+						"legacy": {
+							"thumbnail": "images/2014/08/03/books/review/0803-bks-SHORT/0803-bks-SHORT-thumbStandard.jpg",
+							"thumbnailwidth": 75,
+							"thumbnailheight": 75
+						},
+						"subType": "thumbnail",
+						"crop_name": "thumbStandard"
+					},
+					{
+						"rank": 0,
+						"subtype": "thumbLarge",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2014/08/03/books/review/0803-bks-SHORT/0803-bks-SHORT-thumbLarge.jpg",
+						"height": 150,
+						"width": 150,
+						"legacy": {},
+						"subType": "thumbLarge",
+						"crop_name": "thumbLarge"
+					},
+					{
+						"rank": 0,
+						"subtype": "blogSmallThumb",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2014/08/03/books/review/0803-bks-SHORT/0803-bks-SHORT-blogSmallThumb.jpg",
+						"height": 50,
+						"width": 50,
+						"legacy": {},
+						"subType": "blogSmallThumb",
+						"crop_name": "blogSmallThumb"
+					}
+				],
+				"headline": {
+					"main": "Math",
+					"kicker": "The Shortlist",
+					"content_kicker": null,
+					"print_headline": "Math",
+					"name": null,
+					"seo": null,
+					"sub": null
+				},
+				"keywords": [
+					{
+						"name": "subject",
+						"value": "Books and Literature",
+						"rank": 2,
+						"major": "N"
+					},
+					{
+						"name": "subject",
+						"value": "Mathematics",
+						"rank": 3,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "Alexander, Amir",
+						"rank": 4,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "Blastland, Michael",
+						"rank": 5,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "Hand, David J",
+						"rank": 6,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "Ellenberg, Jordan",
+						"rank": 7,
+						"major": "N"
+					}
+				],
+				"pub_date": "2014-08-01T14:47:40+0000",
+				"document_type": "article",
+				"news_desk": "BookReview",
+				"section_name": "search sectionname0",
+				"subsection_name": "search subsectionname0",
+				"byline": {
+					"original": "By Jennifer Ouellette",
+					"person": [
+						{
+							"firstname": "Jennifer",
+							"middlename": null,
+							"lastname": "Ouellette",
+							"qualifier": null,
+							"title": null,
+							"role": "reported",
+							"organization": "",
+							"rank": 1
+						}
+					],
+					"organization": null
+				},
+				"type_of_material": "News",
+				"_id": "nyt://article/677a4868-c831-5b41-92fa-ed1d8222ef4a",
+				"word_count": 989,
+				"uri": "nyt://article/677a4868-c831-5b41-92fa-ed1d8222ef4a"
+			},
+			{
+				"abstract": "search abstract1",
+				"web_url": "",
+				"snippet": "",
+				"lead_paragraph": "search lpar1",
+				"source": "The New York Times",
+				"multimedia": [
+					{
+						"rank": 0,
+						"subtype": "master315",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2019/02/27/learning/TobaccoGraph/TobaccoGraph-master315.png",
+						"height": 147,
+						"width": 315,
+						"legacy": {},
+						"subType": "master315",
+						"crop_name": "master315"
+					},
+					{
+						"rank": 0,
+						"subtype": "master768",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2019/02/27/learning/TobaccoGraph/TobaccoGraph-master768.png",
+						"height": 359,
+						"width": 768,
+						"legacy": {},
+						"subType": "master768",
+						"crop_name": "master768"
+					},
+					{
+						"rank": 0,
+						"subtype": "thumbnail",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "",
+						"height": 75,
+						"width": 75,
+						"legacy": {
+							"thumbnail": "images/2019/02/27/learning/TobaccoGraph/TobaccoGraph-thumbStandard.png",
+							"thumbnailwidth": 75,
+							"thumbnailheight": 75
+						},
+						"subType": "thumbnail",
+						"crop_name": "thumbStandard"
+					},
+					{
+						"rank": 0,
+						"subtype": "blogSmallThumb",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2019/02/27/learning/TobaccoGraph/TobaccoGraph-blogSmallThumb.png",
+						"height": 50,
+						"width": 50,
+						"legacy": {},
+						"subType": "blogSmallThumb",
+						"crop_name": "blogSmallThumb"
+					}
+				],
+				"headline": {
+					"main": "search main1",
+					"kicker": null,
+					"content_kicker": null,
+					"print_headline": null,
+					"name": null,
+					"seo": null,
+					"sub": null
+				},
+				"keywords": [],
+				"pub_date": "",
+				"document_type": "search dtype1",
+				"news_desk": "search newsdesk1",
+				"section_name": "search sectionname1",
+				"byline": {
+					"original": "By The Learning Network",
+					"person": [],
+					"organization": "The Learning Network"
+				},
+				"type_of_material": "search tom1",
+				"_id": "nyt://article/f67fb808-cc96-556f-8b16-d5c40a6428d9",
+				"word_count": 467,
+				"uri": "nyt://article/f67fb808-cc96-556f-8b16-d5c40a6428d9"
+			},
+			{
+				"abstract": "",
+				"snippet": "",
+				"lead_paragraph": "search lpar2",
+				"print_section": "C",
+				"print_page": "6",
+				"source": "The New York Times",
+				"multimedia": [
+					{
+						"rank": 0,
+						"subtype": "master768",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2019/07/18/books/17bookolsson1/17bookolsson1-master768.jpg",
+						"height": 1248,
+						"width": 768,
+						"legacy": {},
+						"subType": "master768",
+						"crop_name": "master768"
+					},
+					{
+						"rank": 0,
+						"subtype": "blogSmallThumb",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2019/07/18/books/17bookolsson1/17bookolsson1-blogSmallThumb.jpg",
+						"height": 50,
+						"width": 50,
+						"legacy": {},
+						"subType": "blogSmallThumb",
+						"crop_name": "blogSmallThumb"
+					},
+					{
+						"rank": 0,
+						"subtype": "thumbLarge",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2019/07/18/books/17bookolsson1/17bookolsson1-thumbLarge.jpg",
+						"height": 150,
+						"width": 150,
+						"legacy": {},
+						"subType": "thumbLarge",
+						"crop_name": "thumbLarge"
+					}
+				],
+				"headline": {
+					"main": "Two Brilliant Siblings and the Curious Consolations of Math",
+					"kicker": null,
+					"content_kicker": null,
+					"print_headline": "Brilliant Siblings and the Curious Consolations of Math",
+					"name": null,
+					"seo": null,
+					"sub": null
+				},
+				"keywords": [
+					{
+						"name": "subject",
+						"value": "Books and Literature",
+						"rank": 1,
+						"major": "N"
+					},
+					{
+						"name": "creative_works",
+						"value": "The Weil Conjectures: On Math and the Pursuit of the Unknown (Book)",
+						"rank": 2,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "Olsson, Karen",
+						"rank": 3,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "WEIL, ANDRE",
+						"rank": 4,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "Weil, Simone",
+						"rank": 5,
+						"major": "N"
+					},
+					{
+						"name": "subject",
+						"value": "Mathematics",
+						"rank": 6,
+						"major": "N"
+					},
+					{
+						"name": "subject",
+						"value": "Philosophy",
+						"rank": 7,
+						"major": "N"
+					}
+				],
+				"pub_date": "2019-07-17T19:56:05+0000",
+				"document_type": "article",
+				"news_desk": "",
+				"section_name": "search sectionname2",
+				"byline": {
+					"original": "By Parul Sehgal",
+					"person": [
+						{
+							"firstname": "Parul",
+							"middlename": null,
+							"lastname": "Sehgal",
+							"qualifier": null,
+							"title": null,
+							"role": "reported",
+							"organization": "",
+							"rank": 1
+						}
+					],
+					"organization": null
+				},
+				"type_of_material": "search tom2",
+				"_id": "nyt://article/cbe6ab69-b298-5d6c-9896-ea03e4a1657b",
+				"word_count": 1193,
+				"uri": "nyt://article/cbe6ab69-b298-5d6c-9896-ea03e4a1657b"
+			},
+			{
+				"abstract": "",
+				"web_url": "https://www.nytimes.com/1998/05/03/nyregion/math-math-everywhere.html",
+				"snippet": "",
+				"lead_paragraph": "",
+				"print_section": "CN",
+				"print_page": "14",
+				"source": "The New York Times",
+				"multimedia": [],
+				"headline": {
+					"main": "search main3",
+					"kicker": null,
+					"content_kicker": null,
+					"print_headline": "Math, Math Everywhere",
+					"name": null,
+					"seo": null,
+					"sub": null
+				},
+				"keywords": [
+					{
+						"name": "glocations",
+						"value": "Greenwich (Conn)",
+						"rank": 1,
+						"major": "N"
+					},
+					{
+						"name": "organizations",
+						"value": "Hyatt Corp",
+						"rank": 2,
+						"major": "N"
+					},
+					{
+						"name": "subject",
+						"value": "Mathematics",
+						"rank": 3,
+						"major": "N"
+					},
+					{
+						"name": "subject",
+						"value": "Children and Youth",
+						"rank": 4,
+						"major": "N"
+					}
+				],
+				"pub_date": "1998-05-03T05:00:00+0000",
+				"document_type": "search dtype3",
+				"news_desk": "",
+				"section_name": "search sectionname3",
+				"byline": {
+					"original": "By Roberta Hershenson",
+					"person": [
+						{
+							"firstname": "Roberta",
+							"middlename": null,
+							"lastname": "Hershenson",
+							"qualifier": null,
+							"title": null,
+							"role": "reported",
+							"organization": "",
+							"rank": 1
+						}
+					],
+					"organization": null
+				},
+				"type_of_material": "",
+				"_id": "nyt://article/4109554a-3bf7-5989-b0b7-425ccdf064f7",
+				"word_count": 465,
+				"uri": "nyt://article/4109554a-3bf7-5989-b0b7-425ccdf064f7"
+			},
+			{
+				"abstract": "",
+				"web_url": "https://www.nytimes.com/1998/04/26/nyregion/math-math-everywhere.html",
+				"snippet": "",
+				"lead_paragraph": "",
+				"print_section": "WC",
+				"print_page": "14",
+				"source": "The New York Times",
+				"multimedia": [],
+				"headline": {
+					"main": "",
+					"kicker": null,
+					"content_kicker": null,
+					"print_headline": "Math, Math Everywhere",
+					"name": null,
+					"seo": null,
+					"sub": null
+				},
+				"keywords": [
+					{
+						"name": "glocations",
+						"value": "Greenwich (Conn)",
+						"rank": 1,
+						"major": "N"
+					},
+					{
+						"name": "organizations",
+						"value": "Hyatt Hotels Corp",
+						"rank": 2,
+						"major": "N"
+					},
+					{
+						"name": "subject",
+						"value": "Mathematics",
+						"rank": 3,
+						"major": "N"
+					},
+					{
+						"name": "subject",
+						"value": "Education and Schools",
+						"rank": 4,
+						"major": "N"
+					}
+				],
+				"pub_date": "1998-04-26T05:00:00+0000",
+				"document_type": "article",
+				"news_desk": "search newsdesk4",
+				"subsection_name": "search subsectionname4",
+				"byline": {
+					"original": "By Roberta Hershenson",
+					"person": [
+						{
+							"firstname": "Roberta",
+							"middlename": null,
+							"lastname": "Hershenson",
+							"qualifier": null,
+							"title": null,
+							"role": "reported",
+							"organization": "",
+							"rank": 1
+						}
+					],
+					"organization": null
+				},
+				"type_of_material": "News",
+				"_id": "nyt://article/3c2471d6-9e00-5944-8e55-36ef5f97439f",
+				"word_count": 480,
+				"uri": "nyt://article/3c2471d6-9e00-5944-8e55-36ef5f97439f"
+			},
+			{
+				"abstract": "Pounds of chicken and gallons of Pepsi served: Medieval Times by the numbers.",
+				"web_url": "https://www.nytimes.com/2018/01/29/dining/medieval-times-food-by-the-numbers.html",
+				"snippet": "Pounds of chicken and gallons of Pepsi served: Medieval Times by the numbers.",
+				"lead_paragraph": "Medieval Times, the dinner theater with a faux jousting tournament, draws an estimated 2.5 million customers each year. Here’s how the food operation breaks down by the numbers:",
+				"print_section": "D",
+				"print_page": "7",
+				"source": "The New York Times",
+				"multimedia": [],
+				"headline": {
+					"main": "The Medieval Math",
+					"kicker": null,
+					"content_kicker": null,
+					"print_headline": "Medieval Math",
+					"name": null,
+					"seo": null,
+					"sub": null
+				},
+				"keywords": [
+					{
+						"name": "organizations",
+						"value": "Medieval Times",
+						"rank": 1,
+						"major": "N"
+					},
+					{
+						"name": "subject",
+						"value": "Restaurants",
+						"rank": 2,
+						"major": "N"
+					}
+				],
+				"pub_date": "2018-01-29T23:02:36+0000",
+				"document_type": "article",
+				"news_desk": "",
+				"subsection_name": "search subsectionname5",
+				"byline": {
+					"original": "By Kim Severson",
+					"person": [
+						{
+							"firstname": "Kim",
+							"middlename": null,
+							"lastname": "Severson",
+							"qualifier": null,
+							"title": null,
+							"role": "reported",
+							"organization": "",
+							"rank": 1
+						}
+					],
+					"organization": null
+				},
+				"type_of_material": "search tom5",
+				"_id": "nyt://article/52546d02-bc61-5a9b-9c55-e71c6ed389e0",
+				"word_count": 116,
+				"uri": "nyt://article/52546d02-bc61-5a9b-9c55-e71c6ed389e0"
+			},
+			{
+				"abstract": "How do you feel about math? Do you like it? Do you think you are good at it?",
+				"web_url": "https://www.nytimes.com/2019/01/22/learning/math.html",
+				"snippet": "How do you feel about math? Do you like it? Do you think you are good at it?",
+				"lead_paragraph": "How do you feel about math? Do you like it? Do you think you are good at it? Why or why not?",
+				"source": "The New York Times",
+				"multimedia": [],
+				"headline": {
+					"main": "Math",
+					"kicker": "Picture Prompts",
+					"content_kicker": null,
+					"print_headline": null,
+					"name": null,
+					"seo": null,
+					"sub": null
+				},
+				"keywords": [],
+				"pub_date": "2019-01-22T08:00:00+0000",
+				"document_type": "search dtype6",
+				"news_desk": "",
+				"subsection_name": "search subsectionname6",
+				"byline": {
+					"original": "By Natalie Proulx",
+					"person": [
+						{
+							"firstname": "Natalie",
+							"middlename": null,
+							"lastname": "Proulx",
+							"qualifier": null,
+							"title": null,
+							"role": "reported",
+							"organization": "",
+							"rank": 1
+						}
+					],
+					"organization": null
+				},
+				"type_of_material": "",
+				"_id": "nyt://article/369ccf2d-8c4d-5095-b4ee-467e7d7646c5",
+				"word_count": 120,
+				"uri": "nyt://article/369ccf2d-8c4d-5095-b4ee-467e7d7646c5"
+			},
+			{
+				"abstract": "The songwriter immerses himself in the making of an instrumental record to supplement his most recent release.",
+				"web_url": "https://measureformeasure.blogs.nytimes.com/2009/01/07/blogs/07measureformeasure-hot-math59.html",
+				"snippet": "The songwriter immerses himself in the making of an instrumental record to supplement his most recent release.",
+				"lead_paragraph": "      As I write this I'm listening to the first track from \"Useless Creatures,\" a new instrumental record I am working on that's now ready to be mastered. The song is called \"Master Sigh.\" Some head-voice singing and whistling through a looping pedal merged with ambient loops made at my barn. It's wordless, drumless and fluid — a \"sonic Jacuzzi\" (I had a music history professor in college who snarled at us freshman for listening to music as if it were some \"sonic Jacuzzi.\") Despite my years of trying to make a living at music, thankfully that Jacuzzi hasn't been drained of its hot, frothy, swirling, soothing power.   The main record in this project, \"Noble Beast,\" is finished and mastered and ready for consumption January 20. It includes \"Natural Disaster\" (the song that began with the trip to the Natural History museum) and \"Oh No\" (the song I chronicled from idea to completion in my previous posts). [Editor's note: Listen to the audio clips at right to hear how \"Oh No\" progressed.] This instrumental companion record is something I've be been meaning to make for years. The title self-mockingly alludes to my uneasiness about the usefulness of instrumental music. Like some heirloom chicken that stumbles over its own plumage or a pug struggling to breathe or a hairless cat, bred for aesthetics … Not that such creatures are useless. They're cute as hell, but sort of beg the question. Who's to say a creature is noble? Anyway.   So of course I don't consider instrumental music useless. It's good to remind myself when I'm having a crisis of purpose and feeling useless that at least I can make something beautiful.        The piece on \"Useless Creatures\" I'm most excited about is called \"The Barn Tapes.\" Three summers ago I had an engineer friend come out to my barn in western Illinois with an old quarter-inch tape machine. We opened all the doors and windows, hooked up my violin to six amps placed throughout the barn, put microphones inside and out and made four hours of ambient loops. They are static in the sense that almost every note in the scale is in each loop and there is almost no forward motion, just this swirling mass of sound. This creates a sense of time slowing down. So I made a loop for every note in the 12-tone scale, major and minor, with the goal of assigning each to a key on a keyboard, creating a new instrument. I've always loved the sound of a tape machine slowing down or speeding up as it creates a satisfying bend or warble to the note — much like that sound in an old film when the projector falters a bit.   We never made a keyboard but instead transferred the 24 loops to 2-inch 24-track tape and then played it back through an old Neve console and \"performed\" the mix with the faders, using both hands and occasionally my nose to crossfade between loops. The pitch manipulation happened at random because the tape stock we used was 15 years old and warbled quite a bit. We also used the vari-speed function on the tape machine to slide between keys. The result is 10 minutes and 30 seconds of cumulous clouds of sound with sparrows and crickets and cicadas swelling with the faders. I hear those summer storms coming over the Mississippi or passing north over Wisconsin in mid-August. I've included a link to a home video made by Xan Aranda during one session with Dan Dietrich engineering.    There's another track called \"Hot Math\" — a lo-fi recording I made myself in my barn. It's an example of a West African polyrhythmic groove I've been into for years and in this case I was clearly enjoying myself. This is elusive stuff. It just doesn't work by choreography; you just have to be in the right mood. It goes on for seven minutes and I intended to shorten it but it just feels too good; besides this is my \"indulgent\" record.  We mixed all this in Los Angeles at Bob Clearmountain's studio with David Boucher, with whom I made \"The Mysterious Production of Eggs.\" He is tireless and steady and always pushing me to do better.  Some of this record consists of \"jamming\" — like \"Hot Math\" — while some is through-composed — though none of it is written down. \"The Carrion Suite\" is a four-part piece with Todd Sickafooose playing bass and Glenn Kotche playing drums. We ran through it twice and went for it. It's the most classical sounding of all the tracks. It's a collection of all the ideas that come out of me when I'm warming up at sound check. A little Dvorak mixed with gypsy-Nuyorican jazz and Afro-Cuban Bach….  Sometimes writing a pop song almost seems like a noble pursuit, perhaps because there's such restraint involved resisting the urge to wail or cut loose and \"shred.\" This may be one reason why I chose to call the \"song\" record \"Noble Beast.\" When I start writing and recording a record I try to make sure that the songs I write don't get in the way of making music. So there's a dance between words and music and it seems to help having a companion project like this to diffuse the tension between the two.  Next time: Did writing these posts for Measure for Measure while I was writing and recording my record end up affecting the songs themselves?   Editors note: For more on Andrew Bird, go to the recent New York Times Magazine article. ",
+				"source": "The New York Times",
+				"multimedia": [
+					{
+						"rank": 0,
+						"subtype": "thumbnail",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2008/12/12/opinion/12measureicon.jpg",
+						"height": 75,
+						"width": 75,
+						"legacy": {
+							"thumbnail": "images/2008/12/12/opinion/12measureicon.jpg",
+							"thumbnailwidth": 75,
+							"thumbnailheight": 75
+						},
+						"subType": "thumbnail",
+						"crop_name": "thumbStandard"
+					}
+				],
+				"headline": {
+					"main": "‘Hot Math’",
+					"kicker": "Measure for Measure",
+					"content_kicker": null,
+					"print_headline": "&#39;Hot Math&#39;",
+					"name": null,
+					"seo": null,
+					"sub": null
+				},
+				"keywords": [],
+				"pub_date": "2009-01-08T03:00:13+0000",
+				"document_type": "article",
+				"news_desk": "search newsdesk7",
+				"byline": {
+					"original": "By ANDREW BIRD",
+					"person": [
+						{
+							"firstname": "Andrew",
+							"middlename": null,
+							"lastname": "BIRD",
+							"qualifier": null,
+							"title": null,
+							"role": "reported",
+							"organization": "",
+							"rank": 1
+						}
+					],
+					"organization": null
+				},
+				"type_of_material": "search tom7",
+				"_id": "nyt://article/3d4918b2-b093-5a6e-a538-75f9394bff4e",
+				"word_count": 928,
+				"uri": "nyt://article/3d4918b2-b093-5a6e-a538-75f9394bff4e"
+			},
+			{
+				"abstract": "Harry Smith's magnum opus, a 2 hour 21 minute experimental feature, was originally presented using four 16-millimeter projectors, arranged to create a four-panel square. Each projector displayed a different stream of images, creating a constantly shifting mosaic of shapes, colors and human figures. Unseen for 20 years, &quot;Mahagonny&quot; (which Smith sometimes called his &quot;Film No. 18&quot;) has been restored with financing from a number of organizations. The four 16-millimeter tracks of the original have been printed onto a single 35-millimeter strip, solving the thorny problems of synchronization posed by the original. There are four large categories of imagery, which Smith identified as portraits, animation, symbols and nature. What might sound like a very precise and well-considered recipe for utter boredom becomes a marvelously seductive and sensual experience. &#151; Dave Kehr",
+				"web_url": "https://www.nytimes.com/2002/09/13/movies/film-review-turning-music-into-math-and-math-into-images.html",
+				"snippet": "Harry Smith's magnum opus, a 2 hour 21 minute experimental feature, was originally presented using four 16-millimeter projectors, arranged to create a four-panel square. Each projector displayed a different stream of images, creating a constantly ...",
+				"lead_paragraph": "For Harry Smith, art was often a matter of placing the right things in the right order. It's true of his most famous work, the pioneering ''Anthology of American Folk Music,'' which he assembled from 78-r.p.m. recordings and released in 1952, without bothering to clear the copyrights. (An authorized, fully legal version of the collection was issued by the Smithsonian Institution in 1997.)",
+				"print_section": "E",
+				"print_page": "15",
+				"source": "The New York Times",
+				"multimedia": [],
+				"headline": {
+					"main": "Turning Music Into Math, And Math Into Images",
+					"kicker": "FILM REVIEW",
+					"content_kicker": null,
+					"print_headline": "FILM REVIEW; Turning Music Into Math, And Math Into Images",
+					"name": null,
+					"seo": null,
+					"sub": null
+				},
+				"keywords": [
+					{
+						"name": "persons",
+						"value": "Weill, Kurt",
+						"rank": 1,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "Smith, Patti",
+						"rank": 2,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "Mekas, Jonas",
+						"rank": 3,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "Brecht, Bertolt",
+						"rank": 4,
+						"major": "N"
+					},
+					{
+						"name": "persons",
+						"value": "Ginsberg, Allen",
+						"rank": 5,
+						"major": "N"
+					},
+					{
+						"name": "subject",
+						"value": "MOTION PICTURES",
+						"rank": 6,
+						"major": "N"
+					},
+					{
+						"name": "subject",
+						"value": "Reviews",
+						"rank": 7,
+						"major": "N"
+					},
+					{
+						"name": "creative_works",
+						"value": "Mahagonny (Movie)",
+						"rank": 8,
+						"major": "N"
+					}
+				],
+				"pub_date": "2002-09-13T05:00:00+0000",
+				"document_type": "search dtype8",
+				"news_desk": "search newsdesk8",
+				"section_name": "",
+				"byline": {
+					"original": "By Dave Kehr",
+					"person": [
+						{
+							"firstname": "Dave",
+							"middlename": null,
+							"lastname": "Kehr",
+							"qualifier": null,
+							"title": null,
+							"role": "reported",
+							"organization": "",
+							"rank": 1
+						}
+					],
+					"organization": null
+				},
+				"type_of_material": "",
+				"_id": "nyt://article/e04b7338-71d0-5050-b85d-e02c4847d189",
+				"word_count": 627,
+				"uri": "nyt://article/e04b7338-71d0-5050-b85d-e02c4847d189"
+			},
+			{
+				"abstract": "Some numbers on the size and expense of the food program.",
+				"web_url": "https://www.nytimes.com/2017/09/05/dining/school-lunch-data.html",
+				"snippet": "Some numbers on the size and expense of the food program.",
+				"lead_paragraph": "The federal commitment to feeding schoolchildren underwent major revisions during the Obama years. The Trump administration promises to push back on some of the new rules and make budget cuts that could change school food. These figures that hint at the size, expense and nature of the program.",
+				"print_section": "D",
+				"print_page": "6",
+				"source": "The New York Times",
+				"multimedia": [
+					{
+						"rank": 0,
+						"subtype": "thumbnail",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2017/09/06/dining/06LUNCH04/06LUNCH04-thumbStandard.jpg",
+						"height": 75,
+						"width": 75,
+						"legacy": {
+							"thumbnail": "images/2017/09/06/dining/06LUNCH04/06LUNCH04-thumbStandard.jpg",
+							"thumbnailwidth": 75,
+							"thumbnailheight": 75
+						},
+						"subType": "thumbnail",
+						"crop_name": "thumbStandard"
+					},
+					{
+						"rank": 0,
+						"subtype": "thumbLarge",
+						"caption": null,
+						"credit": null,
+						"type": "image",
+						"url": "images/2017/09/06/dining/06LUNCH04/06LUNCH04-thumbLarge.jpg",
+						"height": 150,
+						"width": 150,
+						"legacy": {},
+						"subType": "thumbLarge",
+						"crop_name": "thumbLarge"
+					}
+				],
+				"pub_date": "2017-09-05T16:48:04+0000",
+				"document_type": "article",
+				"news_desk": "",
+				"section_name": "",
+				"byline": {
+					"original": "By Kim Severson",
+					"person": [
+						{
+							"firstname": "Kim",
+							"middlename": null,
+							"lastname": "Severson",
+							"qualifier": null,
+							"title": null,
+							"role": "reported",
+							"organization": "",
+							"rank": 1
+						}
+					],
+					"organization": null
+				},
+				"type_of_material": "search tom9",
+				"_id": "nyt://article/ca7b08b5-4683-5669-9034-f6657a126510",
+				"word_count": 252,
+				"uri": "nyt://article/ca7b08b5-4683-5669-9034-f6657a126510"
+			}
+		],
+		"meta": {
+			"hits": 440434,
+			"offset": 0,
+			"time": 192
+		}
+	}
+}

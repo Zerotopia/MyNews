@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyNews</string>
+    <string name="undefined">unknown</string>
 </resources>
