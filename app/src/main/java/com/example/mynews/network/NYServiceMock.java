@@ -1,8 +1,11 @@
-package com.example.mynews.model;
+package com.example.mynews.network;
+
+import com.example.mynews.model.Article;
+import com.example.mynews.model.DataPicture;
+import com.example.mynews.model.Results;
+import com.example.mynews.network.NYService;
 
 import java.util.ArrayList;
-
-import javax.xml.transform.Result;
 
 import io.reactivex.Observable;
 import retrofit2.mock.BehaviorDelegate;

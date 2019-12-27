@@ -1,4 +1,7 @@
-package com.example.mynews.model;
+package com.example.mynews.network;
+
+import com.example.mynews.network.NYService;
+import com.example.mynews.network.NYServiceMock;
 
 import java.util.concurrent.TimeUnit;
 

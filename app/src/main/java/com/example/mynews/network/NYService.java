@@ -1,4 +1,6 @@
-package com.example.mynews.model;
+package com.example.mynews.network;
+
+import com.example.mynews.model.Results;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

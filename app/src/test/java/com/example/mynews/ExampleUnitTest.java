@@ -2,9 +2,9 @@ package com.example.mynews;
 
 
 import com.example.mynews.model.Article;
-import com.example.mynews.model.NYService;
+import com.example.mynews.network.NYService;
 import com.example.mynews.model.Results;
-import com.example.mynews.model.RetrofitClient;
+import com.example.mynews.network.RetrofitClient;
 import com.google.gson.Gson;
 
 import org.junit.BeforeClass;
@@ -13,8 +13,6 @@ import org.junit.Test;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
-
-import javax.xml.transform.Result;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
