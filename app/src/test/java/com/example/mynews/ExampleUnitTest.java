@@ -1,7 +1,10 @@
 package com.example.mynews;
 
+
 import com.example.mynews.model.Article;
+import com.example.mynews.model.NYService;
 import com.example.mynews.model.Results;
+import com.example.mynews.model.RetrofitClient;
 import com.google.gson.Gson;
 
 import org.junit.BeforeClass;
@@ -10,6 +13,13 @@ import org.junit.Test;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+
+import javax.xml.transform.Result;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import static com.example.mynews.model.Article.NYT_HOME_URL;
 import static com.example.mynews.model.Article.UNDEFINED;
@@ -22,23 +32,75 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
 
+    private static Results sSearchJson;
+    private static Results sPopularJson;
+    private static Results sTopJson;
+
     private static Results sSearchResults;
     private static Results sPopularResults;
     private static Results sTopResults;
 
+    private static final int SEARCH = 0;
+    private static final int MOSTPOPULAR = 1;
+    private static final int TOPARTICLE = 2;
+
+
+    private static void rxJavaCall(Observable<Results> observable, final int api) {
+
+        observable.subscribeOn(Schedulers.trampoline())
+                .observeOn(Schedulers.trampoline())
+                .subscribe(new Observer<Results>() {
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        System.out.println("suscribe");
+                    }
+
+                    @Override
+                    public void onNext(Results results) {
+                        System.out.println("next enter");
+                        if (api == SEARCH) sSearchResults = results;
+                        else if (api == MOSTPOPULAR) sPopularResults = results;
+                        else if(api == TOPARTICLE) sTopResults = results;
+                        }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println("erreur :" + e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        System.out.println("complet");
+                    }
+                });
+    }
+
     @BeforeClass
     public static void setUp() throws FileNotFoundException {
+        // set up variables to test the parsing Json files from POJO class
         Gson gson = new Gson();
-        sSearchResults = gson.fromJson(new FileReader("search.json"),Results.class);
-        sPopularResults = gson.fromJson(new FileReader("mostpopular.json"),Results.class);
-        sTopResults = gson.fromJson(new FileReader("topstories.json"),Results.class);
+        sSearchJson = gson.fromJson(new FileReader("search.json"), Results.class);
+        sPopularJson = gson.fromJson(new FileReader("mostpopular.json"), Results.class);
+        sTopJson = gson.fromJson(new FileReader("topstories.json"), Results.class);
+
+        // set up variables to test retrofit client.
+        NYService nyService = RetrofitClient.getMock();
+
+       // Observable<Results> searchObs = nyService.searchArticle("math", "", NYService.APIKEY);
+       // Observable<Results> popularObs = nyService.popularArticle(NYService.APIKEY);
+       // Observable<Results> topObs = nyService.topArticle("home", NYService.APIKEY);
+
+       // rxJavaCall(searchObs, SEARCH);
+       // rxJavaCall(popularObs, MOSTPOPULAR);
+       // rxJavaCall(topObs, TOPARTICLE);
     }
 
     @Test
     public void checkResultsModelForSearchJson(){
-        assertEquals(sSearchResults.getStatus(),"OK");
+        assertEquals(sSearchJson.getStatus(),"OK");
 
-        ArrayList<Article> Articles = sSearchResults.listOfArticle();
+        ArrayList<Article> Articles = sSearchJson.listOfArticle();
 
         Article article0 = Articles.get(0);
         assertEquals(article0.summary(),"search snippet0");
@@ -78,10 +140,10 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void checkResultsModelForMostpopularJson(){
-        assertEquals(sPopularResults.getStatus(),"OK");
+    public void checkResultsModelForMostPopularJson(){
+        assertEquals(sPopularJson.getStatus(),"OK");
 
-        ArrayList<Article> Articles = sPopularResults.listOfArticle();
+        ArrayList<Article> Articles = sPopularJson.listOfArticle();
 
         Article article0 = Articles.get(0);
         assertEquals(article0.summary(),"most abstract0");
@@ -115,10 +177,10 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void checkResultsModelForTopstoriesJson(){
-        assertEquals(sTopResults.getStatus(),"OK");
+    public void checkResultsModelForTopStoriesJson(){
+        assertEquals(sTopJson.getStatus(),"OK");
 
-        ArrayList<Article> Articles = sTopResults.listOfArticle();
+        ArrayList<Article> Articles = sTopJson.listOfArticle();
 
         Article article0 = Articles.get(0);
         assertEquals(article0.summary(),"top abstract0");
@@ -146,7 +208,38 @@ public class ExampleUnitTest {
 
         assertEquals(Articles.get(4).topics(),"top itype4");
     }
+/*
+    @Test
+    public void testRxJavaRetrofitMechanismWithMockService() {
+        ArrayList<Article> searchListArticle = sSearchResults.listOfArticle();
+        ArrayList<Article> popularListArticle = sPopularResults.listOfArticle();
+        ArrayList<Article> topListArticle = sTopResults.listOfArticle();
 
+        assertEquals("statusOK", sSearchResults.getStatus());
+        assertEquals(20,topListArticle.size());
+
+        String url = popularListArticle.get(0).urlArticle();
+        assertEquals(NYT_HOME_URL, url);
+
+        String title = topListArticle.get(4).topics();
+        assertEquals("Culture > Theatre", title);
+
+        String testString = searchListArticle.get(8).summary();
+        assertEquals("SEARCH : 8", testString);
+
+        testString = popularListArticle.get(5).summary();
+        assertEquals("POPULAR : 5", testString);
+
+        testString = topListArticle.get(9).summary();
+        assertEquals("TOP : 9", testString);
+
+        testString = searchListArticle.get(12).publishedDate();
+        assertEquals("21/11/2002", testString);
+
+        testString = popularListArticle.get(17).urlImage();
+        assertEquals("https://www.picasso.fr", testString);
+    }
+*/
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
