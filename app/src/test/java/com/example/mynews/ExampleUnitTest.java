@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+import static com.example.mynews.model.Article.NYT_HOME_URL;
 import static com.example.mynews.model.Article.UNDEFINED;
 import static org.junit.Assert.*;
 
@@ -32,7 +33,7 @@ public class ExampleUnitTest {
         sPopularResults = gson.fromJson(new FileReader("mostpopular.json"),Results.class);
         sTopResults = gson.fromJson(new FileReader("topstories.json"),Results.class);
     }
-/*
+
     @Test
     public void checkResultsModelForSearchJson(){
         assertEquals(sSearchResults.getStatus(),"OK");
@@ -43,7 +44,7 @@ public class ExampleUnitTest {
         assertEquals(article0.summary(),"search snippet0");
         assertEquals(article0.topics(),"search sectionname0 > search subsectionname0");
         assertEquals(article0.publishedDate(),"01/08/2014");
-        assertEquals(article0.urlImage(),"search urlimg0");
+        assertEquals(article0.urlImage(),NYT_HOME_URL + "search urlimg0");
         assertEquals(article0.urlArticle(),"search url0");
 
         Article article1 = Articles.get(1);
@@ -56,9 +57,9 @@ public class ExampleUnitTest {
         Article article2 = Articles.get(2);
         assertEquals(article2.summary(),"search lpar2");
         assertEquals(article2.topics(),"search sectionname2 > search tom2");
-        assertEquals(article1.publishedDate(),"17/07/2019");
-        assertEquals(article1.urlImage(),UNDEFINED);
-        assertEquals(article1.urlArticle(),UNDEFINED);
+        assertEquals(article2.publishedDate(),"17/07/2019");
+        assertEquals(article2.urlImage(),NYT_HOME_URL + "search default url2");
+
 
         Article article3 = Articles.get(3);
         assertEquals(article3.summary(),"search main3");
@@ -93,22 +94,22 @@ public class ExampleUnitTest {
         assertEquals(article1.summary(),"most title1");
         assertEquals(article1.topics(),"most section1 > most type1");
         assertEquals(article1.publishedDate(),UNDEFINED);
-        assertEquals(article1.urlImage(),UNDEFINED);
+        assertEquals(article1.urlImage(),"most default url1");
         assertEquals(article1.urlArticle(),UNDEFINED);
 
         Article article2 = Articles.get(2);
         assertEquals(article2.summary(),UNDEFINED);
         assertEquals(article2.topics(),"most subsection2 > most type2");
-        assertEquals(article1.publishedDate(),"16/12/2019");
-        assertEquals(article1.urlImage(),UNDEFINED);
+        assertEquals(article2.publishedDate(),"16/12/2019");
+        assertEquals(article2.urlImage(),UNDEFINED);
 
         Article article3 = Articles.get(3);
         assertEquals(article3.topics(),"most section3");
-        assertEquals(article3.urlImage(),UNDEFINED);
+        assertEquals(article3.urlImage(),"most default url3");
 
         Article article4 = Articles.get(4);
         assertEquals(article4.topics(),"most type4");
-        assertEquals(article3.urlImage(),UNDEFINED);
+        assertEquals(article4.urlImage(),UNDEFINED);
 
         assertEquals(Articles.get(5).topics(),UNDEFINED);
     }
@@ -136,16 +137,16 @@ public class ExampleUnitTest {
         Article article2 = Articles.get(2);
         assertEquals(article2.summary(),UNDEFINED);
         assertEquals(article2.topics(),"top section2");
-        assertEquals(article1.publishedDate(),"11/12/2019");
-        assertEquals(article1.urlImage(),UNDEFINED);
+        assertEquals(article2.publishedDate(),"11/12/2019");
+        assertEquals(article2.urlImage(),"top default url2");
 
         Article article3 = Articles.get(3);
         assertEquals(article3.topics(),"top subsection3 > top itype3");
         assertEquals(article3.publishedDate(),UNDEFINED);
 
-        assertEquals(Articles.get(4).topics(),UNDEFINED);
+        assertEquals(Articles.get(4).topics(),"top itype4");
     }
-*/
+
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);

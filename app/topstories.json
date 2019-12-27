@@ -170,7 +170,7 @@
 			"geo_facet": [],
 			"multimedia": [
 				{
-					"url": "https://static01.nyt.com/images/2019/12/12/arts/12jackson1/12jackson1-thumbLarge.jpg",
+					"url": "top default url2",
 					"format": "thumbLarge",
 					"height": 150,
 					"width": 150,
@@ -306,7 +306,7 @@
 			"abstract": "One was in “Game of Thrones.” One is still in high school. They all act and play instruments. And in a new show they portray scrappy Dubliners creating a band.",
 			"url": "https://www.nytimes.com/2019/12/11/theater/sing-street-cast.html",
 			"byline": "By ELYSA GARDNER",
-			"item_type": "top itype3",
+			"item_type": "top itype4",
 			"updated_date": "2019-12-11T11:57:40-05:00",
 			"created_date": "2019-12-11T10:00:11-05:00",
 			"published_date": "2019-12-11T10:00:11-05:00",

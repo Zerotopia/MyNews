@@ -106,7 +106,7 @@
 					"approved_for_syndication": 1,
 					"media-metadata": [
 						{
-							"url": "https://static01.nyt.com/images/2019/12/16/opinion/16Weaver2/16Weaver2-thumbStandard.jpg",
+							"url": "most default url1",
 							"format": "Standard Thumbnail",
 							"height": 76,
 							"width": 75
@@ -243,7 +243,7 @@
 					"approved_for_syndication": 1,
 					"media-metadata": [
 						{
-							"url": "https://static01.nyt.com/images/2019/12/13/opinion/13goldberg2/merlin_165758757_737cee73-a2f0-4388-af10-55bb54f4cb72-mediumThreeByTwo210.jpg",
+							"url": "most default url3",
 							"format": "mediumThreeByTwo210",
 							"height": 140,
 							"width": 210
@@ -289,35 +289,7 @@
 			],
 			"per_facet": "",
 			"geo_facet": "",
-			"media": [
-				{
-					"type": "image",
-					"subtype": "photo",
-					"caption": "Even as business sentiment has become more cautious, consumers have remained bullish about spending. Shoppers in Manhattan were no exception.",
-					"copyright": "Marian Carrasquero for The New York Times",
-					"approved_for_syndication": 1,
-					"media-metadata": [
-						{
-							"url": "https://static01.nyt.com/images/2019/11/03/business/03econ1/00econ1-thumbStandard.jpg",
-							"format": "Standard Thumbnail",
-							"height": 75,
-							"width": 75
-						},
-						{
-							"url": "https://static01.nyt.com/images/2019/11/03/business/03econ1/merlin_163688859_fde177f7-5037-43ec-8716-00e275852219-mediumThreeByTwo210.jpg",
-							"format": "mediumThreeByTwo210",
-							"height": 140,
-							"width": 210
-						},
-						{
-							"url": "https://static01.nyt.com/images/2019/11/03/business/03econ1/merlin_163688859_fde177f7-5037-43ec-8716-00e275852219-mediumThreeByTwo440.jpg",
-							"format": "mediumThreeByTwo440",
-							"height": 293,
-							"width": 440
-						}
-					]
-				}
-			],
+			"media": "",
 			"uri": "nyt://article/164d5daa-a2c8-5c50-af77-c011c54b412c"
 		},
 		{

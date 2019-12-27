@@ -258,6 +258,7 @@
 			},
 			{
 				"abstract": "",
+				"web_url": "",
 				"snippet": "",
 				"lead_paragraph": "search lpar2",
 				"print_section": "C",
@@ -270,7 +271,7 @@
 						"caption": null,
 						"credit": null,
 						"type": "image",
-						"url": "images/2019/07/18/books/17bookolsson1/17bookolsson1-master768.jpg",
+						"url": "search default url2",
 						"height": 1248,
 						"width": 768,
 						"legacy": {},
