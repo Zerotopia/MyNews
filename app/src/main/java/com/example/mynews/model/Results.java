@@ -6,6 +6,11 @@ import java.util.ArrayList;
 
 public class Results {
 
+    public Results(String status, ArrayList<Article> results) {
+        mStatus = status;
+        mResults = results;
+    }
+
     @SerializedName("status")
     private String mStatus;
     @SerializedName("results")

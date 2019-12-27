@@ -87,13 +87,18 @@ public class ExampleUnitTest {
         // set up variables to test retrofit client.
         NYService nyService = RetrofitClient.getMock();
 
-       // Observable<Results> searchObs = nyService.searchArticle("math", "", NYService.APIKEY);
-       // Observable<Results> popularObs = nyService.popularArticle(NYService.APIKEY);
-       // Observable<Results> topObs = nyService.topArticle("home", NYService.APIKEY);
+        Observable<Results> searchObs = nyService.searchArticle(
+                "math",
+                "20001002",
+                 "20100101",
+                "",
+                NYService.APIKEY);
+        Observable<Results> popularObs = nyService.popularArticle(NYService.APIKEY);
+        Observable<Results> topObs = nyService.topArticle("home", NYService.APIKEY);
 
-       // rxJavaCall(searchObs, SEARCH);
-       // rxJavaCall(popularObs, MOSTPOPULAR);
-       // rxJavaCall(topObs, TOPARTICLE);
+        rxJavaCall(searchObs, SEARCH);
+        rxJavaCall(popularObs, MOSTPOPULAR);
+        rxJavaCall(topObs, TOPARTICLE);
     }
 
     @Test
@@ -208,7 +213,7 @@ public class ExampleUnitTest {
 
         assertEquals(Articles.get(4).topics(),"top itype4");
     }
-/*
+
     @Test
     public void testRxJavaRetrofitMechanismWithMockService() {
         ArrayList<Article> searchListArticle = sSearchResults.listOfArticle();
@@ -239,7 +244,7 @@ public class ExampleUnitTest {
         testString = popularListArticle.get(17).urlImage();
         assertEquals("https://www.picasso.fr", testString);
     }
-*/
+
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);

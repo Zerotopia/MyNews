@@ -8,6 +8,11 @@ public class DataPicture {
     private int mHeight;
     @SerializedName("width")
     private int mWidth;
+
+    public DataPicture(String url) {
+        mUrl = url;
+    }
+
     @SerializedName("url")
     private String mUrl;
 
