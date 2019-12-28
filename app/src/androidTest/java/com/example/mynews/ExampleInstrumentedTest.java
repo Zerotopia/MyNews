@@ -23,6 +23,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.mynews.controller.ApiFragment;
 import com.example.mynews.controller.MainActivity;
 
 import org.hamcrest.Description;
@@ -60,7 +61,6 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void basicTestOnRecyclerVew() {
-
         RecyclerView recyclerView = actualRecyclerView();
         int lastItem = recyclerView.getAdapter().getItemCount() - 1;
 
@@ -121,9 +121,9 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.example.mynews", appContext.getPackageName());
     }
-/*
+
     private RecyclerView actualRecyclerView() {
         return activityTestRule.getActivity().findViewById(R.id.api_fragment_recyclerview);
     }
- */
+
 }
