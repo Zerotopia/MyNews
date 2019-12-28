@@ -50,27 +50,20 @@ public class ExampleUnitTest {
                 .subscribe(new Observer<Results>() {
 
                     @Override
-                    public void onSubscribe(Disposable d) {
-                        System.out.println("suscribe");
-                    }
+                    public void onSubscribe(Disposable d) {}
 
                     @Override
                     public void onNext(Results results) {
-                        System.out.println("next enter");
                         if (api == SEARCH) sSearchResults = results;
                         else if (api == MOSTPOPULAR) sPopularResults = results;
                         else if(api == TOPARTICLE) sTopResults = results;
                         }
 
                     @Override
-                    public void onError(Throwable e) {
-                        System.out.println("erreur :" + e.toString());
-                    }
+                    public void onError(Throwable e) {}
 
                     @Override
-                    public void onComplete() {
-                        System.out.println("complet");
-                    }
+                    public void onComplete() {}
                 });
     }
 
