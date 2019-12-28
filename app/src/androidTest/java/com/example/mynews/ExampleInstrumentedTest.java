@@ -1,44 +1,18 @@
 package com.example.mynews;
 
 import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
 //import android.content.Intent;
 
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.test.espresso.Espresso;
-import androidx.test.espresso.IdlingRegistry;
-import androidx.test.espresso.ViewAction;
-import androidx.test.espresso.ViewAssertion;
-import androidx.test.espresso.action.ViewActions;
-import androidx.test.espresso.assertion.ViewAssertions;
-import androidx.test.espresso.contrib.PickerActions;
-import androidx.test.espresso.contrib.RecyclerViewActions;
-import androidx.test.espresso.contrib.ViewPagerActions;
-import androidx.test.espresso.intent.Intents;
-import androidx.test.espresso.intent.matcher.IntentMatchers;
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import com.example.mynews.controller.ApiFragment;
 import com.example.mynews.controller.MainActivity;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
-import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.AllOf;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static org.junit.Assert.*;
 
@@ -123,7 +97,7 @@ public class ExampleInstrumentedTest {
     }
 
     private RecyclerView actualRecyclerView() {
-        return activityTestRule.getActivity().findViewById(R.id.api_fragment_recyclerview);
+        return activityTestRule.getActivity().findViewById(R.id.fragment_api_recyclerview);
     }
 
 }

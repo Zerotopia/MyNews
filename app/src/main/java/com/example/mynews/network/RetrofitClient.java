@@ -36,4 +36,8 @@ public class RetrofitClient {
 
         return new NYServiceMock(delegate);
     }
+
+    public static NYService getInstance() {
+        return buildRetrofit().create(NYService.class);
+    }
 }
