@@ -31,6 +31,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -39,6 +40,7 @@ public class ApiFragment extends Fragment {
 
     private final static String POSITION = "posiion";
     private static final String PARAMETERS = "parameters";
+
     private static CountingIdlingResource mCount = new CountingIdlingResource("RXPROCESS");
 
     @NonNull
@@ -68,7 +70,7 @@ public class ApiFragment extends Fragment {
 
         NYService nyService = RetrofitClient.getInstance();
         int position;
-        String[] parameters= new String[4];
+        String[] parameters = new String[4];
         if (getArguments() != null) {
             position = getArguments().getInt(POSITION, -1);
             parameters = initParameters(getArguments().getStringArray(PARAMETERS));
@@ -80,7 +82,7 @@ public class ApiFragment extends Fragment {
 
         //Log.d("TAG", "onViewCreated: debut observable");
         mCount.increment();
-        observable = initObservable(position,nyService,parameters);
+        observable = initObservable(position, nyService, parameters);
 //                Log.d("SWITCH", "onViewCreated: ANOMALIE");
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -113,11 +115,11 @@ public class ApiFragment extends Fragment {
                 });
     }
 
-    public static CountingIdlingResource getmCount() {
+    public static CountingIdlingResource getCount() {
         return mCount;
     }
 
-    public String[] Subjects() {
+    private String[] Subjects() {
         return getResources().getStringArray(R.array.subject);
     }
 
@@ -125,8 +127,10 @@ public class ApiFragment extends Fragment {
         String[] parameters = new String[4];
         if (args != null) {
             for (int i = 0; i < 4; i++) {
-                if ((i < args.length) && (!args[i].isEmpty())) parameters[i] = args[i];
-                else parameters[i] = null;
+                if (i < args.length) {
+                    if ((args[i] != null) && (!args[i].isEmpty())) parameters[i] = args[i];
+                    else parameters[i] = null;
+                } else parameters[i] = null;
             }
         }
         return parameters;
@@ -135,7 +139,7 @@ public class ApiFragment extends Fragment {
     private Observable<Results> initObservable(int position, NYService nyService, String[] parameters) {
         Observable<Results> observable;
 
-        if (position == 0) observable = nyService.topArticle(Subjects()[0],NYService.APIKEY);
+        if (position == 0) observable = nyService.topArticle(Subjects()[0], NYService.APIKEY);
         else if (position == 1) observable = nyService.popularArticle(NYService.APIKEY);
         else if (position < 8)
             observable = nyService.topArticle(Subjects()[position + 1], NYService.APIKEY);

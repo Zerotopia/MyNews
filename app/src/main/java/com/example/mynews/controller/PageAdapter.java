@@ -1,6 +1,7 @@
 package com.example.mynews.controller;
 
 import android.content.Context;
+import android.content.res.Resources;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,9 +13,13 @@ import com.example.mynews.R;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
-    public PageAdapter(FragmentManager fm) {
+    private Resources mResources;
+
+    public PageAdapter(FragmentManager fm, Resources resources) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        mResources = resources;
     }
+
 
     @Override
     @NonNull
@@ -31,7 +36,8 @@ public class PageAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String[] title = ApiFragment.newInstance(position,new String[4]).Subjects();
+        String[] title = mResources.getStringArray(R.array.subject);
+                //ApiFragment.newInstance(position,new String[4]).Subjects();
         return title[position + 1].toUpperCase();
     }
 }

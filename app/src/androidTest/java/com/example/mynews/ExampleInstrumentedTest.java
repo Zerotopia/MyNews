@@ -4,12 +4,27 @@ import android.content.Context;
 //import android.content.Intent;
 
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.test.espresso.Espresso;
+import androidx.test.espresso.IdlingRegistry;
+import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.assertion.ViewAssertions;
+import androidx.test.espresso.contrib.PickerActions;
+import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.espresso.contrib.ViewPagerActions;
+import androidx.test.espresso.intent.Intents;
+import androidx.test.espresso.intent.matcher.IntentMatchers;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.mynews.controller.ApiFragment;
 import com.example.mynews.controller.MainActivity;
+import com.example.mynews.controller.WebActivity;
 
+import org.hamcrest.Matchers;
+import org.hamcrest.core.AllOf;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,17 +47,17 @@ public class ExampleInstrumentedTest {
         IdlingRegistry.getInstance().register(ApiFragment.getCount());
     }
 
-
+/*
     @Test
     public void basicTestOnRecyclerVew() {
         RecyclerView recyclerView = actualRecyclerView();
         int lastItem = recyclerView.getAdapter().getItemCount() - 1;
 
-        Espresso.onView(ViewMatchers.withId(R.id.api_fragment_recyclerview))
+        Espresso.onView(ViewMatchers.withId(R.id.fragment_api_recyclerview))
                 .perform(RecyclerViewActions.scrollToPosition(lastItem));
 
         Intents.init();
-        Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.api_fragment_recyclerview), ViewMatchers.isDisplayed()))
+        Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.fragment_api_recyclerview), ViewMatchers.isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(lastItem, ViewActions.click()));
         Intents.intended(IntentMatchers.hasComponent(WebActivity.class.getName()));
         Intents.release();
@@ -62,7 +77,7 @@ public class ExampleInstrumentedTest {
                         ViewMatchers.withText(
                                 Matchers.containsString("SCIENCE"))));
     }
-
+/*
     @Test
     public void searchActivityTest() {
         Espresso.onView(ViewMatchers.withId(R.id.toolbar_search_item))

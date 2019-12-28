@@ -246,7 +246,7 @@ public class Article {
      * by the "GSON processus". And we check moreover if the
      * instanced value are not empty.
      */
-    private boolean existString(String string) {
+    public boolean existString(String string) {
         return ((string != null) && !string.isEmpty());
     }
 
