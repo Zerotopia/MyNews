@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">MyNews</string>
     <string name="undefined">unknown</string>
+    <string-array name="subject">
+        <item>home</item>
+        <item>top stories</item>
+        <item>most popular</item>
+        <item>science</item>
+        <item>technology</item>
+        <item>books</item>
+        <item>travel</item>
+        <item>food</item>
+        <item>health</item>
+    </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

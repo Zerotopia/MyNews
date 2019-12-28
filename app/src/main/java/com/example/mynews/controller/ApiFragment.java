@@ -67,32 +67,20 @@ public class ApiFragment extends Fragment {
         recyclerView.addItemDecoration(new CustomItemDecoration(getContext()));
 
         NYService nyService = RetrofitClient.getInstance();
-        int position = (getArguments() == null) ? -1 : getArguments().getInt(POSITION, -1);
-        String[] parameters = new String[4];
+        int position;
+        String[] parameters= new String[4];
         if (getArguments() != null) {
-            String[] args = getArguments().getStringArray(PARAMETERS);
-            if (args != null) {
-                for (int i = 0; i < 4; i++) {
-                    if ((i < args.length) && (!args[i].isEmpty())) parameters[i] = args[i];
-                    else parameters[i] = null;
-                }
-            }
-        }
+            position = getArguments().getInt(POSITION, -1);
+            parameters = initParameters(getArguments().getStringArray(PARAMETERS));
+        } else position = -1;
 
+        String[] subjects = getResources().getStringArray(R.array.subject);
         //Log.d("TAG", "onViewCreated: Entrer : " + pos);
         Observable<Results> observable;
 
         //Log.d("TAG", "onViewCreated: debut observable");
         mCount.increment();
-        if (position == -1)
-            observable = nyService.searchArticle(parameters[0],
-                    parameters[1],
-                    parameters[2],
-                    parameters[3],
-                    NYService.APIKEY);
-        else if (position == 0) observable = nyService.popularArticle(NYService.APIKEY);
-        else if (position == 1) observable = nyService.topArticle("home", NYService.APIKEY);
-        else observable = nyService.topArticle(parameters[0], NYService.APIKEY);
+        observable = initObservable(position,nyService,parameters);
 //                Log.d("SWITCH", "onViewCreated: ANOMALIE");
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -107,14 +95,6 @@ public class ApiFragment extends Fragment {
                         //   Log.d("TAG", "onClick: rlient");
 
                         ArrayList<Article> articles = results.listOfArticle();
-//                        if (results.getResponse() != null) {
-//                            Log.d("TAG", "onNext() called with: results = [" + results + "]");
-//                            art = results.getResponse().getDocs();
-//                        }
-//                        else {
-//                            Log.d("TAG", "onNext: else");
-//                            art = results.getReponse2();
-//                        }
                         //      Log.d("TAG", "onNext: " + art.size());
                         recyclerView.setAdapter(new ArticleAdapter(articles));
                     }
@@ -135,5 +115,35 @@ public class ApiFragment extends Fragment {
 
     public static CountingIdlingResource getmCount() {
         return mCount;
+    }
+
+    public String[] Subjects() {
+        return getResources().getStringArray(R.array.subject);
+    }
+
+    private String[] initParameters(String[] args) {
+        String[] parameters = new String[4];
+        if (args != null) {
+            for (int i = 0; i < 4; i++) {
+                if ((i < args.length) && (!args[i].isEmpty())) parameters[i] = args[i];
+                else parameters[i] = null;
+            }
+        }
+        return parameters;
+    }
+
+    private Observable<Results> initObservable(int position, NYService nyService, String[] parameters) {
+        Observable<Results> observable;
+
+        if (position == 0) observable = nyService.topArticle(Subjects()[0],NYService.APIKEY);
+        else if (position == 1) observable = nyService.popularArticle(NYService.APIKEY);
+        else if (position < 8)
+            observable = nyService.topArticle(Subjects()[position + 1], NYService.APIKEY);
+        else observable = nyService.searchArticle(parameters[0],
+                    parameters[1],
+                    parameters[2],
+                    parameters[3],
+                    NYService.APIKEY);
+        return observable;
     }
 }
