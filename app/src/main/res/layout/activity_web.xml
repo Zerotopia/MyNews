@@ -4,5 +4,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controller.WebActivity"
-    android:id="@+id/webactivity_webview">
+    android:id="@+id/web_activity_web_view">
 </WebView>

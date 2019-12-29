@@ -23,7 +23,7 @@ public class WebActivity extends AppCompatActivity {
         Bundle extra = intent.getExtras();
         String url = (extra != null) ? extra.getString("url") : NYT_HOME_URL;
 
-        mWebView = findViewById(R.id.webactivity_webview);
+        mWebView = findViewById(R.id.web_activity_web_view);
         mWebView.loadUrl(url);
     }
 }
