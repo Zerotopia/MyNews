@@ -76,7 +76,7 @@ public class ApiFragment extends Fragment {
             parameters = initParameters(getArguments().getStringArray(PARAMETERS));
         } else position = -1;
 
-        String[] subjects = getResources().getStringArray(R.array.subject);
+        String[] subjects = getResources().getStringArray(R.array.subjects);
         //Log.d("TAG", "onViewCreated: Entrer : " + pos);
         Observable<Results> observable;
 
@@ -120,7 +120,7 @@ public class ApiFragment extends Fragment {
     }
 
     private String[] Subjects() {
-        return getResources().getStringArray(R.array.subject);
+        return getResources().getStringArray(R.array.subjects);
     }
 
     private String[] initParameters(String[] args) {

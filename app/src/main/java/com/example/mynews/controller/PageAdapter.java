@@ -36,7 +36,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String[] title = mResources.getStringArray(R.array.subject);
+        String[] title = mResources.getStringArray(R.array.subjects);
                 //ApiFragment.newInstance(position,new String[4]).Subjects();
         return title[position + 1].toUpperCase();
     }

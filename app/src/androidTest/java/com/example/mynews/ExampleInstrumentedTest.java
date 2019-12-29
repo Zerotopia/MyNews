@@ -24,6 +24,7 @@ import com.example.mynews.controller.WebActivity;
 
 import org.hamcrest.Matchers;
 import org.hamcrest.core.AllOf;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -41,37 +42,42 @@ public class ExampleInstrumentedTest {
 
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
-/*
-    @BeforeClass
+
+    @Before
     public void setUp() {
         IdlingRegistry.getInstance().register(ApiFragment.getCount());
     }
 
-/*
+
+
     @Test
     public void basicTestOnRecyclerVew() {
-        RecyclerView recyclerView = actualRecyclerView();
-        int lastItem = recyclerView.getAdapter().getItemCount() - 1;
+        //RecyclerView recyclerView = actualRecyclerView();
+       // if (recyclerView.getAdapter() != null)
+        //int lastItem = recyclerView.getAdapter().getItemCount() - 1;
 
-        Espresso.onView(ViewMatchers.withId(R.id.fragment_api_recyclerview))
-                .perform(RecyclerViewActions.scrollToPosition(lastItem));
+        //Espresso.onView(ViewMatchers.withId(R.id.fragment_api_recyclerview))
+        //        .perform(RecyclerViewActions.scrollToPosition(8));
 
         Intents.init();
-        Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.fragment_api_recyclerview), ViewMatchers.isDisplayed()))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(lastItem, ViewActions.click()));
+        Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.fragment_api_recyclerview),
+                ViewMatchers.withParent(ViewMatchers.withId(R.id.main_activity_viewpager)),
+                ViewMatchers.isDisplayed()))
+                .perform(RecyclerViewActions.scrollToPosition(8))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(8, ViewActions.click()));
         Intents.intended(IntentMatchers.hasComponent(WebActivity.class.getName()));
         Intents.release();
     }
-
+/*
     @Test
     public void navigationTestOnViewPager() {
-        Espresso.onView(ViewMatchers.withText("TOP STORIES"))
-                .perform(ViewPagerActions.scrollRight())
-                .check(ViewAssertions.matches(
-                        ViewMatchers.withText(
-                                Matchers.containsString("MOST POPULAR"))));
+        Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
+                .perform(ViewPagerActions.scrollLeft())
+                .check(ViewAssertions.matches(ViewMatchers.hasDescendant(
+                        ViewMatchers.withText("MOST POPULAR"))));
         Espresso.onView(ViewMatchers.withText("TECHNOLOGY"))
-                .perform(ViewActions.click())
+                .perform(ViewActions.click());
+        Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
                 .perform(ViewPagerActions.scrollLeft())
                 .check(ViewAssertions.matches(
                         ViewMatchers.withText(

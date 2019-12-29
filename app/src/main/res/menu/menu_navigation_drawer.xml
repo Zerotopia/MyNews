@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/menu_nd_search_item"
+            android:title="@string/search" />
+        <item
+            android:id="@+id/menu_nd_notification_item"
+            android:title="@string/notification" />
+    </group>
+    <item android:title="@string/topics">
+        <menu>
+            <item
+                android:id="@+id/menu_nd_topic1_item"
+                android:title="@string/topic1" />
+            <item
+                android:id="@+id/menu_nd_topic2_item"
+                android:title="@string/topic2" />
+            <item
+                android:id="@+id/menu_nd_topic3_item"
+                android:title="@string/topic3" />
+            <item
+                android:id="@+id/menu_nd_topic4_item"
+                android:title="@string/topic4" />
+            <item
+                android:id="@+id/menu_nd_topic5_item"
+                android:title="@string/topic5" />
+            <item
+                android:id="@+id/menu_nd_topic6_item"
+                android:title="@string/topic6" />
+        </menu>
+    </item>
+    <item android:title="@string/info">
+        <menu>
+            <item
+                android:id="@+id/menu_nd_help_item"
+                android:title="@string/help" />
+            <item
+                android:id="@+id/menu_nd_about_item"
+                android:title="@string/about" />
+        </menu>
+    </item>
+</menu>

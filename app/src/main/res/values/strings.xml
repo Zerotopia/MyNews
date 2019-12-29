@@ -1,16 +1,33 @@
 <resources>
     <string name="app_name">MyNews</string>
     <string name="undefined">unknown</string>
-    <string-array name="subject">
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="search">Search</string>
+    <string name="notification">Notification</string>
+    <string name="topics">Topics</string>
+    <string name="info">Information</string>
+    <string name="about">About</string>
+    <string name="help">Help</string>
+
+    <string name="topic1">science</string>
+    <string name="topic2">technology</string>
+    <string name="topic3">books</string>
+    <string name="topic4">travel</string>
+    <string name="topic5">food</string>
+    <string name="topic6">health</string>
+    <string-array name="subjects">
         <item>home</item>
         <item>top stories</item>
         <item>most popular</item>
-        <item>science</item>
-        <item>technology</item>
-        <item>books</item>
-        <item>travel</item>
-        <item>food</item>
-        <item>health</item>
+        <item>@string/topic1</item>
+        <item>@string/topic2</item>
+        <item>@string/topic3</item>
+        <item>@string/topic4</item>
+        <item>@string/topic5</item>
+        <item>@string/topic6</item>
     </string-array>
 
 </resources>
