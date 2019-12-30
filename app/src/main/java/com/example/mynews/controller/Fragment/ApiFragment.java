@@ -1,4 +1,4 @@
-package com.example.mynews.controller;
+package com.example.mynews.controller.Fragment;
 
 
 import android.os.Bundle;
@@ -8,16 +8,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.test.espresso.IdlingResource;
 import androidx.test.espresso.idling.CountingIdlingResource;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.mynews.R;
+import com.example.mynews.controller.Adapteur.ArticleAdapter;
 import com.example.mynews.model.Article;
 import com.example.mynews.model.Results;
 import com.example.mynews.network.NYService;
@@ -25,7 +24,6 @@ import com.example.mynews.network.RetrofitClient;
 import com.example.mynews.view.CustomItemDecoration;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;

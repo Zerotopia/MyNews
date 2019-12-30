@@ -13,18 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".controller.SearchResultActivity"
-            android:parentActivityName=".controller.SearchActivity"/>
-        <activity android:name=".controller.InformationActivity"
-            android:parentActivityName=".controller.MainActivity"/>
+        <activity android:name=".controller.Activity.SearchResultActivity"
+            android:parentActivityName=".controller.Activity.SearchActivity"/>
+        <activity android:name=".controller.Activity.InformationActivity"
+            android:parentActivityName=".controller.Activity.MainActivity"/>
         <activity
-            android:name=".controller.SearchActivity"
-            android:parentActivityName=".controller.MainActivity" />
+            android:name=".controller.Activity.SearchActivity"
+            android:parentActivityName=".controller.Activity.MainActivity" />
         <activity
-            android:name=".controller.WebActivity"
-            android:parentActivityName=".controller.MainActivity" />
+            android:name=".controller.Activity.WebActivity"
+            android:parentActivityName=".controller.Activity.MainActivity" />
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".controller.Activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

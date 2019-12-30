@@ -1,4 +1,4 @@
-package com.example.mynews.controller;
+package com.example.mynews.controller.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

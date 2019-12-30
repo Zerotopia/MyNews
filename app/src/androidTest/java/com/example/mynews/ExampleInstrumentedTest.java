@@ -7,12 +7,9 @@ import android.widget.DatePicker;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.IdlingRegistry;
-import androidx.test.espresso.ViewInteractionModule_ProvideNeedsActivityFactory;
 import androidx.test.espresso.action.ViewActions;
-import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
-import androidx.test.espresso.contrib.ViewPagerActions;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.intent.matcher.IntentMatchers;
 import androidx.test.espresso.matcher.ViewMatchers;
@@ -20,22 +17,17 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import com.example.mynews.controller.ApiFragment;
-import com.example.mynews.controller.MainActivity;
-import com.example.mynews.controller.WebActivity;
+import com.example.mynews.controller.Fragment.ApiFragment;
+import com.example.mynews.controller.Activity.MainActivity;
+import com.example.mynews.controller.Activity.WebActivity;
 
 import org.hamcrest.Matchers;
 import org.hamcrest.core.AllOf;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static org.hamcrest.core.AllOf.allOf;
 import static org.junit.Assert.*;
 
 /**
@@ -114,7 +106,7 @@ public class ExampleInstrumentedTest {
                 .perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withId(R.id.fragment_search_button))
                 .perform(ViewActions.click());
-        Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.fragment_api_recyclerview), isDisplayed()))
+        Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.fragment_api_recyclerview), ViewMatchers.isDisplayed()))
                 .check(new RecyclerViewTestSize.ItemCount(10));
     }
 
@@ -124,10 +116,6 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
         assertEquals("com.example.mynews", appContext.getPackageName());
-    }
-
-    private RecyclerView actualRecyclerView() {
-        return activityTestRule.getActivity().findViewById(R.id.fragment_api_recyclerview);
     }
 
 }

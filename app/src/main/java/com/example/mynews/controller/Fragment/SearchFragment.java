@@ -1,4 +1,4 @@
-package com.example.mynews.controller;
+package com.example.mynews.controller.Fragment;
 
 
 import android.app.DatePickerDialog;
@@ -10,7 +10,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,11 +22,13 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.mynews.R;
+import com.example.mynews.controller.Activity.SearchResultActivity;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -91,6 +92,13 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     }
 
     @Override
+    public void onStop() {
+        mBeginDate.setText("");
+        mEndDate.setText("");
+        super.onStop();
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.d("TAG", "onViewCreated: ");
@@ -114,7 +122,6 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
             }
         });
 
-        // changeStatusButton(mSearchButton, false);
         for (CheckBox checkBox : mTopics)
             checkBox.setOnClickListener(v -> {
                 refreshCheckBox();
@@ -135,7 +142,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         });
     }
 
-    private void displayPickerDialog() {
+    private void displayPickerDialog(String date) {
         Context context = getActivity();
         if (context != null) {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -144,20 +151,41 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
                     Calendar.getInstance().get(Calendar.YEAR),
                     Calendar.getInstance().get(Calendar.MONTH),
                     Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+            datePickerDialog.getDatePicker().setMinDate(stringDateToMillis("18/09/1851"));
+            datePickerDialog.getDatePicker().setMaxDate(stringDateToMillis(""));
+
+            if (!date.isEmpty()) {
+                if (mBegin) datePickerDialog.getDatePicker().setMaxDate(stringDateToMillis(date));
+                else datePickerDialog.getDatePicker().setMinDate(stringDateToMillis(date));
+            }
             datePickerDialog.show();
         }
+    }
+
+    private long stringDateToMillis(String date) {
+        String[]arrayDate = date.split("/");
+
+        Calendar calendar = new GregorianCalendar();
+        if (arrayDate.length == 3) {
+            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(arrayDate[0]));
+            calendar.set(Calendar.MONTH, Integer.parseInt(arrayDate[1]) - 1);
+            calendar.set(Calendar.YEAR, Integer.parseInt(arrayDate[2]));
+            return calendar.getTimeInMillis(); }
+        else return System.currentTimeMillis();
     }
 
     private void setDateOnClickListener(View view) {
         if (!mNotification) {
             mBeginDate.setOnClickListener(v -> {
                 mBegin = true;
-                displayPickerDialog();
+                String endDate = mEndDate.getText().toString();
+                displayPickerDialog(endDate);
             });
 
             mEndDate.setOnClickListener(v -> {
                 mBegin = false;
-                displayPickerDialog();
+                String beginDate = mBeginDate.getText().toString();
+                displayPickerDialog(beginDate);
             });
         }
     }
@@ -206,10 +234,10 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
 
     private String filterQueryFormat() {
         StringBuilder result = new StringBuilder("news_desk:(");
-        for (int i = 0; i < mTopics.length; i++) {
-            if (mTopics[i].isChecked()) {
+        for (CheckBox checkBox : mTopics) {
+            if (checkBox.isChecked()) {
                 result.append("\"");
-                result.append(mTopics[i].getText());
+                result.append(checkBox.getText());
                 result.append("\" ");
             }
         }

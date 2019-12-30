@@ -1,8 +1,7 @@
-package com.example.mynews.controller;
+package com.example.mynews.controller.Adapteur;
 
 import android.content.Context;
 import android.content.Intent;
-import android.renderscript.RenderScript;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mynews.R;
+import com.example.mynews.controller.Activity.WebActivity;
 import com.example.mynews.model.Article;
 
 import java.util.ArrayList;

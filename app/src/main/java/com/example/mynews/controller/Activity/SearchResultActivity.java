@@ -1,4 +1,4 @@
-package com.example.mynews.controller;
+package com.example.mynews.controller.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.mynews.R;
+import com.example.mynews.controller.Fragment.ApiFragment;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchResultActivity extends AppCompatActivity {
 
-    boolean mNotification;
+    String[] mArguments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,11 +18,11 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         Intent intent = getIntent();
-        mNotification = intent.getBooleanExtra("ACTIVITY",false);
-        SearchFragment searchFragment = SearchFragment.newInstance(mNotification);
+        mArguments = intent.getStringArrayExtra("ARGS");
+        ApiFragment searchResultFragment = ApiFragment.newInstance(9, mArguments);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container,searchFragment)
+                .replace(R.id.container,searchResultFragment)
                 .commit();
     }
 }
