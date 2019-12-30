@@ -1,6 +1,11 @@
 package com.example.mynews.controller.Activity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +24,8 @@ import com.example.mynews.controller.Adapteur.PageAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ViewPager mViewPager;
@@ -26,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
+
+   // private static final String CHANNEL = "NotificationChannel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +66,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mNavigationView.setNavigationItemSelectedListener(this);
 
-
+        createNotificationChannel();
+        Log.d("TAG", "onViewCreated: Abc ");
+        Intent intent = new Intent(MainActivity.this, Reciever.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                MainActivity.this,
+                42,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+               alarmManager.setRepeating(
+                        AlarmManager.RTC_WAKEUP,
+                        System.currentTimeMillis() + 20000,
+                        AlarmManager.INTERVAL_DAY,
+                        pendingIntent);
+       // alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
     }
 
     @Override
@@ -152,6 +175,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else super.onBackPressed();
     }
 
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "New Results";
+            String description = "New article published";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+
+            NotificationChannel channel = new NotificationChannel("abc", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
+
+        }
+    }
 }
 
 

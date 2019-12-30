@@ -170,7 +170,7 @@
                 android:layout_marginEnd="20dp"
                 android:textSize="20sp"
                 android:layout_weight="2"
-                android:id="@+id/switch_notif"/>
+                android:id="@+id/fragment_search_notification_switch"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

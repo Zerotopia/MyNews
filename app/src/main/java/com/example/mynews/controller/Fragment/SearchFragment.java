@@ -1,16 +1,22 @@
 package com.example.mynews.controller.Fragment;
 
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.ResultReceiver;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -22,13 +28,20 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 
 import com.example.mynews.R;
 import com.example.mynews.controller.Activity.SearchResultActivity;
+import com.example.mynews.model.Results;
+import com.example.mynews.network.NYService;
 
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Objects;
+
+import io.reactivex.Observable;
+
+import static android.content.Context.ALARM_SERVICE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,16 +49,19 @@ import java.util.GregorianCalendar;
 public class SearchFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
     private static final String BOOLEAN = "activity";
 
+
     private EditText mBeginDate;
     private EditText mEndDate;
     private EditText mSearchText;
     private Boolean mBegin;
     private Boolean mNotification;
+    private LinearLayout mNotificationLayout;
 
     private Button mSearchButton;
+    private Switch mNotificationSwitch;
 
     private CheckBox[] mTopics;
-    private boolean mChekbox;
+    private boolean mCheckbox;
     private boolean mEditText;
 
     public static SearchFragment newInstance(Boolean activity) {
@@ -60,7 +76,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mNotification = (getArguments() == null) || getArguments().getBoolean(BOOLEAN);
-        mChekbox = false;
+        mCheckbox = false;
         mEditText = false;
         Log.d("TAG", "onCreate: ");
     }
@@ -71,9 +87,10 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
 
         View inflate_search_xml = inflater.inflate(R.layout.fragment_search, container, false);
         LinearLayout dateLayout = inflate_search_xml.findViewById(R.id.fragment_search_dates);
-        LinearLayout notification_layout = inflate_search_xml.findViewById(R.id.fragment_search_notification_layout);
+        mNotificationLayout = inflate_search_xml.findViewById(R.id.fragment_search_notification_layout);
         mSearchText = inflate_search_xml.findViewById(R.id.fragment_search_editText);
         mSearchButton = inflate_search_xml.findViewById(R.id.fragment_search_button);
+        mNotificationSwitch = inflate_search_xml.findViewById(R.id.fragment_search_notification_switch);
 
         TypedArray idCheckbox = getResources().obtainTypedArray(R.array.res_checkbox);
         mTopicsFindViewById(inflate_search_xml, idCheckbox);
@@ -85,7 +102,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         } else {
             mBeginDate = inflate_search_xml.findViewById(R.id.fragment_search_begin_date);
             mEndDate = inflate_search_xml.findViewById(R.id.fragment_search_end_date);
-            notification_layout.setVisibility(View.GONE);
+            mNotificationLayout.setVisibility(View.GONE);
         }
         Log.d("TAG", "onCreateView: ");
         return inflate_search_xml;
@@ -93,8 +110,10 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
 
     @Override
     public void onStop() {
-        mBeginDate.setText("");
-        mEndDate.setText("");
+        if ((mBeginDate != null) && (mEndDate != null)) {
+            mBeginDate.setText("");
+            mEndDate.setText("");
+        }
         super.onStop();
     }
 
@@ -102,7 +121,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.d("TAG", "onViewCreated: ");
-        changeStatusOfSearchButton(false);
+        changeStatusOfSearch(false);
         mSearchText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -117,7 +136,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
             @Override
             public void afterTextChanged(Editable s) {
                 mEditText = (s != null) && !s.toString().trim().isEmpty();
-                changeStatusOfSearchButton(mEditText && mChekbox);
+                changeStatusOfSearch(mEditText && mCheckbox);
 
             }
         });
@@ -125,7 +144,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         for (CheckBox checkBox : mTopics)
             checkBox.setOnClickListener(v -> {
                 refreshCheckBox();
-                changeStatusOfSearchButton(mEditText && mChekbox);
+                changeStatusOfSearch(mEditText && mCheckbox);
             });
 
         setDateOnClickListener(view);
@@ -140,6 +159,24 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
             intent.putExtra("ARGS", intentExtra);
             startActivity(intent);
         });
+
+
+//        mNotificationSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//                if (isChecked) {
+//                    String[] intentExtra = new String[4];
+//                    intentExtra[0] = mSearchText.getText().toString();
+//                    int year = Calendar.getInstance().get(Calendar.YEAR);
+//                    int month = Calendar.getInstance().get(Calendar.MONTH);
+//                    int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+//                    String date = day + "/" + month + "/" + year;
+//                    intentExtra[1] = d8DateFormat(date);
+//                    intentExtra[2] = d8DateFormat(date);
+//                    intentExtra[3] = filterQueryFormat();
+//                    ApiFragment apiFragment = ApiFragment.newInstance(9,intentExtra);
+//                    int nbr = apiFragment.getNbResults();
+//
+//                } else {}
+//        });
     }
 
     private void displayPickerDialog(String date) {
@@ -163,15 +200,15 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     }
 
     private long stringDateToMillis(String date) {
-        String[]arrayDate = date.split("/");
+        String[] arrayDate = date.split("/");
 
         Calendar calendar = new GregorianCalendar();
         if (arrayDate.length == 3) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(arrayDate[0]));
             calendar.set(Calendar.MONTH, Integer.parseInt(arrayDate[1]) - 1);
             calendar.set(Calendar.YEAR, Integer.parseInt(arrayDate[2]));
-            return calendar.getTimeInMillis(); }
-        else return System.currentTimeMillis();
+            return calendar.getTimeInMillis();
+        } else return System.currentTimeMillis();
     }
 
     private void setDateOnClickListener(View view) {
@@ -209,13 +246,20 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         boolean newClickable = false;
         for (CheckBox checkBox : mTopics)
             newClickable = newClickable || checkBox.isChecked();
-        mChekbox = newClickable;
+        mCheckbox = newClickable;
     }
 
-    private void changeStatusOfSearchButton(boolean enable) {
-        if (enable) mSearchButton.setAlpha(0.9f);
-        else mSearchButton.setAlpha(0.5f);
+    private void changeStatusOfSearch(boolean enable) {
+        if (enable) {
+            mSearchButton.setAlpha(0.9f);
+            mNotificationLayout.setAlpha(1.0f);
+        } else {
+            mSearchButton.setAlpha(0.5f);
+            mNotificationLayout.setAlpha(0.5f);
+        }
         mSearchButton.setEnabled(enable);
+        mNotificationLayout.setEnabled(enable);
+
     }
 
     private String d8DateFormat(String date) {

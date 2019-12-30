@@ -45,6 +45,8 @@ public class ApiFragment extends Fragment {
     private int mPosition;
     private String[] mArguments;
 
+    private  int mNbResults;
+
 
     private static CountingIdlingResource mCount = new CountingIdlingResource("RXPROCESS");
 
@@ -101,6 +103,7 @@ public class ApiFragment extends Fragment {
                         //   Log.d("TAG", "onClick: rlient");
 
                         ArrayList<Article> articles = results.listOfArticle();
+                        mNbResults = articles.size();
                         //      Log.d("TAG", "onNext: " + art.size());
                         mRecyclerView.setAdapter(new ArticleAdapter(articles));
                     }
@@ -160,5 +163,9 @@ public class ApiFragment extends Fragment {
                     parameters[3],
                     NYService.APIKEY);
         return observable;
+    }
+
+    public int getNbResults() {
+        return mNbResults;
     }
 }
