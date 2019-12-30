@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="res_checkbox">
+        <item>@id/fragment_search_topic1</item>
+        <item>@id/fragment_search_topic2</item>
+        <item>@id/fragment_search_topic3</item>
+        <item>@id/fragment_search_topic4</item>
+        <item>@id/fragment_search_topic5</item>
+        <item>@id/fragment_search_topic6</item>
+    </integer-array>
+</resources>

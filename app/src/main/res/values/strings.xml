@@ -18,12 +18,12 @@
     <string name="about">About</string>
     <string name="help">Help</string>
 
-    <string name="topic1">science</string>
-    <string name="topic2">technology</string>
-    <string name="topic3">books</string>
-    <string name="topic4">travel</string>
-    <string name="topic5">food</string>
-    <string name="topic6">health</string>
+    <string name="topic1">Science</string>
+    <string name="topic2">Technology</string>
+    <string name="topic3">Books</string>
+    <string name="topic4">Travel</string>
+    <string name="topic5">Food</string>
+    <string name="topic6">Health</string>
     <string-array name="subjects">
         <item>home</item>
         <item>top stories</item>

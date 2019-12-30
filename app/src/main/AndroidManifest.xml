@@ -13,8 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".controller.InformationActivity"></activity>
-        <activity android:name=".controller.SearchActivity" />
+        <activity android:name=".controller.SearchResultActivity"
+            android:parentActivityName=".controller.SearchActivity"/>
+        <activity android:name=".controller.InformationActivity"
+            android:parentActivityName=".controller.MainActivity"/>
+        <activity
+            android:name=".controller.SearchActivity"
+            android:parentActivityName=".controller.MainActivity" />
         <activity
             android:name=".controller.WebActivity"
             android:parentActivityName=".controller.MainActivity" />

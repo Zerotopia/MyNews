@@ -32,6 +32,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.core.AllOf.allOf;
 import static org.junit.Assert.*;
 
 /**
@@ -92,7 +96,7 @@ public class ExampleInstrumentedTest {
                 .perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withId(R.id.fragment_search_editText))
                 .perform(ViewActions.click())
-                .perform(ViewActions.typeTextIntoFocusedView("chocolat"))
+                .perform(ViewActions.typeTextIntoFocusedView("Wine"))
                 .perform(ViewActions.closeSoftKeyboard());
         Espresso.onView(ViewMatchers.withId(R.id.fragment_search_begin_date))
                 .perform(ViewActions.click());
@@ -102,7 +106,7 @@ public class ExampleInstrumentedTest {
         Espresso.onView(ViewMatchers.withId(R.id.fragment_search_end_date))
                 .perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                .perform(PickerActions.setDate(2010,3,24));
+                .perform(PickerActions.setDate(2010, 3, 24));
         Espresso.onView(ViewMatchers.withText("OK")).perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withId(R.id.fragment_search_topic5))
                 .perform(ViewActions.click());
@@ -110,10 +114,8 @@ public class ExampleInstrumentedTest {
                 .perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withId(R.id.fragment_search_button))
                 .perform(ViewActions.click());
-/*
-        RecyclerView recyclerView = actualRecyclerView();
-        int sizeRecycler = recyclerView.getAdapter().getItemCount();
-        assertEquals(10,sizeRecycler); */
+        Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.fragment_api_recyclerview), isDisplayed()))
+                .check(new RecyclerViewTestSize.ItemCount(10));
     }
 
     @Test

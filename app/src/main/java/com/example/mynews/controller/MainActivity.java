@@ -146,7 +146,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Log.d("TAG", "startNewActivity: start ok");
     }
 
-
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else super.onBackPressed();
+    }
 
 }
 
