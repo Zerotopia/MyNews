@@ -47,6 +47,7 @@ public class ExampleInstrumentedTest {
     @Before
     public void setUp() {
         IdlingRegistry.getInstance().register(ApiFragment.getCount());
+        ApiFragment.setTestMode(true);
     }
 
 
@@ -67,57 +68,22 @@ public class ExampleInstrumentedTest {
     public void navigationTestOnViewPager() {
         Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
                 .perform(ViewPagerActions.scrollRight());
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Espresso.onView(AllOf.allOf(ViewMatchers.isSelected(),
                 ViewMatchers.withClassName(Matchers.equalTo(AppCompatTextView.class.getName()))))
                 .check(ViewAssertions.matches(ViewMatchers.withText("MOST POPULAR")));
         Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
                 .perform(ViewPagerActions.scrollRight());
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
                 .perform(ViewPagerActions.scrollRight());
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
                 .perform(ViewPagerActions.scrollRight());
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Espresso.onView(ViewMatchers.withText("FOOD"))
                 .perform(ViewActions.click());
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
                 .perform(ViewPagerActions.scrollLeft());
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Espresso.onView(AllOf.allOf(ViewMatchers.isSelected(),
                 ViewMatchers.withClassName(Matchers.equalTo(AppCompatTextView.class.getName()))))
                 .check(ViewAssertions.matches(ViewMatchers.withText("TRAVEL")));
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Test
@@ -145,7 +111,7 @@ public class ExampleInstrumentedTest {
         Espresso.onView(ViewMatchers.withId(R.id.fragment_search_button))
                 .perform(ViewActions.click());
         Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.fragment_api_recyclerview), ViewMatchers.isDisplayed()))
-                .check(new RecyclerViewTestSize.ItemCount(10));
+                .check(new RecyclerViewTestSize.ItemCount(17));
     }
 
     @Test

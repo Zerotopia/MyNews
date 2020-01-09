@@ -47,6 +47,7 @@ public class ApiFragment extends Fragment {
 
     private  int mNbResults;
 
+    private static boolean mTestMode = false;
 
     private static CountingIdlingResource mCount = new CountingIdlingResource("RXPROCESS");
 
@@ -78,7 +79,7 @@ public class ApiFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.addItemDecoration(new CustomItemDecoration(getContext()));
 
-        NYService nyService = RetrofitClient.getInstance();
+        NYService nyService = (mTestMode) ? RetrofitClient.getMock() : RetrofitClient.getInstance();
 
         initArguments();
 
@@ -163,6 +164,10 @@ public class ApiFragment extends Fragment {
                     parameters[3],
                     NYService.APIKEY);
         return observable;
+    }
+
+    public static void setTestMode(boolean testMode) {
+        mTestMode = testMode;
     }
 
     public int getNbResults() {

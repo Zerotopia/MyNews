@@ -45,8 +45,9 @@ public class NYServiceMock implements NYService {
             dp.add(new DataPicture("https://www.picasso.fr"));
         }
         String summary;
+        int nbResults = (nameService.equals("SEARCH : ")) ? 17 : 20;
         String date = "2002/11/21blabla";
-        for (int i=0; i<20; i++) {
+        for (int i=0; i<nbResults; i++) {
             summary = nameService + i;
             articles.add(new Article(summary,"Culture","Theatre",date,dp, NYT_HOME_URL));
         }
