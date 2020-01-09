@@ -21,10 +21,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.mynews.R;
 import com.example.mynews.controller.Adapteur.PageAdapter;
+import com.example.mynews.controller.broadcastreciever.Reciever;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
+
+import static com.example.mynews.controller.broadcastreciever.Reciever.CHANNEL;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                alarmManager.setRepeating(
                         AlarmManager.RTC_WAKEUP,
-                        System.currentTimeMillis() + 20000,
+                        System.currentTimeMillis() + AlarmManager.INTERVAL_DAY,
                         AlarmManager.INTERVAL_DAY,
                         pendingIntent);
        // alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
@@ -177,11 +180,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "New Results";
+            CharSequence name = "@string.new_result";
             String description = "New article published";
             int importance = NotificationManager.IMPORTANCE_HIGH;
 
-            NotificationChannel channel = new NotificationChannel("abc", name, importance);
+            NotificationChannel channel = new NotificationChannel(CHANNEL, name, importance);
             channel.setDescription(description);
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);

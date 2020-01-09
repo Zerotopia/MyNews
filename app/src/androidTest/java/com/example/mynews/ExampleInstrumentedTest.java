@@ -4,12 +4,15 @@ import android.content.Context;
 import android.widget.DatePicker;
 //import android.content.Intent;
 
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.espresso.contrib.ViewPagerActions;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.intent.matcher.IntentMatchers;
 import androidx.test.espresso.matcher.ViewMatchers;
@@ -49,13 +52,6 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void basicTestOnRecyclerVew() {
-        //RecyclerView recyclerView = actualRecyclerView();
-        // if (recyclerView.getAdapter() != null)
-        //int lastItem = recyclerView.getAdapter().getItemCount() - 1;
-
-        //Espresso.onView(ViewMatchers.withId(R.id.fragment_api_recyclerview))
-        //        .perform(RecyclerViewActions.scrollToPosition(8));
-
         Intents.init();
         Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.fragment_api_recyclerview),
                 ViewMatchers.withParent(ViewMatchers.withId(R.id.main_activity_viewpager)),
@@ -66,22 +62,29 @@ public class ExampleInstrumentedTest {
         Intents.release();
     }
 
-    /*
-        @Test
-        public void navigationTestOnViewPager() {
-            Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
-                    .perform(ViewPagerActions.scrollLeft())
-                    .check(ViewAssertions.matches(ViewMatchers.hasDescendant(
-                            ViewMatchers.withText("MOST POPULAR"))));
-            Espresso.onView(ViewMatchers.withText("TECHNOLOGY"))
-                    .perform(ViewActions.click());
-            Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
-                    .perform(ViewPagerActions.scrollLeft())
-                    .check(ViewAssertions.matches(
-                            ViewMatchers.withText(
-                                    Matchers.containsString("SCIENCE"))));
-        }
-    */
+
+    @Test
+    public void navigationTestOnViewPager() {
+        Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
+                .perform(ViewPagerActions.scrollRight());
+        Espresso.onView(AllOf.allOf(ViewMatchers.isSelected(),
+                ViewMatchers.withClassName(Matchers.equalTo(AppCompatTextView.class.getName()))))
+                .check(ViewAssertions.matches(ViewMatchers.withText("MOST POPULAR")));
+        Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
+                .perform(ViewPagerActions.scrollRight());
+        Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
+                .perform(ViewPagerActions.scrollRight());
+        Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
+                .perform(ViewPagerActions.scrollRight());
+        Espresso.onView(ViewMatchers.withText("FOOD"))
+                .perform(ViewActions.click());
+        Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
+                .perform(ViewPagerActions.scrollLeft());
+        Espresso.onView(AllOf.allOf(ViewMatchers.isSelected(),
+                ViewMatchers.withClassName(Matchers.equalTo(AppCompatTextView.class.getName()))))
+                .check(ViewAssertions.matches(ViewMatchers.withText("TRAVEL")));
+    }
+
     @Test
     public void searchActivityTest() {
         Espresso.onView(ViewMatchers.withId(R.id.menu_main_search_item))
