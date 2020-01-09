@@ -100,17 +100,17 @@ public class ApiFragment extends Fragment {
 
                     @Override
                     public void onNext(Results results) {
-                        //   Log.d("TAG", "onClick: rlient");
+                           Log.d("TAG", "onClick: rlient");
 
                         ArrayList<Article> articles = results.listOfArticle();
                         mNbResults = articles.size();
-                        //      Log.d("TAG", "onNext: " + art.size());
+                             Log.d("TAG", "onNext: " + articles.size());
                         mRecyclerView.setAdapter(new ArticleAdapter(articles));
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        //      Log.d("TAG", "onError: " + e.getMessage());
+                            Log.d("TAG", "onError: " + e.getMessage());
                         mCount.decrement();
                     }
 

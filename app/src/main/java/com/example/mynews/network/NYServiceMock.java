@@ -46,10 +46,9 @@ public class NYServiceMock implements NYService {
         }
         String summary;
         String date = "2002/11/21blabla";
-        String url = NYT_HOME_URL;
         for (int i=0; i<20; i++) {
             summary = nameService + i;
-            articles.add(new Article(summary,"Culture","Theatre",date,dp,url));
+            articles.add(new Article(summary,"Culture","Theatre",date,dp, NYT_HOME_URL));
         }
         return new Results("statusOK",articles);
     }
