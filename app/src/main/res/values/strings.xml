@@ -24,10 +24,12 @@
     <string name="topic4">Travel</string>
     <string name="topic5">Food</string>
     <string name="topic6">Health</string>
+    <string name="topstories">TOP STORIES</string>
+    <string name="mostpopular">MOST POPULAR</string>
     <string-array name="subjects">
         <item>home</item>
-        <item>top stories</item>
-        <item>most popular</item>
+        <item>@string/topstories</item>
+        <item>@string/mostpopular</item>
         <item>@string/topic1</item>
         <item>@string/topic2</item>
         <item>@string/topic3</item>

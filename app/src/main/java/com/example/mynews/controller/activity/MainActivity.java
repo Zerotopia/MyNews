@@ -1,11 +1,6 @@
-package com.example.mynews.controller.Activity;
+package com.example.mynews.controller.activity;
 
-import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,14 +15,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mynews.R;
-import com.example.mynews.controller.Adapteur.PageAdapter;
-import com.example.mynews.controller.broadcastreciever.Reciever;
+import com.example.mynews.controller.adapteur.PageAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.Objects;
-
-import static com.example.mynews.controller.broadcastreciever.Reciever.CHANNEL;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -69,21 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        createNotificationChannel();
-        Log.d("TAG", "onViewCreated: Abc ");
-        Intent intent = new Intent(MainActivity.this, Reciever.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                MainActivity.this,
-                42,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-               alarmManager.setRepeating(
-                        AlarmManager.RTC_WAKEUP,
-                        System.currentTimeMillis() + AlarmManager.INTERVAL_DAY,
-                        AlarmManager.INTERVAL_DAY,
-                        pendingIntent);
-       // alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
+
     }
 
     @Override
@@ -178,20 +154,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else super.onBackPressed();
     }
 
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "@string.new_result";
-            String description = "New article published";
-            int importance = NotificationManager.IMPORTANCE_HIGH;
 
-            NotificationChannel channel = new NotificationChannel(CHANNEL, name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
-
-        }
-    }
 }
 
 

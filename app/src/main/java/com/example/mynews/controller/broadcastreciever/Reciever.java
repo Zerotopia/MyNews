@@ -15,13 +15,13 @@ public class Reciever extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
+        int nbr = intent.getIntExtra("NBR",-1);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         NotificationCompat.Builder notificationBuild =
                 new NotificationCompat.Builder(context, CHANNEL)
                         .setSmallIcon(R.drawable.ic_attach_file_black_24dp)
                         .setContentTitle(context.getResources().getString(R.string.new_result))
-                        .setContentText("premiere notification")
+                        .setContentText("Vous avez reçu " + nbr + " nouveaux resultats")
                         .setPriority(NotificationCompat.PRIORITY_HIGH);
         notificationManager.notify(42, notificationBuild.build());
     }

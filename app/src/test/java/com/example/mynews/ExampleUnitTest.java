@@ -1,6 +1,10 @@
 package com.example.mynews;
 
 
+import android.content.Context;
+import android.widget.CheckBox;
+
+//import com.example.mynews.controller.fragment.SearchFragment;
 import com.example.mynews.model.Article;
 import com.example.mynews.network.NYService;
 import com.example.mynews.model.Results;
@@ -9,6 +13,10 @@ import com.google.gson.Gson;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -28,6 +36,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+@RunWith(MockitoJUnitRunner.class)
 public class ExampleUnitTest {
 
     private static Results sSearchJson;
@@ -42,6 +51,8 @@ public class ExampleUnitTest {
     private static final int MOSTPOPULAR = 1;
     private static final int TOPARTICLE = 2;
 
+    // private static FormatMaker sFormatMaker;
+    private static CheckBox[] sCheckBoxes = new CheckBox[6];
 
     private static void rxJavaCall(Observable<Results> observable, final int api) {
 
@@ -50,25 +61,37 @@ public class ExampleUnitTest {
                 .subscribe(new Observer<Results>() {
 
                     @Override
-                    public void onSubscribe(Disposable d) {}
+                    public void onSubscribe(Disposable d) {
+                    }
 
                     @Override
                     public void onNext(Results results) {
                         if (api == SEARCH) sSearchResults = results;
                         else if (api == MOSTPOPULAR) sPopularResults = results;
-                        else if(api == TOPARTICLE) sTopResults = results;
-                        }
+                        else if (api == TOPARTICLE) sTopResults = results;
+                    }
 
                     @Override
-                    public void onError(Throwable e) {}
+                    public void onError(Throwable e) {
+                    }
 
                     @Override
-                    public void onComplete() {}
+                    public void onComplete() {
+                    }
                 });
     }
 
     @BeforeClass
     public static void setUp() throws FileNotFoundException {
+       // sFormatMaker = new FormatMaker();
+
+        String[] checkboxName = {"Abc","Defgh","Ijkl","Mnopqr","Stu","Vwxyz"};
+        for (int i = 0; i < sCheckBoxes.length; i++) {
+            sCheckBoxes[i]= Mockito.mock(CheckBox.class);
+            sCheckBoxes[i].setText(checkboxName[i]);
+            sCheckBoxes[i].setChecked(false);
+        }
+
         // set up variables to test the parsing Json files from POJO class
         Gson gson = new Gson();
         sSearchJson = gson.fromJson(new FileReader("search.json"), Results.class);
@@ -81,7 +104,7 @@ public class ExampleUnitTest {
         Observable<Results> searchObs = nyService.searchArticle(
                 "math",
                 "20001002",
-                 "20100101",
+                "20100101",
                 "",
                 NYService.APIKEY);
         Observable<Results> popularObs = nyService.popularArticle(NYService.APIKEY);
@@ -91,118 +114,141 @@ public class ExampleUnitTest {
         rxJavaCall(popularObs, MOSTPOPULAR);
         rxJavaCall(topObs, TOPARTICLE);
     }
+/*
+    @Test
+    public void stringDateToMillis_isCorrect() {
+        assertEquals(86400000, sFormatMaker.stringDateToMillis("02/01/1970"));
+    }
 
     @Test
-    public void checkResultsModelForSearchJson(){
-        assertEquals(sSearchJson.getStatus(),"OK");
+    public void d8DateFormat_isCorrect() {
+        assertEquals("19950723", sFormatMaker.d8DateFormat("23/07/1995"));
+        assertEquals("", sFormatMaker.d8DateFormat(""));
+        assertEquals("20000704",sFormatMaker.d8DateFormat("4/7/2000"));
+    }
+
+    @Test
+    public void filterQueryFormat_isCorrect() {
+        assertEquals("news_desk:()",sFormatMaker.filterQueryFormat(sCheckBoxes));
+        sCheckBoxes[2].setChecked(true);
+        assertEquals("news_desk:(\"Ijkl\")",sFormatMaker.filterQueryFormat(sCheckBoxes));
+        sCheckBoxes[1].setChecked(true);
+        sCheckBoxes[4].setChecked(true);
+        assertEquals("news_desk:(\"Defgh\" \"Ijkl\" \"Stu\")",sFormatMaker.filterQueryFormat(sCheckBoxes));
+    }
+
+*/
+    @Test
+    public void checkResultsModelForSearchJson() {
+        assertEquals("OK", sSearchJson.getStatus());
 
         ArrayList<Article> Articles = sSearchJson.listOfArticle();
 
         Article article0 = Articles.get(0);
-        assertEquals(article0.summary(),"search snippet0");
-        assertEquals(article0.topics(),"search sectionname0 > search subsectionname0");
-        assertEquals(article0.publishedDate(),"01/08/2014");
-        assertEquals(article0.urlImage(),NYT_HOME_URL + "search urlimg0");
-        assertEquals(article0.urlArticle(),"search url0");
+        assertEquals("search snippet0", article0.summary());
+        assertEquals("search sectionname0 > search subsectionname0", article0.topics());
+        assertEquals("01/08/2014", article0.publishedDate());
+        assertEquals(NYT_HOME_URL + "search urlimg0", article0.urlImage());
+        assertEquals("search url0", article0.urlArticle());
 
         Article article1 = Articles.get(1);
-        assertEquals(article1.summary(),"search abstract1");
-        assertEquals(article1.topics(),"search sectionname1 > search newsdesk1");
-        assertEquals(article1.publishedDate(),UNDEFINED);
-        assertEquals(article1.urlImage(),UNDEFINED);
-        assertEquals(article1.urlArticle(),UNDEFINED);
+        assertEquals("search abstract1", article1.summary());
+        assertEquals("search sectionname1 > search newsdesk1", article1.topics());
+        assertEquals(UNDEFINED, article1.publishedDate());
+        assertEquals(UNDEFINED, article1.urlImage());
+        assertEquals(UNDEFINED, article1.urlArticle());
 
         Article article2 = Articles.get(2);
-        assertEquals(article2.summary(),"search lpar2");
-        assertEquals(article2.topics(),"search sectionname2 > search tom2");
-        assertEquals(article2.publishedDate(),"17/07/2019");
-        assertEquals(article2.urlImage(),NYT_HOME_URL + "search default url2");
+        assertEquals("search lpar2", article2.summary());
+        assertEquals("search sectionname2 > search tom2", article2.topics());
+        assertEquals("17/07/2019", article2.publishedDate());
+        assertEquals(NYT_HOME_URL + "search default url2", article2.urlImage());
 
 
         Article article3 = Articles.get(3);
-        assertEquals(article3.summary(),"search main3");
-        assertEquals(article3.topics(),"search sectionname3 > search dtype3");
-        assertEquals(article3.urlImage(),UNDEFINED);
+        assertEquals("search main3", article3.summary());
+        assertEquals("search sectionname3 > search dtype3", article3.topics());
+        assertEquals(UNDEFINED, article3.urlImage());
 
         Article article4 = Articles.get(4);
-        assertEquals(article4.summary(),UNDEFINED);
-        assertEquals(article4.topics(),"search subsectionname4 > search newsdesk4");
+        assertEquals(UNDEFINED, article4.summary());
+        assertEquals("search subsectionname4 > search newsdesk4", article4.topics());
 
-        assertEquals(Articles.get(5).topics(),"search subsectionname5 > search tom5");
-        assertEquals(Articles.get(6).topics(),"search subsectionname6 > search dtype6");
-        assertEquals(Articles.get(7).topics(),"search newsdesk7 > search tom7");
-        assertEquals(Articles.get(8).topics(),"search newsdesk8 > search dtype8");
-        assertEquals(Articles.get(9).topics(),"search tom9");
+        assertEquals("search subsectionname5 > search tom5", Articles.get(5).topics());
+        assertEquals("search subsectionname6 > search dtype6", Articles.get(6).topics());
+        assertEquals("search newsdesk7 > search tom7", Articles.get(7).topics());
+        assertEquals("search newsdesk8 > search dtype8", Articles.get(8).topics());
+        assertEquals("search tom9", Articles.get(9).topics());
     }
 
     @Test
-    public void checkResultsModelForMostPopularJson(){
-        assertEquals(sPopularJson.getStatus(),"OK");
+    public void checkResultsModelForMostPopularJson() {
+        assertEquals("OK", sPopularJson.getStatus());
 
         ArrayList<Article> Articles = sPopularJson.listOfArticle();
 
         Article article0 = Articles.get(0);
-        assertEquals(article0.summary(),"most abstract0");
-        assertEquals(article0.topics(),"most section0 > most subsection0");
-        assertEquals(article0.publishedDate(),"10/12/2019");
-        assertEquals(article0.urlImage(),"most urlimg0");
-        assertEquals(article0.urlArticle(),"most url0");
+        assertEquals("most abstract0", article0.summary());
+        assertEquals("most section0 > most subsection0", article0.topics());
+        assertEquals("10/12/2019", article0.publishedDate());
+        assertEquals("most urlimg0", article0.urlImage());
+        assertEquals("most url0", article0.urlArticle());
 
         Article article1 = Articles.get(1);
-        assertEquals(article1.summary(),"most title1");
-        assertEquals(article1.topics(),"most section1 > most type1");
-        assertEquals(article1.publishedDate(),UNDEFINED);
-        assertEquals(article1.urlImage(),"most default url1");
-        assertEquals(article1.urlArticle(),UNDEFINED);
+        assertEquals("most title1", article1.summary());
+        assertEquals("most section1 > most type1", article1.topics());
+        assertEquals(UNDEFINED, article1.publishedDate());
+        assertEquals("most default url1", article1.urlImage());
+        assertEquals(UNDEFINED, article1.urlArticle());
 
         Article article2 = Articles.get(2);
-        assertEquals(article2.summary(),UNDEFINED);
-        assertEquals(article2.topics(),"most subsection2 > most type2");
-        assertEquals(article2.publishedDate(),"16/12/2019");
-        assertEquals(article2.urlImage(),UNDEFINED);
+        assertEquals(UNDEFINED, article2.summary());
+        assertEquals("most subsection2 > most type2", article2.topics());
+        assertEquals("16/12/2019", article2.publishedDate());
+        assertEquals(UNDEFINED, article2.urlImage());
 
         Article article3 = Articles.get(3);
-        assertEquals(article3.topics(),"most section3");
-        assertEquals(article3.urlImage(),"most default url3");
+        assertEquals("most section3", article3.topics());
+        assertEquals("most default url3", article3.urlImage());
 
         Article article4 = Articles.get(4);
-        assertEquals(article4.topics(),"most type4");
-        assertEquals(article4.urlImage(),UNDEFINED);
+        assertEquals("most type4", article4.topics());
+        assertEquals(UNDEFINED, article4.urlImage());
 
-        assertEquals(Articles.get(5).topics(),UNDEFINED);
+        assertEquals(UNDEFINED, Articles.get(5).topics());
     }
 
     @Test
-    public void checkResultsModelForTopStoriesJson(){
-        assertEquals(sTopJson.getStatus(),"OK");
+    public void checkResultsModelForTopStoriesJson() {
+        assertEquals("OK", sTopJson.getStatus());
 
         ArrayList<Article> Articles = sTopJson.listOfArticle();
 
         Article article0 = Articles.get(0);
-        assertEquals(article0.summary(),"top abstract0");
-        assertEquals(article0.topics(),"top section0 > top subsection0");
-        assertEquals(article0.publishedDate(),"11/12/2019");
-        assertEquals(article0.urlImage(),"top urlimg0");
-        assertEquals(article0.urlArticle(),"top url0");
+        assertEquals("top abstract0", article0.summary());
+        assertEquals("top section0 > top subsection0", article0.topics());
+        assertEquals("11/12/2019", article0.publishedDate());
+        assertEquals("top urlimg0", article0.urlImage());
+        assertEquals("top url0", article0.urlArticle());
 
         Article article1 = Articles.get(1);
-        assertEquals(article1.summary(),"top title1");
-        assertEquals(article1.topics(),"top section1 > top itype1");
-        assertEquals(article1.publishedDate(),"11/12/2019");
-        assertEquals(article1.urlImage(),UNDEFINED);
-        assertEquals(article1.urlArticle(),UNDEFINED);
+        assertEquals("top title1", article1.summary());
+        assertEquals("top section1 > top itype1", article1.topics());
+        assertEquals("11/12/2019", article1.publishedDate());
+        assertEquals(UNDEFINED, article1.urlImage());
+        assertEquals(UNDEFINED, article1.urlArticle());
 
         Article article2 = Articles.get(2);
-        assertEquals(article2.summary(),UNDEFINED);
-        assertEquals(article2.topics(),"top section2");
-        assertEquals(article2.publishedDate(),"11/12/2019");
-        assertEquals(article2.urlImage(),"top default url2");
+        assertEquals(UNDEFINED, article2.summary());
+        assertEquals("top section2", article2.topics());
+        assertEquals("11/12/2019", article2.publishedDate());
+        assertEquals("top default url2", article2.urlImage());
 
         Article article3 = Articles.get(3);
-        assertEquals(article3.topics(),"top subsection3 > top itype3");
-        assertEquals(article3.publishedDate(),UNDEFINED);
+        assertEquals("top subsection3 > top itype3", article3.topics());
+        assertEquals(UNDEFINED, article3.publishedDate());
 
-        assertEquals(Articles.get(4).topics(),"top itype4");
+        assertEquals("top itype4", Articles.get(4).topics());
     }
 
     @Test
@@ -212,7 +258,7 @@ public class ExampleUnitTest {
         ArrayList<Article> topListArticle = sTopResults.listOfArticle();
 
         assertEquals("statusOK", sSearchResults.getStatus());
-        assertEquals(20,topListArticle.size());
+        assertEquals(20, topListArticle.size());
 
         String url = popularListArticle.get(0).urlArticle();
         assertEquals(NYT_HOME_URL, url);
@@ -236,8 +282,9 @@ public class ExampleUnitTest {
         assertEquals("https://www.picasso.fr", testString);
     }
 
+
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
-      }
+    }
 }

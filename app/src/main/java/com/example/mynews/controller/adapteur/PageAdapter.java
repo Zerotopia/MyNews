@@ -1,4 +1,4 @@
-package com.example.mynews.controller.Adapteur;
+package com.example.mynews.controller.adapteur;
 
 import android.content.res.Resources;
 
@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.mynews.R;
-import com.example.mynews.controller.Fragment.ApiFragment;
+import com.example.mynews.controller.fragment.ApiFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
 

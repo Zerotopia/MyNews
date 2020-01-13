@@ -1,4 +1,4 @@
-package com.example.mynews.controller.Fragment;
+package com.example.mynews.controller.fragment;
 
 
 import android.app.AlarmManager;
@@ -16,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.os.ResultReceiver;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -31,17 +30,15 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import com.example.mynews.R;
-import com.example.mynews.controller.Activity.SearchResultActivity;
-import com.example.mynews.model.Results;
-import com.example.mynews.network.NYService;
+import com.example.mynews.controller.activity.SearchResultActivity;
+import com.example.mynews.controller.broadcastreciever.Reciever;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
-import io.reactivex.Observable;
-
 import static android.content.Context.ALARM_SERVICE;
+import static com.example.mynews.controller.broadcastreciever.Reciever.CHANNEL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -121,6 +118,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.d("TAG", "onViewCreated: ");
+        Context context = view.getContext();
         changeStatusOfSearch(false);
         mSearchText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -150,7 +148,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         setDateOnClickListener(view);
 
         mSearchButton.setOnClickListener(v -> {
-            Intent intent = new Intent(view.getContext(), SearchResultActivity.class);
+            Intent intent = new Intent(context, SearchResultActivity.class);
             String[] intentExtra = new String[4];
             intentExtra[0] = mSearchText.getText().toString();
             intentExtra[1] = d8DateFormat(mBeginDate.getText().toString());
@@ -161,22 +159,45 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         });
 
 
-//        mNotificationSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//                if (isChecked) {
-//                    String[] intentExtra = new String[4];
-//                    intentExtra[0] = mSearchText.getText().toString();
-//                    int year = Calendar.getInstance().get(Calendar.YEAR);
-//                    int month = Calendar.getInstance().get(Calendar.MONTH);
-//                    int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-//                    String date = day + "/" + month + "/" + year;
-//                    intentExtra[1] = d8DateFormat(date);
-//                    intentExtra[2] = d8DateFormat(date);
-//                    intentExtra[3] = filterQueryFormat();
-//                    ApiFragment apiFragment = ApiFragment.newInstance(9,intentExtra);
-//                    int nbr = apiFragment.getNbResults();
+        mNotificationSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                String[] intentExtra = new String[4];
+                intentExtra[0] = mSearchText.getText().toString();
+                Calendar calendar = Calendar.getInstance();
+                calendar.add(Calendar.DATE, -1);
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                String date = (day) + "/" + (month + 1) + "/" + year;
+                intentExtra[1] = d8DateFormat(date);
+                intentExtra[2] = "";
+                intentExtra[3] = filterQueryFormat();
+                ApiFragment apiFragment = ApiFragment.newInstance(9, intentExtra);
+                apiFragment.apiCall();
+                int nbr = apiFragment.getNumberOfResults();
+                Log.d("TAG", "onViewCreated: " + nbr);
+                if (nbr == 0) {
+                    createNotificationChannel(context);
+                    Log.d("TAG", "onViewCreated: Abc ");
+                    Intent intent = new Intent(context, Reciever.class);
+                    intent.putExtra("NBR",nbr);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                            context,
+                            42,
+                            intent,
+                            PendingIntent.FLAG_UPDATE_CURRENT);
+                    AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+                    alarmManager.setRepeating(
+                            AlarmManager.RTC_WAKEUP,
+                            System.currentTimeMillis() + 15000,
+                            AlarmManager.INTERVAL_DAY,
+                            pendingIntent);
+                    // alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
 //
-//                } else {}
-//        });
+                }
+            } else {
+            }
+        });
     }
 
     private void displayPickerDialog(String date) {
@@ -286,5 +307,20 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
             }
         }
         return result.append(")").toString();
+    }
+
+    private void createNotificationChannel(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "New Results";
+            String description = "New article published";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+
+            NotificationChannel channel = new NotificationChannel(CHANNEL, name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
+
+        }
     }
 }

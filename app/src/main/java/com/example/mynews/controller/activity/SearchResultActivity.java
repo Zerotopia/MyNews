@@ -1,4 +1,4 @@
-package com.example.mynews.controller.Activity;
+package com.example.mynews.controller.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.mynews.R;
-import com.example.mynews.controller.Fragment.ApiFragment;
+import com.example.mynews.controller.fragment.ApiFragment;
 
 public class SearchResultActivity extends AppCompatActivity {
 

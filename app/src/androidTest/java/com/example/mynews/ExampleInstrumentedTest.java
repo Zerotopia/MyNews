@@ -5,9 +5,9 @@ import android.widget.DatePicker;
 //import android.content.Intent;
 
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.IdlingRegistry;
+import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.contrib.PickerActions;
@@ -20,9 +20,9 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import com.example.mynews.controller.Fragment.ApiFragment;
-import com.example.mynews.controller.Activity.MainActivity;
-import com.example.mynews.controller.Activity.WebActivity;
+import com.example.mynews.controller.fragment.ApiFragment;
+import com.example.mynews.controller.activity.MainActivity;
+import com.example.mynews.controller.activity.WebActivity;
 
 import org.hamcrest.Matchers;
 import org.hamcrest.core.AllOf;
@@ -70,7 +70,7 @@ public class ExampleInstrumentedTest {
                 .perform(ViewPagerActions.scrollRight());
         Espresso.onView(AllOf.allOf(ViewMatchers.isSelected(),
                 ViewMatchers.withClassName(Matchers.equalTo(AppCompatTextView.class.getName()))))
-                .check(ViewAssertions.matches(ViewMatchers.withText("MOST POPULAR")));
+                .check(ViewAssertions.matches(ViewMatchers.withText(R.string.mostpopular)));
         Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
                 .perform(ViewPagerActions.scrollRight());
         Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
@@ -112,6 +112,27 @@ public class ExampleInstrumentedTest {
                 .perform(ViewActions.click());
         Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.fragment_api_recyclerview), ViewMatchers.isDisplayed()))
                 .check(new RecyclerViewTestSize.ItemCount(17));
+    }
+
+    @Test
+    public void clickableSearchButtonTest() {
+        Espresso.onView(ViewMatchers.withId(R.id.menu_main_search_item))
+                .perform(ViewActions.click());
+        ViewInteraction onViewButton = Espresso.onView(ViewMatchers.withId(R.id.fragment_search_button));
+        onViewButton.check(ViewAssertions.matches(Matchers.not(ViewMatchers.isEnabled())));
+        Espresso.onView(ViewMatchers.withId(R.id.fragment_search_topic5))
+                .perform(ViewActions.click());
+        onViewButton.check(ViewAssertions.matches(Matchers.not(ViewMatchers.isEnabled())));
+        Espresso.onView(ViewMatchers.withId(R.id.fragment_search_topic5))
+                .perform(ViewActions.click());
+        Espresso.onView(ViewMatchers.withId(R.id.fragment_search_editText))
+                .perform(ViewActions.click())
+                .perform(ViewActions.typeTextIntoFocusedView("Wine"))
+                .perform(ViewActions.closeSoftKeyboard());
+        onViewButton.check(ViewAssertions.matches(Matchers.not(ViewMatchers.isEnabled())));
+        Espresso.onView(ViewMatchers.withId(R.id.fragment_search_topic5))
+                .perform(ViewActions.click());
+        onViewButton.check(ViewAssertions.matches(ViewMatchers.isEnabled()));
     }
 
     @Test

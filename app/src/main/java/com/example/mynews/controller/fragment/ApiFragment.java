@@ -1,4 +1,4 @@
-package com.example.mynews.controller.Fragment;
+package com.example.mynews.controller.fragment;
 
 
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mynews.R;
-import com.example.mynews.controller.Adapteur.ArticleAdapter;
+import com.example.mynews.controller.adapteur.ArticleAdapter;
 import com.example.mynews.model.Article;
 import com.example.mynews.model.Results;
 import com.example.mynews.network.NYService;
@@ -45,9 +45,10 @@ public class ApiFragment extends Fragment {
     private int mPosition;
     private String[] mArguments;
 
-    private  int mNbResults;
+    private int mNumberOfResults;
 
     private static boolean mTestMode = false;
+    private boolean mViewMode = false;
 
     private static CountingIdlingResource mCount = new CountingIdlingResource("RXPROCESS");
 
@@ -67,60 +68,20 @@ public class ApiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View inflaterLayout = inflater.inflate(R.layout.fragment_api, container, false);
         mRecyclerView = inflaterLayout.findViewById(R.id.fragment_api_recyclerview);
-
+        Log.d("TAG", "onCreateView: API ");
         return inflaterLayout;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        mViewMode = true;
         //final RecyclerView recyclerView = view.findViewById(R.id.fragment_api_recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.addItemDecoration(new CustomItemDecoration(getContext()));
-
-        NYService nyService = (mTestMode) ? RetrofitClient.getMock() : RetrofitClient.getInstance();
-
-        initArguments();
-
-        Log.d("TAG", "onViewCreated: " + mArguments[0] + mArguments[1] + mArguments[2] + mArguments[3]);
+        apiCall();
         //Log.d("TAG", "onViewCreated: Entrer : " + pos);
-        Observable<Results> observable;
 
-        //Log.d("TAG", "onViewCreated: debut observable");
-        mCount.increment();
-        observable = initObservable(mPosition, nyService, mArguments);
-//                Log.d("SWITCH", "onViewCreated: ANOMALIE");
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Results>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Results results) {
-                           Log.d("TAG", "onClick: rlient");
-
-                        ArrayList<Article> articles = results.listOfArticle();
-                        mNbResults = articles.size();
-                             Log.d("TAG", "onNext: " + articles.size());
-                        mRecyclerView.setAdapter(new ArticleAdapter(articles));
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                            Log.d("TAG", "onError: " + e.getMessage());
-                        mCount.decrement();
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        mCount.decrement();
-
-                    }
-                });
     }
 
     public static CountingIdlingResource getCount() {
@@ -170,7 +131,53 @@ public class ApiFragment extends Fragment {
         mTestMode = testMode;
     }
 
-    public int getNbResults() {
-        return mNbResults;
+    public void apiCall() {
+        Observable<Results> observable;
+        NYService nyService = (mTestMode) ? RetrofitClient.getMock() : RetrofitClient.getInstance();
+        //Log.d("TAG", "onViewCreated: debut observable");
+        initArguments();
+        Log.d("TAG", "onViewCreated: API" + mArguments[0] + mArguments[1] + mArguments[2] + mArguments[3]);
+        mCount.increment();
+
+        observable = initObservable(mPosition, nyService, mArguments);
+//                Log.d("SWITCH", "onViewCreated: ANOMALIE");
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Results>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Results results) {
+                        Log.d("TAG", "onClick: rlient");
+                        ArrayList<Article> articles = results.listOfArticle();
+                        mNumberOfResults = articles.size();
+                        if (mViewMode) {
+                            mRecyclerView.setAdapter(new ArticleAdapter(articles));
+                        }
+                        Log.d("TAG", "onNext: " + articles.size());
+
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("TAG", "onError: " + e.getMessage());
+                        mCount.decrement();
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        mCount.decrement();
+
+                    }
+                });
+
+    }
+
+    public int getNumberOfResults() {
+        return mNumberOfResults;
     }
 }
