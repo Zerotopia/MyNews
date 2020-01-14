@@ -8,12 +8,11 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -28,16 +27,19 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.mynews.R;
 import com.example.mynews.controller.activity.SearchResultActivity;
 import com.example.mynews.controller.broadcastreciever.Reciever;
+import com.example.mynews.model.FormatMaker;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Objects;
 
 import static android.content.Context.ALARM_SERVICE;
+import static android.content.Context.MODE_PRIVATE;
+import static android.content.Context.NOTIFICATION_SERVICE;
 import static com.example.mynews.controller.broadcastreciever.Reciever.CHANNEL;
 
 /**
@@ -46,6 +48,7 @@ import static com.example.mynews.controller.broadcastreciever.Reciever.CHANNEL;
 public class SearchFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
     private static final String BOOLEAN = "activity";
 
+    private Context mContext;
 
     private EditText mBeginDate;
     private EditText mEndDate;
@@ -53,6 +56,8 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     private Boolean mBegin;
     private Boolean mNotification;
     private LinearLayout mNotificationLayout;
+    private LinearLayout mDateLayout;
+    private TextView mNotificationTextView;
 
     private Button mSearchButton;
     private Switch mNotificationSwitch;
@@ -60,6 +65,8 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     private CheckBox[] mTopics;
     private boolean mCheckbox;
     private boolean mEditText;
+
+    private FormatMaker mFormatMaker = new FormatMaker();
 
     public static SearchFragment newInstance(Boolean activity) {
         SearchFragment fragment = new SearchFragment();
@@ -75,6 +82,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         mNotification = (getArguments() == null) || getArguments().getBoolean(BOOLEAN);
         mCheckbox = false;
         mEditText = false;
+
         Log.d("TAG", "onCreate: ");
     }
 
@@ -83,43 +91,140 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
                              Bundle savedInstanceState) {
 
         View inflate_search_xml = inflater.inflate(R.layout.fragment_search, container, false);
-        LinearLayout dateLayout = inflate_search_xml.findViewById(R.id.fragment_search_dates);
+        mDateLayout = inflate_search_xml.findViewById(R.id.fragment_search_dates);
         mNotificationLayout = inflate_search_xml.findViewById(R.id.fragment_search_notification_layout);
+        mNotificationTextView = inflate_search_xml.findViewById(R.id.fragment_search_notification_text);
         mSearchText = inflate_search_xml.findViewById(R.id.fragment_search_editText);
         mSearchButton = inflate_search_xml.findViewById(R.id.fragment_search_button);
         mNotificationSwitch = inflate_search_xml.findViewById(R.id.fragment_search_notification_switch);
+        mTopicsFindViewById(inflate_search_xml);
 
-        TypedArray idCheckbox = getResources().obtainTypedArray(R.array.res_checkbox);
-        mTopicsFindViewById(inflate_search_xml, idCheckbox);
-        idCheckbox.recycle();
+        setVisibilityContent(inflate_search_xml);
 
-        if (mNotification) {
-            dateLayout.setVisibility(View.GONE);
-            mSearchButton.setVisibility(View.GONE);
-        } else {
-            mBeginDate = inflate_search_xml.findViewById(R.id.fragment_search_begin_date);
-            mEndDate = inflate_search_xml.findViewById(R.id.fragment_search_end_date);
-            mNotificationLayout.setVisibility(View.GONE);
-        }
+        mContext = inflate_search_xml.getContext();
+        changeStatusOfSearch(false);
+
+        setSearchTextChangeListener();
+        setCheckBoxesOnClickListener();
+        setDateOnClickListener();
+        setSearchButtonOnClickListener();
+        setNotificationSwitchListener();
+
         Log.d("TAG", "onCreateView: ");
         return inflate_search_xml;
     }
 
-    @Override
-    public void onStop() {
-        if ((mBeginDate != null) && (mEndDate != null)) {
-            mBeginDate.setText("");
-            mEndDate.setText("");
-        }
-        super.onStop();
+    private void setNotificationSwitchListener() {
+        mNotificationSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                createNotificationChannel(mContext);
+                Log.d("TAG", "onViewCreated: Abc ");
+                Intent intent = new Intent(mContext, Reciever.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                        mContext,
+                        42,
+                        intent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager) mContext.getSystemService(ALARM_SERVICE);
+                if (alarmManager != null)
+                    alarmManager.setRepeating(
+                            AlarmManager.RTC_WAKEUP,
+                            System.currentTimeMillis() + 15000,
+                            AlarmManager.INTERVAL_DAY,
+                            pendingIntent);
+
+                mNotificationTextView.setText(R.string.disable_notification);
+            } else {
+                NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
+                if (notificationManager != null) notificationManager.cancel(42);
+
+                mNotificationTextView.setText(R.string.enable_notification);
+            }
+        });
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Log.d("TAG", "onViewCreated: ");
-        Context context = view.getContext();
-        changeStatusOfSearch(false);
+    private void createNotificationChannel(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "New Results";
+            String description = "New article published";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+
+            NotificationChannel channel = new NotificationChannel(CHANNEL, name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
+
+        }
+    }
+
+    private void setSearchButtonOnClickListener() {
+        mSearchButton.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, SearchResultActivity.class);
+            String[] intentExtra = new String[4];
+            intentExtra[0] = mSearchText.getText().toString();
+            intentExtra[1] = mFormatMaker.d8DateFormat(mBeginDate.getText().toString());
+            intentExtra[2] = mFormatMaker.d8DateFormat(mEndDate.getText().toString());
+            intentExtra[3] = mFormatMaker.filterQueryFormat(mTopics);
+            intent.putExtra("ARGS", intentExtra);
+            startActivity(intent);
+        });
+    }
+
+    private void setDateOnClickListener() {
+        if (!mNotification) {
+            mBeginDate.setOnClickListener(v -> {
+                mBegin = true;
+                String endDate = mEndDate.getText().toString();
+                displayPickerDialog(endDate);
+            });
+
+            mEndDate.setOnClickListener(v -> {
+                mBegin = false;
+                String beginDate = mBeginDate.getText().toString();
+                displayPickerDialog(beginDate);
+            });
+        }
+    }
+
+    private void displayPickerDialog(String date) {
+        Context context = getActivity();
+        if (context != null) {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    context,
+                    this,
+                    Calendar.getInstance().get(Calendar.YEAR),
+                    Calendar.getInstance().get(Calendar.MONTH),
+                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+            datePickerDialog.getDatePicker().setMinDate(mFormatMaker.stringDateToMillis("18/09/1851"));
+            datePickerDialog.getDatePicker().setMaxDate(mFormatMaker.stringDateToMillis(""));
+
+            if (!date.isEmpty()) {
+                if (mBegin)
+                    datePickerDialog.getDatePicker().setMaxDate(mFormatMaker.stringDateToMillis(date));
+                else
+                    datePickerDialog.getDatePicker().setMinDate(mFormatMaker.stringDateToMillis(date));
+            }
+            datePickerDialog.show();
+        }
+    }
+
+    private void setCheckBoxesOnClickListener() {
+        for (CheckBox checkBox : mTopics)
+            checkBox.setOnClickListener(v -> {
+                refreshCheckBox();
+                changeStatusOfSearch(mEditText && mCheckbox);
+            });
+    }
+
+    private void refreshCheckBox() {
+        boolean newClickable = false;
+        for (CheckBox checkBox : mTopics)
+            newClickable = newClickable || checkBox.isChecked();
+        mCheckbox = newClickable;
+    }
+
+    private void setSearchTextChangeListener() {
         mSearchText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -138,136 +243,27 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
 
             }
         });
-
-        for (CheckBox checkBox : mTopics)
-            checkBox.setOnClickListener(v -> {
-                refreshCheckBox();
-                changeStatusOfSearch(mEditText && mCheckbox);
-            });
-
-        setDateOnClickListener(view);
-
-        mSearchButton.setOnClickListener(v -> {
-            Intent intent = new Intent(context, SearchResultActivity.class);
-            String[] intentExtra = new String[4];
-            intentExtra[0] = mSearchText.getText().toString();
-            intentExtra[1] = d8DateFormat(mBeginDate.getText().toString());
-            intentExtra[2] = d8DateFormat(mEndDate.getText().toString());
-            intentExtra[3] = filterQueryFormat();
-            intent.putExtra("ARGS", intentExtra);
-            startActivity(intent);
-        });
-
-
-        mNotificationSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                String[] intentExtra = new String[4];
-                intentExtra[0] = mSearchText.getText().toString();
-                Calendar calendar = Calendar.getInstance();
-                calendar.add(Calendar.DATE, -1);
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                String date = (day) + "/" + (month + 1) + "/" + year;
-                intentExtra[1] = d8DateFormat(date);
-                intentExtra[2] = "";
-                intentExtra[3] = filterQueryFormat();
-                ApiFragment apiFragment = ApiFragment.newInstance(9, intentExtra);
-                apiFragment.apiCall();
-                int nbr = apiFragment.getNumberOfResults();
-                Log.d("TAG", "onViewCreated: " + nbr);
-                if (nbr == 0) {
-                    createNotificationChannel(context);
-                    Log.d("TAG", "onViewCreated: Abc ");
-                    Intent intent = new Intent(context, Reciever.class);
-                    intent.putExtra("NBR",nbr);
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                            context,
-                            42,
-                            intent,
-                            PendingIntent.FLAG_UPDATE_CURRENT);
-                    AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-                    alarmManager.setRepeating(
-                            AlarmManager.RTC_WAKEUP,
-                            System.currentTimeMillis() + 15000,
-                            AlarmManager.INTERVAL_DAY,
-                            pendingIntent);
-                    // alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
-//
-                }
-            } else {
-            }
-        });
     }
 
-    private void displayPickerDialog(String date) {
-        Context context = getActivity();
-        if (context != null) {
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    context,
-                    this,
-                    Calendar.getInstance().get(Calendar.YEAR),
-                    Calendar.getInstance().get(Calendar.MONTH),
-                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-            datePickerDialog.getDatePicker().setMinDate(stringDateToMillis("18/09/1851"));
-            datePickerDialog.getDatePicker().setMaxDate(stringDateToMillis(""));
-
-            if (!date.isEmpty()) {
-                if (mBegin) datePickerDialog.getDatePicker().setMaxDate(stringDateToMillis(date));
-                else datePickerDialog.getDatePicker().setMinDate(stringDateToMillis(date));
-            }
-            datePickerDialog.show();
+    private void setVisibilityContent(View view) {
+        if (mNotification) {
+            mDateLayout.setVisibility(View.GONE);
+            mSearchButton.setVisibility(View.GONE);
+        } else {
+            mBeginDate = view.findViewById(R.id.fragment_search_begin_date);
+            mEndDate = view.findViewById(R.id.fragment_search_end_date);
+            mNotificationLayout.setVisibility(View.GONE);
         }
     }
 
-    private long stringDateToMillis(String date) {
-        String[] arrayDate = date.split("/");
+    private void mTopicsFindViewById(View view) {
+        TypedArray idCheckbox = getResources().obtainTypedArray(R.array.res_checkbox);
 
-        Calendar calendar = new GregorianCalendar();
-        if (arrayDate.length == 3) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(arrayDate[0]));
-            calendar.set(Calendar.MONTH, Integer.parseInt(arrayDate[1]) - 1);
-            calendar.set(Calendar.YEAR, Integer.parseInt(arrayDate[2]));
-            return calendar.getTimeInMillis();
-        } else return System.currentTimeMillis();
-    }
-
-    private void setDateOnClickListener(View view) {
-        if (!mNotification) {
-            mBeginDate.setOnClickListener(v -> {
-                mBegin = true;
-                String endDate = mEndDate.getText().toString();
-                displayPickerDialog(endDate);
-            });
-
-            mEndDate.setOnClickListener(v -> {
-                mBegin = false;
-                String beginDate = mBeginDate.getText().toString();
-                displayPickerDialog(beginDate);
-            });
-        }
-    }
-
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        if (!mNotification) {
-            String date = getString(R.string.date_format, dayOfMonth, (month + 1), year);
-            if (mBegin) mBeginDate.setText(date);
-            else mEndDate.setText(date);
-        }
-    }
-
-    private void mTopicsFindViewById(View view, TypedArray idArray) {
-        mTopics = new CheckBox[idArray.length()];
+        mTopics = new CheckBox[idCheckbox.length()];
         for (int i = 0; i < mTopics.length; i++)
-            mTopics[i] = view.findViewById(idArray.getResourceId(i, -1));
-    }
+            mTopics[i] = view.findViewById(idCheckbox.getResourceId(i, -1));
 
-    private void refreshCheckBox() {
-        boolean newClickable = false;
-        for (CheckBox checkBox : mTopics)
-            newClickable = newClickable || checkBox.isChecked();
-        mCheckbox = newClickable;
+        idCheckbox.recycle();
     }
 
     private void changeStatusOfSearch(boolean enable) {
@@ -283,44 +279,29 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
 
     }
 
-    private String d8DateFormat(String date) {
-        String[] arrayDate = date.split("/");
-        if (arrayDate.length == 3) {
-            String month = twoDigitFormat(arrayDate[1]);
-            String day = twoDigitFormat(arrayDate[0]);
-            return arrayDate[2] + month + day;
-        } else return "";
+    @Override
+    public void onStop() {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("search_params",MODE_PRIVATE);
+        SharedPreferences.Editor preferencesEditor = sharedPreferences.edit();
+
+        preferencesEditor.putString("KEYWORD",mSearchText.getText().toString());
+        preferencesEditor.putString("BEGINDATE",mBeginDate.getText().toString());
+        preferencesEditor.putString("ENDDATE",mEndDate.getText().toString());
+       // preferencesEditor.
+        /*
+        if ((mBeginDate != null) && (mEndDate != null)) {
+            mBeginDate.setText("");
+            mEndDate.setText("");
+        }*/
+        super.onStop();
     }
 
-    private String twoDigitFormat(String number) {
-        if (number.length() == 1) return "0" + number;
-        else return number;
-    }
-
-    private String filterQueryFormat() {
-        StringBuilder result = new StringBuilder("news_desk:(");
-        for (CheckBox checkBox : mTopics) {
-            if (checkBox.isChecked()) {
-                result.append("\"");
-                result.append(checkBox.getText());
-                result.append("\" ");
-            }
-        }
-        return result.append(")").toString();
-    }
-
-    private void createNotificationChannel(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "New Results";
-            String description = "New article published";
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-
-            NotificationChannel channel = new NotificationChannel(CHANNEL, name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
-            Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
-
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        if (!mNotification) {
+            String date = getString(R.string.date_format, dayOfMonth, (month + 1), year);
+            if (mBegin) mBeginDate.setText(date);
+            else mEndDate.setText(date);
         }
     }
 }

@@ -6,17 +6,21 @@ import android.widget.CheckBox;
 
 //import com.example.mynews.controller.fragment.SearchFragment;
 import com.example.mynews.model.Article;
+import com.example.mynews.model.FormatMaker;
 import com.example.mynews.network.NYService;
 import com.example.mynews.model.Results;
 import com.example.mynews.network.RetrofitClient;
 import com.google.gson.Gson;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -51,8 +55,11 @@ public class ExampleUnitTest {
     private static final int MOSTPOPULAR = 1;
     private static final int TOPARTICLE = 2;
 
-    // private static FormatMaker sFormatMaker;
+    private static FormatMaker sFormatMaker;
     private static CheckBox[] sCheckBoxes = new CheckBox[6];
+
+    @Mock
+    private static Context context;
 
     private static void rxJavaCall(Observable<Results> observable, final int api) {
 
@@ -81,17 +88,24 @@ public class ExampleUnitTest {
                 });
     }
 
+//    @Before
+//    public void init() { MockitoAnnotations.initMocks(this);}
+
     @BeforeClass
     public static void setUp() throws FileNotFoundException {
-       // sFormatMaker = new FormatMaker();
-
+        sFormatMaker = new FormatMaker();
+/*
         String[] checkboxName = {"Abc","Defgh","Ijkl","Mnopqr","Stu","Vwxyz"};
-        for (int i = 0; i < sCheckBoxes.length; i++) {
-            sCheckBoxes[i]= Mockito.mock(CheckBox.class);
-            sCheckBoxes[i].setText(checkboxName[i]);
-            sCheckBoxes[i].setChecked(false);
-        }
 
+        for (int i = 0; i < sCheckBoxes.length; i++) {
+            //sCheckBoxes[i]= Mockito.mock(CheckBox.class);
+           sCheckBoxes[i] = new CheckBox(context);
+            // sCheckBoxes[i].setId(i);
+            sCheckBoxes[i].setText(checkboxName[i]);
+            System.out.println("name : " + sCheckBoxes[i].getText());
+            sCheckBoxes[i].setChecked(true);
+        }
+*/
         // set up variables to test the parsing Json files from POJO class
         Gson gson = new Gson();
         sSearchJson = gson.fromJson(new FileReader("search.json"), Results.class);
@@ -114,7 +128,7 @@ public class ExampleUnitTest {
         rxJavaCall(popularObs, MOSTPOPULAR);
         rxJavaCall(topObs, TOPARTICLE);
     }
-/*
+
     @Test
     public void stringDateToMillis_isCorrect() {
         assertEquals(86400000, sFormatMaker.stringDateToMillis("02/01/1970"));
@@ -127,17 +141,18 @@ public class ExampleUnitTest {
         assertEquals("20000704",sFormatMaker.d8DateFormat("4/7/2000"));
     }
 
-    @Test
+/*    @Test
     public void filterQueryFormat_isCorrect() {
         assertEquals("news_desk:()",sFormatMaker.filterQueryFormat(sCheckBoxes));
-        sCheckBoxes[2].setChecked(true);
+       // sCheckBoxes[2].setChecked(false);
+        System.out.println("is check 2 :" + sCheckBoxes[2].isChecked());
         assertEquals("news_desk:(\"Ijkl\")",sFormatMaker.filterQueryFormat(sCheckBoxes));
-        sCheckBoxes[1].setChecked(true);
-        sCheckBoxes[4].setChecked(true);
+        sCheckBoxes[1].setChecked(false);
+        sCheckBoxes[4].setChecked(false);
         assertEquals("news_desk:(\"Defgh\" \"Ijkl\" \"Stu\")",sFormatMaker.filterQueryFormat(sCheckBoxes));
     }
-
 */
+
     @Test
     public void checkResultsModelForSearchJson() {
         assertEquals("OK", sSearchJson.getStatus());

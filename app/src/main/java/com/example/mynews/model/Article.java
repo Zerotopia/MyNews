@@ -37,18 +37,6 @@ public class Article {
     private String mTitle;
 
     /**
-     * The constructor is used to construct an answer in Mock service.
-     */
-    public Article(String snippet, String section, String subsection, String pubDate, ArrayList<DataPicture> multimedia, String url) {
-        mSnippet = snippet;
-        mSection = section;
-        mSubsection = subsection;
-        mPubDate = pubDate;
-        mMultimedia = multimedia;
-        mUrl = url;
-    }
-
-    /**
      * Variables used to determine topics of an Article
      */
     @SerializedName("section")
@@ -97,6 +85,18 @@ public class Article {
     private String mWebUrl;
     @SerializedName("url")
     private String mUrl;
+
+    /**
+     * The constructor is used to construct an answer in Mock service.
+     */
+    public Article(String snippet, String section, String subsection, String pubDate, ArrayList<DataPicture> multimedia, String url) {
+        mSnippet = snippet;
+        mSection = section;
+        mSubsection = subsection;
+        mPubDate = pubDate;
+        mMultimedia = multimedia;
+        mUrl = url;
+    }
 
     /**
      * @return a summary of an article, and UNDEFINED if
@@ -246,7 +246,7 @@ public class Article {
      * by the "GSON processus". And we check moreover if the
      * instanced value are not empty.
      */
-    public boolean existString(String string) {
+    private boolean existString(String string) {
         return ((string != null) && !string.isEmpty());
     }
 
