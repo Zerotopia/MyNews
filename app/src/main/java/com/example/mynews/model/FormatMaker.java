@@ -15,10 +15,10 @@ public class FormatMaker {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(arrayDate[0]));
             calendar.set(Calendar.MONTH, Integer.parseInt(arrayDate[1]) - 1);
             calendar.set(Calendar.YEAR, Integer.parseInt(arrayDate[2]));
-            calendar.set(Calendar.HOUR_OF_DAY,0);
-            calendar.set(Calendar.MINUTE,0);
-            calendar.set(Calendar.SECOND,0);
-            calendar.set(Calendar.MILLISECOND,0);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
             long dateInMillis = calendar.getTimeInMillis();
             return dateInMillis + calendar.getTimeZone().getOffset(dateInMillis);
         } else return System.currentTimeMillis();
@@ -42,20 +42,15 @@ public class FormatMaker {
         boolean first = true;
         StringBuilder result = new StringBuilder("news_desk:(");
         for (CheckBox checkBox : checkBoxes) {
-            System.out.println("avant if");
             if (checkBox.isChecked()) {
-                System.out.println("if check");
                 if (first) {
                     result.append("\"");
                     first = false;
-                }
-                else result.append(" \"");
+                } else result.append(" \"");
                 result.append(checkBox.getText());
                 result.append("\"");
             }
-            System.out.println("fin if1");
         }
         return result.append(")").toString();
     }
-
 }

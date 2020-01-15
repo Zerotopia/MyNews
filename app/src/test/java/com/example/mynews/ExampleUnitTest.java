@@ -144,13 +144,26 @@ public class ExampleUnitTest {
 /*    @Test
     public void filterQueryFormat_isCorrect() {
         assertEquals("news_desk:()",sFormatMaker.filterQueryFormat(sCheckBoxes));
-       // sCheckBoxes[2].setChecked(false);
+       // sCheckBoxes[2].setChecked(true);
         System.out.println("is check 2 :" + sCheckBoxes[2].isChecked());
         assertEquals("news_desk:(\"Ijkl\")",sFormatMaker.filterQueryFormat(sCheckBoxes));
-        sCheckBoxes[1].setChecked(false);
-        sCheckBoxes[4].setChecked(false);
+        sCheckBoxes[1].setChecked(true);
+        sCheckBoxes[4].setChecked(true);
         assertEquals("news_desk:(\"Defgh\" \"Ijkl\" \"Stu\")",sFormatMaker.filterQueryFormat(sCheckBoxes));
     }
+
+    @Test
+    public void encodeTopicsTest() {
+        assertEquals("011010", encodeTopics(sCheckBoxes));
+    }
+
+    @Test
+    public void decodeTopicsTest() {
+        String entry = "0011010";
+        boolean[] expected = {false, false, true, true, false, true, false};
+        assertEquals(expected, decodeTopics(entry));
+    }
+
 */
 
     @Test
