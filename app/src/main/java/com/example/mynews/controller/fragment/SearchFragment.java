@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -41,7 +42,6 @@ import java.util.Set;
 import static android.content.Context.ALARM_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Context.NOTIFICATION_SERVICE;
-import static com.example.mynews.controller.broadcastreciever.Reciever.CHANNEL;
 import static com.example.mynews.model.FormatMaker.d8DateFormat;
 import static com.example.mynews.model.FormatMaker.filterQueryFormat;
 import static com.example.mynews.model.FormatMaker.stringDateToMillis;
@@ -50,7 +50,17 @@ import static com.example.mynews.model.FormatMaker.stringDateToMillis;
  * A simple {@link Fragment} subclass.
  */
 public class SearchFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
-    private static final String BOOLEAN = "activity";
+    private static final String BOOLEAN = "ACTIVITY";
+    public static final int REQUEST_CODE = 42;
+    public static final String ARGUMENTS = "ARGS";
+    private static final String FIRST_ARTICLE_DATE = "18/09/1851";
+    public static final String SEARCH_PARAM = "SEARCH PARAMETERS";
+    public static final String NOTIFICATION_PARAM = "NOTIFICATION PARAMETERS";
+    public static final String KEYWORD = "KEYWORD";
+    private static final String BEGIN_DATE = "BEGIN DATE";
+    private static final String END_DATE = "END DATE";
+    public static final String TOPICS = "TOPICS";
+    public static final String CHANNEL = "NotificationChannel";
 
     private Context mContext;
 
@@ -70,7 +80,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     private boolean mCheckbox;
     private boolean mEditText;
 
-    // private FormatMaker mFormatMaker = new FormatMaker();
+    private SharedPreferences mSharedPreferences;
 
     public static SearchFragment newInstance(Boolean activity) {
         SearchFragment fragment = new SearchFragment();
@@ -84,10 +94,9 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mNotification = (getArguments() == null) || getArguments().getBoolean(BOOLEAN);
-        mCheckbox = false;
         mEditText = false;
-
-        Log.d("TAG", "onCreate: ");
+        mCheckbox = false;
+        Log.d("TAG", "onCreate: search ");
     }
 
     @Override
@@ -113,9 +122,36 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         setDateOnClickListener();
         setSearchButtonOnClickListener();
         setNotificationSwitchListener();
-
+        restorePreferences();
         Log.d("TAG", "onCreateView: ");
+        restorePreferences();
         return inflate_search_xml;
+    }
+
+    private void restorePreferences() {
+        Set<String> topics;
+
+
+        Log.d("TAG", "restorePreferences: " + mNotification);
+        if (mNotification) {
+            mSharedPreferences = mContext.getSharedPreferences(NOTIFICATION_PARAM, MODE_PRIVATE);
+            mSearchText.setText(mSharedPreferences.getString(KEYWORD, ""));
+            topics = mSharedPreferences.getStringSet(TOPICS, new HashSet<>());
+        } else {
+            mSharedPreferences = mContext.getSharedPreferences(SEARCH_PARAM, MODE_PRIVATE);
+            mSearchText.setText(mSharedPreferences.getString(KEYWORD, ""));
+            mBeginDate.setText(mSharedPreferences.getString(BEGIN_DATE, ""));
+            mEndDate.setText(mSharedPreferences.getString(END_DATE, ""));
+            topics = mSharedPreferences.getStringSet(TOPICS, new HashSet<>());
+            Log.d("TAG", "restorePreferences: " + topics.toString());
+        }
+
+        for (CheckBox checkBox : mTopics)
+            if (topics.contains(checkBox.getText().toString())) {
+                Log.d("TAG", "restorePreferences: before setChecked");
+                checkBox.setChecked(true);
+                Log.d("TAG", "restorePreferences: after setChecked");
+            }
     }
 
     private void setNotificationSwitchListener() {
@@ -126,7 +162,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
                 Intent intent = new Intent(mContext, Reciever.class);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(
                         mContext,
-                        42,
+                        REQUEST_CODE,
                         intent,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager) mContext.getSystemService(ALARM_SERVICE);
@@ -140,7 +176,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
                 mNotificationTextView.setText(R.string.disable_notification);
             } else {
                 NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
-                if (notificationManager != null) notificationManager.cancel(42);
+                if (notificationManager != null) notificationManager.cancel(REQUEST_CODE);
 
                 mNotificationTextView.setText(R.string.enable_notification);
             }
@@ -165,14 +201,24 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     private void setSearchButtonOnClickListener() {
         mSearchButton.setOnClickListener(v -> {
             Intent intent = new Intent(mContext, SearchResultActivity.class);
-            String[] intentExtra = new String[4];
-            intentExtra[0] = mSearchText.getText().toString();
-            intentExtra[1] = d8DateFormat(mBeginDate.getText().toString());
-            intentExtra[2] = d8DateFormat(mEndDate.getText().toString());
-            intentExtra[3] = filterQueryFormat(topicsToStringSet());
-            intent.putExtra("ARGS", intentExtra);
+            String[] intentExtra = setSearchParameters(
+                    mSearchText.getText().toString(),
+                    d8DateFormat(mBeginDate.getText().toString()),
+                    d8DateFormat(mEndDate.getText().toString()),
+                    filterQueryFormat(topicsToStringSet())
+            );
+            intent.putExtra(ARGUMENTS, intentExtra);
             startActivity(intent);
         });
+    }
+
+    public static String[] setSearchParameters(String keywords, String beginDate, String endDate, String filterQuery) {
+        String[] result = new String[4];
+        result[0] = keywords;
+        result[1] = beginDate;
+        result[2] = endDate;
+        result[3] = filterQuery;
+        return result;
     }
 
     private void setDateOnClickListener() {
@@ -180,12 +226,14 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
             mBeginDate.setOnClickListener(v -> {
                 mBegin = true;
                 String endDate = mEndDate.getText().toString();
+                mBeginDate.setText("");
                 displayPickerDialog(endDate);
             });
 
             mEndDate.setOnClickListener(v -> {
                 mBegin = false;
                 String beginDate = mBeginDate.getText().toString();
+                mEndDate.setText("");
                 displayPickerDialog(beginDate);
             });
         }
@@ -200,7 +248,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
                     Calendar.getInstance().get(Calendar.YEAR),
                     Calendar.getInstance().get(Calendar.MONTH),
                     Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-            datePickerDialog.getDatePicker().setMinDate(stringDateToMillis("18/09/1851"));
+            datePickerDialog.getDatePicker().setMinDate(stringDateToMillis(FIRST_ARTICLE_DATE));
             datePickerDialog.getDatePicker().setMaxDate(stringDateToMillis(""));
 
             if (!date.isEmpty()) {
@@ -215,7 +263,8 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
 
     private void setCheckBoxesOnClickListener() {
         for (CheckBox checkBox : mTopics)
-            checkBox.setOnClickListener(v -> {
+            checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                Log.d("TAG", "setCheckBoxesOnClickListener:  in");
                 refreshCheckBox();
                 changeStatusOfSearch(mEditText && mCheckbox);
             });
@@ -285,15 +334,22 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
 
     @Override
     public void onStop() {
-        SharedPreferences sharedPreferences = mContext.getSharedPreferences("search_params", MODE_PRIVATE);
-        SharedPreferences.Editor preferencesEditor = sharedPreferences.edit();
+        Log.d("TAG", "onStop: PREF");
+        // mSharedPreferences = mContext.getSharedPreferences(SEARCH_PARAM, MODE_PRIVATE);
+        SharedPreferences.Editor preferencesEditor = mSharedPreferences.edit();
 
         preferencesEditor
-                .putString("KEYWORD", mSearchText.getText().toString())
-                .putString("BEGINDATE", mBeginDate.getText().toString())
-                .putString("ENDDATE", mEndDate.getText().toString())
-                .putStringSet("IOPICS", topicsToStringSet())
-                .apply();
+                .putString(KEYWORD, mSearchText.getText().toString())
+                .putStringSet(TOPICS, topicsToStringSet())
+                .commit();
+        Log.d("TAG", "onStop: notif " + topicsToStringSet().toString());
+        if (!mNotification) {
+            preferencesEditor
+                    .putString(BEGIN_DATE, mBeginDate.getText().toString())
+                    .putString(END_DATE, mEndDate.getText().toString())
+                    .commit();
+            Log.d("TAG", "onStop: search" + topicsToStringSet().toString());
+        }
         // preferencesEditor.
         /*
         if ((mBeginDate != null) && (mEndDate != null)) {

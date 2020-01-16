@@ -1,6 +1,7 @@
 package com.example.mynews.controller.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +20,8 @@ import com.example.mynews.controller.adapteur.PageAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import static com.example.mynews.controller.fragment.SearchFragment.SEARCH_PARAM;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ViewPager mViewPager;
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
 
-   // private static final String CHANNEL = "NotificationChannel";
+    // private static final String CHANNEL = "NotificationChannel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +44,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mNavigationView = findViewById(R.id.main_activity_navigation_drawer);
 
         mViewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), getResources()));
+        setTabLayout();
+        setActionBar();
+        mNavigationView.setNavigationItemSelectedListener(this);
 
-        mTabLayout.setupWithViewPager(mViewPager);
-        mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        resetSearchPreferences();
+    }
 
+    private void resetSearchPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SEARCH_PARAM, MODE_PRIVATE);
+        SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
+        sharedPreferencesEditor.clear().apply();
+    }
+
+    private void setActionBar() {
         setSupportActionBar(mToolbar);
-
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -56,10 +67,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.string.navigation_drawer_close);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+    }
 
-        mNavigationView.setNavigationItemSelectedListener(this);
-
-
+    private void setTabLayout() {
+        mTabLayout.setupWithViewPager(mViewPager);
+        mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
 
     @Override
@@ -73,16 +85,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.menu_main_search_item:
                 Log.d("TAG", "onOptionsItemSelected: ");
-                startNewActivity(true,false);
+                startNewActivity(true, false);
                 return true;
             case R.id.menu_main_notification_item:
-                startNewActivity(true,true);
+                startNewActivity(true, true);
                 return true;
             case R.id.menu_main_help_item:
-                startNewActivity(false,true);
+                startNewActivity(false, true);
                 return true;
             case R.id.menu_main_about_item:
-                startNewActivity(false,false);
+                startNewActivity(false, false);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -93,10 +105,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.menu_nd_search_item:
-                startNewActivity(true,false);
+                startNewActivity(true, false);
                 break;
             case R.id.menu_nd_notification_item:
-                startNewActivity(true,true);
+                startNewActivity(true, true);
                 break;
             case R.id.menu_nd_topic1_item:
                 mViewPager.setCurrentItem(2, true);
@@ -117,10 +129,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 mViewPager.setCurrentItem(7, true);
                 break;
             case R.id.menu_nd_help_item:
-                startNewActivity(false,true);
+                startNewActivity(false, true);
                 break;
             case R.id.menu_nd_about_item:
-                startNewActivity(false,false);
+                startNewActivity(false, false);
                 break;
             default:
                 break;
@@ -129,18 +141,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    public void startNewActivity (boolean searchActivity, boolean activity) {
+    public void startNewActivity(boolean searchActivity, boolean activity) {
         Intent intent;
         Log.d("TAG", "startNewActivity: AVANTIF");
         if (searchActivity) {
             intent = new Intent(this, SearchActivity.class);
             Log.d("TAG", "startNewActivity: ifT serch ");
-        }
-        else {
+        } else {
             intent = new Intent(this, InformationActivity.class);
             Log.d("TAG", "startNewActivity: ifF info ");
         }
-        intent.putExtra("ACTIVITY",activity);
+        intent.putExtra("ACTIVITY", activity);
         Log.d("TAG", "startNewActivity: putExtra ok ");
         startActivity(intent);
         Log.d("TAG", "startNewActivity: start ok");
@@ -150,8 +161,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else super.onBackPressed();
+        } else super.onBackPressed();
     }
 
 

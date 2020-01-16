@@ -38,8 +38,9 @@ import io.reactivex.schedulers.Schedulers;
 public class ApiFragment extends Fragment {
 
 
-    private final static String POSITION = "posiion";
-    private static final String PARAMETERS = "parameters";
+    private final static String POSITION = "POSITION";
+    private static final String PARAMETERS = "PARAMETERS";
+    private static final String RXPROCESS = "RXPROCESS";
 
     private RecyclerView mRecyclerView;
     private int mPosition;
@@ -50,7 +51,8 @@ public class ApiFragment extends Fragment {
     private static boolean mTestMode = false;
     private boolean mViewMode = false;
 
-    private static CountingIdlingResource mCount = new CountingIdlingResource("RXPROCESS");
+
+    private static CountingIdlingResource mCount = new CountingIdlingResource(RXPROCESS);
 
     @NonNull
     public static ApiFragment newInstance(int position, String[] parameters) {

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import com.example.mynews.R;
 import com.example.mynews.controller.fragment.ApiFragment;
 
+import static com.example.mynews.controller.fragment.SearchFragment.ARGUMENTS;
+
 public class SearchResultActivity extends AppCompatActivity {
 
     String[] mArguments;
@@ -18,7 +20,7 @@ public class SearchResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         Intent intent = getIntent();
-        mArguments = intent.getStringArrayExtra("ARGS");
+        mArguments = intent.getStringArrayExtra(ARGUMENTS);
         ApiFragment searchResultFragment = ApiFragment.newInstance(9, mArguments);
         getSupportFragmentManager()
                 .beginTransaction()
