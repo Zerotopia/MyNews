@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Set;
 
 public class FormatMaker {
 
@@ -41,18 +42,16 @@ public class FormatMaker {
         else return number;
     }
 
-    public static String filterQueryFormat(CheckBox[] checkBoxes) {
+    public static String filterQueryFormat(Set<String> topics) {
         boolean first = true;
         StringBuilder result = new StringBuilder("news_desk:(");
-        for (CheckBox checkBox : checkBoxes) {
-            if (checkBox.isChecked()) {
-                if (first) {
-                    result.append("\"");
-                    first = false;
-                } else result.append(" \"");
-                result.append(checkBox.getText());
+        for (String topic : topics) {
+            if (first) {
                 result.append("\"");
-            }
+                first = false;
+            } else result.append(" \"");
+            result.append(topic);
+            result.append("\"");
         }
         return result.append(")").toString();
     }

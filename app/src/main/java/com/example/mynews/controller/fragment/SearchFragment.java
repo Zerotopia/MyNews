@@ -32,7 +32,6 @@ import android.widget.TextView;
 import com.example.mynews.R;
 import com.example.mynews.controller.activity.SearchResultActivity;
 import com.example.mynews.controller.broadcastreciever.Reciever;
-import com.example.mynews.model.FormatMaker;
 
 import java.util.Calendar;
 import java.util.HashSet;
@@ -43,6 +42,9 @@ import static android.content.Context.ALARM_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Context.NOTIFICATION_SERVICE;
 import static com.example.mynews.controller.broadcastreciever.Reciever.CHANNEL;
+import static com.example.mynews.model.FormatMaker.d8DateFormat;
+import static com.example.mynews.model.FormatMaker.filterQueryFormat;
+import static com.example.mynews.model.FormatMaker.stringDateToMillis;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,7 +70,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     private boolean mCheckbox;
     private boolean mEditText;
 
-    private FormatMaker mFormatMaker = new FormatMaker();
+    // private FormatMaker mFormatMaker = new FormatMaker();
 
     public static SearchFragment newInstance(Boolean activity) {
         SearchFragment fragment = new SearchFragment();
@@ -165,9 +167,9 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
             Intent intent = new Intent(mContext, SearchResultActivity.class);
             String[] intentExtra = new String[4];
             intentExtra[0] = mSearchText.getText().toString();
-            intentExtra[1] = mFormatMaker.d8DateFormat(mBeginDate.getText().toString());
-            intentExtra[2] = mFormatMaker.d8DateFormat(mEndDate.getText().toString());
-            intentExtra[3] = mFormatMaker.filterQueryFormat(mTopics);
+            intentExtra[1] = d8DateFormat(mBeginDate.getText().toString());
+            intentExtra[2] = d8DateFormat(mEndDate.getText().toString());
+            intentExtra[3] = filterQueryFormat(topicsToStringSet());
             intent.putExtra("ARGS", intentExtra);
             startActivity(intent);
         });
@@ -198,14 +200,14 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
                     Calendar.getInstance().get(Calendar.YEAR),
                     Calendar.getInstance().get(Calendar.MONTH),
                     Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-            datePickerDialog.getDatePicker().setMinDate(mFormatMaker.stringDateToMillis("18/09/1851"));
-            datePickerDialog.getDatePicker().setMaxDate(mFormatMaker.stringDateToMillis(""));
+            datePickerDialog.getDatePicker().setMinDate(stringDateToMillis("18/09/1851"));
+            datePickerDialog.getDatePicker().setMaxDate(stringDateToMillis(""));
 
             if (!date.isEmpty()) {
                 if (mBegin)
-                    datePickerDialog.getDatePicker().setMaxDate(mFormatMaker.stringDateToMillis(date));
+                    datePickerDialog.getDatePicker().setMaxDate(stringDateToMillis(date));
                 else
-                    datePickerDialog.getDatePicker().setMinDate(mFormatMaker.stringDateToMillis(date));
+                    datePickerDialog.getDatePicker().setMinDate(stringDateToMillis(date));
             }
             datePickerDialog.show();
         }
@@ -290,7 +292,8 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
                 .putString("KEYWORD", mSearchText.getText().toString())
                 .putString("BEGINDATE", mBeginDate.getText().toString())
                 .putString("ENDDATE", mEndDate.getText().toString())
-                .putStringSet("IOPICS",topicsToStringSet());
+                .putStringSet("IOPICS", topicsToStringSet())
+                .apply();
         // preferencesEditor.
         /*
         if ((mBeginDate != null) && (mEndDate != null)) {

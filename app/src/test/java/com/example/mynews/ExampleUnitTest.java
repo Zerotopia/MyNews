@@ -38,6 +38,7 @@ import io.reactivex.schedulers.Schedulers;
 import static com.example.mynews.model.Article.NYT_HOME_URL;
 import static com.example.mynews.model.Article.UNDEFINED;
 import static com.example.mynews.model.FormatMaker.d8DateFormat;
+import static com.example.mynews.model.FormatMaker.filterQueryFormat;
 import static com.example.mynews.model.FormatMaker.stringDateToMillis;
 import static org.junit.Assert.*;
 
@@ -101,8 +102,8 @@ public class ExampleUnitTest {
     @BeforeClass
     public static void setUp() throws FileNotFoundException {
         //sFormatMaker = new FormatMaker();
-        List<String> checkboxName = Arrays.asList("Abc","Defgh","Ijkl","Mnopqr","Stu","Vwxyz");
-        sTopics = new HashSet<String>(checkboxName);
+
+        sTopics = new HashSet<String>();
 
       /*  for (int i = 0; i < sCheckBoxes.length; i++) {
             sCheckBoxes[i]= Mockito.mock(CheckBox.class);
@@ -157,12 +158,15 @@ public class ExampleUnitTest {
         assertEquals("news_desk:()", filterQueryFormat(sTopics));
        // Mockito.when(sCheckBoxes[2].isChecked()).thenReturn(true);
        // System.out.println("is check 2 :" + sCheckBoxes[2].isChecked());
-        assertEquals("news_desk:(\"Ijkl\")", filterQueryFormat(sTopics));
+        sTopics.add("Defgh");
+        assertEquals("news_desk:(\"Defgh\")", filterQueryFormat(sTopics));
        // Mockito.when(sCheckBoxes[1].isChecked()).thenReturn(true);
        // Mockito.when(sCheckBoxes[4].isChecked()).thenReturn(true);
        // sCheckBoxes[1].setChecked(true);
         //sCheckBoxes[4].setChecked(true);
-        assertEquals("news_desk:(\"Defgh\" \"Ijkl\" \"Stu\")", filterQueryFormat(sTopics));
+        sTopics.add("Ijkl");
+        sTopics.add("Stu");
+        assertEquals("news_desk:(\"Ijkl\" \"Stu\" \"Defgh\")", filterQueryFormat(sTopics));
     }
 /*
     @Test
