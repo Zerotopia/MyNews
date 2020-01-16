@@ -35,7 +35,9 @@ import com.example.mynews.controller.broadcastreciever.Reciever;
 import com.example.mynews.model.FormatMaker;
 
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import static android.content.Context.ALARM_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
@@ -281,19 +283,28 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
 
     @Override
     public void onStop() {
-        SharedPreferences sharedPreferences = mContext.getSharedPreferences("search_params",MODE_PRIVATE);
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("search_params", MODE_PRIVATE);
         SharedPreferences.Editor preferencesEditor = sharedPreferences.edit();
 
-        preferencesEditor.putString("KEYWORD",mSearchText.getText().toString());
-        preferencesEditor.putString("BEGINDATE",mBeginDate.getText().toString());
-        preferencesEditor.putString("ENDDATE",mEndDate.getText().toString());
-       // preferencesEditor.
+        preferencesEditor
+                .putString("KEYWORD", mSearchText.getText().toString())
+                .putString("BEGINDATE", mBeginDate.getText().toString())
+                .putString("ENDDATE", mEndDate.getText().toString())
+                .putStringSet("IOPICS",topicsToStringSet());
+        // preferencesEditor.
         /*
         if ((mBeginDate != null) && (mEndDate != null)) {
             mBeginDate.setText("");
             mEndDate.setText("");
         }*/
         super.onStop();
+    }
+
+    private Set<String> topicsToStringSet() {
+        Set<String> result = new HashSet<>();
+        for (CheckBox checkBox : mTopics)
+            if (checkBox.isChecked()) result.add(checkBox.getText().toString());
+        return result;
     }
 
     @Override

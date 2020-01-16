@@ -25,6 +25,10 @@ import org.mockito.stubbing.Answer;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -33,6 +37,8 @@ import io.reactivex.schedulers.Schedulers;
 
 import static com.example.mynews.model.Article.NYT_HOME_URL;
 import static com.example.mynews.model.Article.UNDEFINED;
+import static com.example.mynews.model.FormatMaker.d8DateFormat;
+import static com.example.mynews.model.FormatMaker.stringDateToMillis;
 import static org.junit.Assert.*;
 
 /**
@@ -40,7 +46,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class ExampleUnitTest {
 
     private static Results sSearchJson;
@@ -55,8 +61,9 @@ public class ExampleUnitTest {
     private static final int MOSTPOPULAR = 1;
     private static final int TOPARTICLE = 2;
 
-    private static FormatMaker sFormatMaker;
-    private static CheckBox[] sCheckBoxes = new CheckBox[6];
+    private static Set<String> sTopics;
+   // private static FormatMaker sFormatMaker;
+  //  private static CheckBox[] sCheckBoxes = new CheckBox[6];
 
     @Mock
     private static Context context;
@@ -93,19 +100,23 @@ public class ExampleUnitTest {
 
     @BeforeClass
     public static void setUp() throws FileNotFoundException {
-        sFormatMaker = new FormatMaker();
-/*
-        String[] checkboxName = {"Abc","Defgh","Ijkl","Mnopqr","Stu","Vwxyz"};
+        //sFormatMaker = new FormatMaker();
+        List<String> checkboxName = Arrays.asList("Abc","Defgh","Ijkl","Mnopqr","Stu","Vwxyz");
+        sTopics = new HashSet<String>(checkboxName);
 
-        for (int i = 0; i < sCheckBoxes.length; i++) {
-            //sCheckBoxes[i]= Mockito.mock(CheckBox.class);
-           sCheckBoxes[i] = new CheckBox(context);
+      /*  for (int i = 0; i < sCheckBoxes.length; i++) {
+            sCheckBoxes[i]= Mockito.mock(CheckBox.class);
+          //  Mockito.doCallRealMethod().when(sCheckBoxes[i]).setText(checkboxName[i]);
+           // Mockito.doCallRealMethod().when(sCheckBoxes[i]).getText();
+            Mockito.when(sCheckBoxes[i].getText()).thenReturn(checkboxName[i]);
+
+            // sCheckBoxes[i] = new CheckBox(context);
             // sCheckBoxes[i].setId(i);
-            sCheckBoxes[i].setText(checkboxName[i]);
+           // sCheckBoxes[i].setText(checkboxName[i]);
             System.out.println("name : " + sCheckBoxes[i].getText());
             sCheckBoxes[i].setChecked(true);
-        }
-*/
+        }*/
+
         // set up variables to test the parsing Json files from POJO class
         Gson gson = new Gson();
         sSearchJson = gson.fromJson(new FileReader("search.json"), Results.class);
@@ -131,37 +142,40 @@ public class ExampleUnitTest {
 
     @Test
     public void stringDateToMillis_isCorrect() {
-        assertEquals(86400000, sFormatMaker.stringDateToMillis("02/01/1970"));
+        assertEquals(86400000, stringDateToMillis("02/01/1970"));
     }
 
     @Test
     public void d8DateFormat_isCorrect() {
-        assertEquals("19950723", sFormatMaker.d8DateFormat("23/07/1995"));
-        assertEquals("", sFormatMaker.d8DateFormat(""));
-        assertEquals("20000704",sFormatMaker.d8DateFormat("4/7/2000"));
-    }
-
-/*    @Test
-    public void filterQueryFormat_isCorrect() {
-        assertEquals("news_desk:()",sFormatMaker.filterQueryFormat(sCheckBoxes));
-       // sCheckBoxes[2].setChecked(true);
-        System.out.println("is check 2 :" + sCheckBoxes[2].isChecked());
-        assertEquals("news_desk:(\"Ijkl\")",sFormatMaker.filterQueryFormat(sCheckBoxes));
-        sCheckBoxes[1].setChecked(true);
-        sCheckBoxes[4].setChecked(true);
-        assertEquals("news_desk:(\"Defgh\" \"Ijkl\" \"Stu\")",sFormatMaker.filterQueryFormat(sCheckBoxes));
+        assertEquals("19950723", d8DateFormat("23/07/1995"));
+        assertEquals("", d8DateFormat(""));
+        assertEquals("20000704",d8DateFormat("4/7/2000"));
     }
 
     @Test
+    public void filterQueryFormat_isCorrect() {
+        assertEquals("news_desk:()", filterQueryFormat(sTopics));
+       // Mockito.when(sCheckBoxes[2].isChecked()).thenReturn(true);
+       // System.out.println("is check 2 :" + sCheckBoxes[2].isChecked());
+        assertEquals("news_desk:(\"Ijkl\")", filterQueryFormat(sTopics));
+       // Mockito.when(sCheckBoxes[1].isChecked()).thenReturn(true);
+       // Mockito.when(sCheckBoxes[4].isChecked()).thenReturn(true);
+       // sCheckBoxes[1].setChecked(true);
+        //sCheckBoxes[4].setChecked(true);
+        assertEquals("news_desk:(\"Defgh\" \"Ijkl\" \"Stu\")", filterQueryFormat(sTopics));
+    }
+/*
+    @Test
     public void encodeTopicsTest() {
-        assertEquals("011010", encodeTopics(sCheckBoxes));
+        assertEquals("011010", sFormatMaker.encodeTopics(sCheckBoxes));
     }
 
     @Test
     public void decodeTopicsTest() {
         String entry = "0011010";
         boolean[] expected = {false, false, true, true, false, true, false};
-        assertEquals(expected, decodeTopics(entry));
+        boolean[] actual
+        assertEquals(expected, sFormatMaker.decodeTopics(entry));
     }
 
 */

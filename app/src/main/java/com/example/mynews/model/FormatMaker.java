@@ -2,12 +2,15 @@ package com.example.mynews.model;
 
 import android.widget.CheckBox;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class FormatMaker {
 
-    public long stringDateToMillis(String date) {
+    public static long stringDateToMillis(String date) {
         String[] arrayDate = date.split("/");
 
         Calendar calendar = new GregorianCalendar();
@@ -24,7 +27,7 @@ public class FormatMaker {
         } else return System.currentTimeMillis();
     }
 
-    public String d8DateFormat(String date) {
+    public static String d8DateFormat(String date) {
         String[] arrayDate = date.split("/");
         if (arrayDate.length == 3) {
             String month = twoDigitFormat(arrayDate[1]);
@@ -33,12 +36,12 @@ public class FormatMaker {
         } else return "";
     }
 
-    private String twoDigitFormat(String number) {
+    private static String twoDigitFormat(String number) {
         if (number.length() == 1) return "0" + number;
         else return number;
     }
 
-    public String filterQueryFormat(CheckBox[] checkBoxes) {
+    public static String filterQueryFormat(CheckBox[] checkBoxes) {
         boolean first = true;
         StringBuilder result = new StringBuilder("news_desk:(");
         for (CheckBox checkBox : checkBoxes) {
@@ -52,5 +55,23 @@ public class FormatMaker {
             }
         }
         return result.append(")").toString();
+    }
+
+    public String encodeTopics(CheckBox[] checkBoxes) {
+        StringBuilder result = new StringBuilder("");
+        for (CheckBox checkBox : checkBoxes) {
+            if (checkBox.isChecked()) result.append("1");
+            else result.append("0");
+        }
+        return result.toString();
+    }
+
+    public boolean[] decodeTopics(String encodeTopics) {
+        char[] encodeArray = encodeTopics.toCharArray();
+        boolean[] result = new boolean[encodeArray.length];
+
+        for (int i = 0; i < encodeArray.length; i++)
+            result[i] = (encodeArray[i] == '1');
+        return result;
     }
 }
