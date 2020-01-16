@@ -78,7 +78,8 @@ public class ApiFragment extends Fragment {
         mViewMode = true;
         //final RecyclerView recyclerView = view.findViewById(R.id.fragment_api_recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.addItemDecoration(new CustomItemDecoration(getContext()));
+        if (getContext() != null)
+            mRecyclerView.addItemDecoration(new CustomItemDecoration(getContext()));
         apiCall();
         //Log.d("TAG", "onViewCreated: Entrer : " + pos);
 
@@ -115,7 +116,8 @@ public class ApiFragment extends Fragment {
     private Observable<Results> initObservable(int position, NYService nyService, String[] parameters) {
         Observable<Results> observable;
 
-        if (position == 0) observable = nyService.topArticle(Subjects()[0].toLowerCase(), NYService.APIKEY);
+        if (position == 0)
+            observable = nyService.topArticle(Subjects()[0].toLowerCase(), NYService.APIKEY);
         else if (position == 1) observable = nyService.popularArticle(NYService.APIKEY);
         else if (position < 8)
             observable = nyService.topArticle(Subjects()[position + 1].toLowerCase(), NYService.APIKEY);

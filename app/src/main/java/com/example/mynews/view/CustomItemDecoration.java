@@ -14,13 +14,11 @@ import com.example.mynews.R;
 
 public class CustomItemDecoration extends RecyclerView.ItemDecoration {
 
-    private Context mContext;
     private Drawable mDivider;
 
     public CustomItemDecoration(Context context) {
         super();
-        mContext = context;
-        mDivider = mContext.getResources().getDrawable(R.drawable.divider);
+        mDivider = context.getResources().getDrawable(R.drawable.divider);
     }
 
     @Override

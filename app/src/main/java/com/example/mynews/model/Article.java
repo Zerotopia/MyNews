@@ -1,8 +1,5 @@
 package com.example.mynews.model;
 
-import android.icu.text.CaseMap;
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;

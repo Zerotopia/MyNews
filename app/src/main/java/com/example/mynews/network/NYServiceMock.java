@@ -3,7 +3,6 @@ package com.example.mynews.network;
 import com.example.mynews.model.Article;
 import com.example.mynews.model.DataPicture;
 import com.example.mynews.model.Results;
-import com.example.mynews.network.NYService;
 
 import java.util.ArrayList;
 

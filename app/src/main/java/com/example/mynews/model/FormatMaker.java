@@ -1,11 +1,6 @@
 package com.example.mynews.model;
 
-import android.widget.CheckBox;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Set;
 
@@ -54,23 +49,5 @@ public class FormatMaker {
             result.append("\"");
         }
         return result.append(")").toString();
-    }
-
-    public String encodeTopics(CheckBox[] checkBoxes) {
-        StringBuilder result = new StringBuilder("");
-        for (CheckBox checkBox : checkBoxes) {
-            if (checkBox.isChecked()) result.append("1");
-            else result.append("0");
-        }
-        return result.toString();
-    }
-
-    public boolean[] decodeTopics(String encodeTopics) {
-        char[] encodeArray = encodeTopics.toCharArray();
-        boolean[] result = new boolean[encodeArray.length];
-
-        for (int i = 0; i < encodeArray.length; i++)
-            result[i] = (encodeArray[i] == '1');
-        return result;
     }
 }
