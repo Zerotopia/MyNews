@@ -67,8 +67,8 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     private EditText mBeginDate;
     private EditText mEndDate;
     private EditText mSearchText;
-    private Boolean mBegin;
-    private Boolean mNotification;
+    private boolean mBegin;
+    private boolean mNotification;
     private LinearLayout mNotificationLayout;
     private LinearLayout mDateLayout;
     private TextView mNotificationTextView;

@@ -1,6 +1,7 @@
 package com.example.mynews.controller.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,11 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class ApiFragment extends Fragment {
 
+    public interface NumberOfResultsListener {
+        void onNumberOfResultsChange(int numberOfResults);
+    }
+
+    private NumberOfResultsListener mNumberOfResultsListener;
 
     private final static String POSITION = "POSITION";
     private static final String PARAMETERS = "PARAMETERS";
@@ -67,6 +73,12 @@ public class ApiFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mNumberOfResultsListener = (NumberOfResultsListener) context;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View inflaterLayout = inflater.inflate(R.layout.fragment_api, container, false);
         mRecyclerView = inflaterLayout.findViewById(R.id.fragment_api_recyclerview);
@@ -83,6 +95,8 @@ public class ApiFragment extends Fragment {
         if (getContext() != null)
             mRecyclerView.addItemDecoration(new CustomItemDecoration(getContext()));
         apiCall();
+        Log.d("TAG", "onViewCreated: after call " + mNumberOfResults);
+
         //Log.d("TAG", "onViewCreated: Entrer : " + pos);
 
     }
@@ -155,13 +169,16 @@ public class ApiFragment extends Fragment {
 
                     @Override
                     public void onNext(Results results) {
-                        Log.d("TAG", "onClick: rlient");
+                        Log.d("TAG", "onClick: apicall rlient");
                         ArrayList<Article> articles = results.listOfArticle();
                         mNumberOfResults = articles.size();
                         if (mViewMode) {
+//
+                            mNumberOfResultsListener.onNumberOfResultsChange(mNumberOfResults);
                             mRecyclerView.setAdapter(new ArticleAdapter(articles));
+
                         }
-                        Log.d("TAG", "onNext: " + articles.size());
+                        Log.d("TAG", "onNext: apicall" + articles.size());
 
 
                     }

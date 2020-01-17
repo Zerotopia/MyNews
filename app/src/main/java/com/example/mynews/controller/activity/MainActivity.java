@@ -17,12 +17,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.mynews.R;
 import com.example.mynews.controller.adapteur.PageAdapter;
+import com.example.mynews.controller.fragment.ApiFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import static com.example.mynews.controller.fragment.SearchFragment.SEARCH_PARAM;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ApiFragment.NumberOfResultsListener {
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -164,7 +165,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else super.onBackPressed();
     }
 
+    @Override
+    public void onNumberOfResultsChange(int numberOfResults) {
 
+    }
 }
 
 

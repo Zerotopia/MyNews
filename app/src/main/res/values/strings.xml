@@ -38,7 +38,7 @@
         <item>@string/topic6</item>
     </string-array>
 
-    <string name="date_format">%1$d/%2$d/%3$d</string>
+    <string name="date_format">%1$02d/%2$02d/%3$d</string>
 
     <string name="help_text">You can found help here.</string>
     <string name="about_text">Information about us and about  MyNews</string>

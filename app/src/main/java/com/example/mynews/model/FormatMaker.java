@@ -26,15 +26,10 @@ public class FormatMaker {
     public static String d8DateFormat(String date) {
         String[] arrayDate = date.split("/");
         if (arrayDate.length == 3) {
-            String month = twoDigitFormat(arrayDate[1]);
-            String day = twoDigitFormat(arrayDate[0]);
+            String month = arrayDate[1];
+            String day = arrayDate[0];
             return arrayDate[2] + month + day;
         } else return "";
-    }
-
-    private static String twoDigitFormat(String number) {
-        if (number.length() == 1) return "0" + number;
-        else return number;
     }
 
     public static String filterQueryFormat(Set<String> topics) {

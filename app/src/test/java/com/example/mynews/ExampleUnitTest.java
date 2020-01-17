@@ -113,7 +113,6 @@ public class ExampleUnitTest {
     public void d8DateFormat_isCorrect() {
         assertEquals("19950723", d8DateFormat("23/07/1995"));
         assertEquals("", d8DateFormat(""));
-        assertEquals("20000704", d8DateFormat("4/7/2000"));
     }
 
     @Test
