@@ -3,17 +3,20 @@ package com.example.mynews.controller.activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.mynews.R;
+import com.example.mynews.controller.fragment.AlertDialogFragment;
 import com.example.mynews.controller.fragment.ApiFragment;
 
 import static com.example.mynews.controller.fragment.SearchFragment.ARGUMENTS;
 
-public class SearchResultActivity extends AppCompatActivity implements ApiFragment.NumberOfResultsListener {
+public class SearchResultActivity extends AppCompatActivity implements ApiFragment.NumberOfResultsListener, AlertDialogFragment.AlertDialogClickEvent {
 
-    String[] mArguments;
+    private String[] mArguments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,24 +37,28 @@ public class SearchResultActivity extends AppCompatActivity implements ApiFragme
     @Override
     public void onNumberOfResultsChange(int numberOfResults) {
         if (numberOfResults == 0) {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder
-                    .setIcon(R.drawable.ic_mood_bad_black_24dp)
-                    .setCancelable(false)
-                    .setMessage("Rien trouvé")
-                    .setTitle("Pas de Résultat")
-                    .setPositiveButton("Home", (dialog, which) -> {
-                        Intent intent = new Intent(this, MainActivity.class);
-                        startActivity(intent);
-                    })
-                    .setNegativeButton("New Search", (dialog, which) -> {
-                        finish();
-                        //Intent intent = new Intent(view.getContext(), SearchActivity.class);
-                        //startActivity(intent);
-                    })
-                    .create()
-                    .show();
-
+            AlertDialogFragment alertDialogFragment = AlertDialogFragment.newInstance(AlertDialogFragment.NO_RESULT);
+            alertDialogFragment.show(getSupportFragmentManager(),"KEY");
         }
+    }
+
+    @Override
+    public DialogInterface.OnClickListener doPositiveClick() {
+        Log.d("TAG", "doPositiveClick: ");
+        return (dialog, which) -> {
+            finish();
+            //Intent intent = new Intent(view.getContext(), SearchActivity.class);
+            //startActivity(intent);
+        };
+    }
+
+    @Override
+    public DialogInterface.OnClickListener doNegativeClick() {
+        Log.d("TAG", "doNegativeClick: ");
+        return (dialog, which) -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        };
+
     }
 }

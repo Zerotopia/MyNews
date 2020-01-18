@@ -43,4 +43,11 @@
     <string name="help_text">You can found help here.</string>
     <string name="about_text">Information about us and about  MyNews</string>
     <string name="new_result">New results</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_result_title">No Article</string>
+    <string name="no_result_message">There is no article that correspond to your research.</string>
+    <string name="new_search">New Search</string>
+    <string name="home">Back Home</string>
 </resources>
