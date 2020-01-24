@@ -28,6 +28,7 @@ import java.util.ArrayList;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -36,7 +37,9 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ApiFragment extends Fragment {
+public class ApiFragment extends Fragment implements Observer<Results>{
+
+
 
     public interface NumberOfResultsListener {
         void onNumberOfResultsChange(int numberOfResults);
@@ -56,7 +59,6 @@ public class ApiFragment extends Fragment {
 
     private static boolean mTestMode = false;
     private boolean mViewMode = false;
-
 
     private static CountingIdlingResource mCount = new CountingIdlingResource(RXPROCESS);
 
@@ -94,7 +96,7 @@ public class ApiFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         if (getContext() != null)
             mRecyclerView.addItemDecoration(new CustomItemDecoration(getContext()));
-        apiCall();
+        apiCall(Schedulers.io(), AndroidSchedulers.mainThread());
         Log.d("TAG", "onViewCreated: after call " + mNumberOfResults);
 
         //Log.d("TAG", "onViewCreated: Entrer : " + pos);
@@ -149,20 +151,22 @@ public class ApiFragment extends Fragment {
         mTestMode = testMode;
     }
 
-    public void apiCall() {
+    public void apiCall(Scheduler subscribe, Scheduler observe) {
         Observable<Results> observable;
         NYService nyService = (mTestMode) ? RetrofitClient.getMock() : RetrofitClient.getInstance();
         //Log.d("TAG", "onViewCreated: debut observable");
         initArguments();
-        Log.d("TAG", "onViewCreated: API" + mArguments[0] + mArguments[1] + mArguments[2] + mArguments[3]);
+        Log.d("TAG", "onapicall: API" + mArguments[0] + mArguments[1] + mArguments[2] + mArguments[3]);
         mCount.increment();
 
         observable = initObservable(mPosition, nyService, mArguments);
 //                Log.d("SWITCH", "onViewCreated: ANOMALIE");
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Results>() {
-                    @Override
+        observable.subscribeOn(subscribe)
+                .observeOn(observe)
+                .unsubscribeOn(subscribe)
+                .subscribe(this);
+                      /*  new Observer<Results>() {
+         /*           @Override
                     public void onSubscribe(Disposable d) {
 
                     }
@@ -179,23 +183,56 @@ public class ApiFragment extends Fragment {
 
                         }
                         Log.d("TAG", "onNext: apicall" + articles.size());
-
-
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("TAG", "onError: " + e.getMessage());
+                        Log.d("TAG", "onError: " );
+                        e.printStackTrace();
                         mCount.decrement();
                     }
 
                     @Override
                     public void onComplete() {
+                        Log.d("TAG", "onComplete: ");
                         mCount.decrement();
 
                     }
-                });
+                });*/
 
+    }
+
+    @Override
+    public void onSubscribe(Disposable d) {
+
+    }
+
+    @Override
+    public void onNext(Results results) {
+        Log.d("TAG", "onClick: apicall rlient");
+        ArrayList<Article> articles = results.listOfArticle();
+        mNumberOfResults = articles.size();
+        if (mViewMode) {
+//
+            mNumberOfResultsListener.onNumberOfResultsChange(mNumberOfResults);
+            mRecyclerView.setAdapter(new ArticleAdapter(articles));
+
+        }
+        Log.d("TAG", "onNext: apicall" + articles.size());
+    }
+
+    @Override
+    public void onError(Throwable e) {
+        Log.d("TAG", "onError: " );
+        e.printStackTrace();
+        mCount.decrement();
+
+    }
+
+    @Override
+    public void onComplete() {
+        Log.d("TAG", "onComplete: ");
+        mCount.decrement();
     }
 
     public int getNumberOfResults() {

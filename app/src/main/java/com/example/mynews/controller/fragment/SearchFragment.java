@@ -14,6 +14,8 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,12 +34,14 @@ import android.widget.TextView;
 
 import com.example.mynews.R;
 import com.example.mynews.controller.activity.SearchResultActivity;
+import com.example.mynews.controller.broadcastreciever.NotificationWorker;
 import com.example.mynews.controller.broadcastreciever.Reciever;
 
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import static android.content.Context.ALARM_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
@@ -124,7 +128,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         setNotificationSwitchListener();
         restorePreferences();
         Log.d("TAG", "onCreateView: ");
-        restorePreferences();
+
         return inflate_search_xml;
     }
 
@@ -159,7 +163,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
             if (isChecked) {
                 createNotificationChannel(mContext);
                 Log.d("TAG", "onViewCreated: Abc ");
-                Intent intent = new Intent(mContext, Reciever.class);
+               /* Intent intent = new Intent(mContext, Reciever.class);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(
                         mContext,
                         REQUEST_CODE,
@@ -172,11 +176,18 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
                             System.currentTimeMillis() + 15000,
                             AlarmManager.INTERVAL_DAY,
                             pendingIntent);
+*/
+                PeriodicWorkRequest notificationRequest =
+                        new PeriodicWorkRequest.Builder(NotificationWorker.class, 1, TimeUnit.DAYS)
+                                .addTag("NOTIFICATIONTAG")
+                                .setInitialDelay(10, TimeUnit.SECONDS)
+                                .build();
 
+                WorkManager.getInstance(mContext).enqueue(notificationRequest);
                 mNotificationTextView.setText(R.string.disable_notification);
             } else {
-                NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
-                if (notificationManager != null) notificationManager.cancel(REQUEST_CODE);
+              //  NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
+               // if (notificationManager != null) notificationManager.cancel(REQUEST_CODE);
 
                 mNotificationTextView.setText(R.string.enable_notification);
             }

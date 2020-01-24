@@ -6,9 +6,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.mynews.R;
@@ -65,8 +67,8 @@ public class AlertDialogFragment extends DialogFragment {
                 .setCancelable(false)
                 .setMessage(mMessageId)
                 .setTitle(mTitleId)
-                .setPositiveButton(mTagPositiveButtonId, mAlertDialogClickEvent.doPositiveClick())
-                .setNegativeButton(mTagNegativeButtonId, mAlertDialogClickEvent.doNegativeClick());
+                .setPositiveButton(mTagPositiveButtonId, (dialog, which) -> mAlertDialogClickEvent.doPositiveClick())
+                .setNegativeButton(mTagNegativeButtonId, (dialog, which) -> mAlertDialogClickEvent.doNegativeClick());
 
         return alertDialogBuilder.create();
 
@@ -87,8 +89,8 @@ public class AlertDialogFragment extends DialogFragment {
     }
 
     public interface AlertDialogClickEvent {
-        DialogInterface.OnClickListener doPositiveClick();
+        void doPositiveClick();
 
-        DialogInterface.OnClickListener doNegativeClick();
+        void doNegativeClick();
     }
 }

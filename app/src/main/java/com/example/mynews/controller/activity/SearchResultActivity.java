@@ -1,9 +1,7 @@
 package com.example.mynews.controller.activity;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,27 +36,24 @@ public class SearchResultActivity extends AppCompatActivity implements ApiFragme
     public void onNumberOfResultsChange(int numberOfResults) {
         if (numberOfResults == 0) {
             AlertDialogFragment alertDialogFragment = AlertDialogFragment.newInstance(AlertDialogFragment.NO_RESULT);
-            alertDialogFragment.show(getSupportFragmentManager(),"KEY");
+            alertDialogFragment.show(getSupportFragmentManager(), "KEY");
         }
     }
 
     @Override
-    public DialogInterface.OnClickListener doPositiveClick() {
+    public void doPositiveClick() {
         Log.d("TAG", "doPositiveClick: ");
-        return (dialog, which) -> {
-            finish();
-            //Intent intent = new Intent(view.getContext(), SearchActivity.class);
-            //startActivity(intent);
-        };
+
+        finish();
+        //Intent intent = new Intent(view.getContext(), SearchActivity.class);
+        //startActivity(intent);
+
     }
 
     @Override
-    public DialogInterface.OnClickListener doNegativeClick() {
+    public void doNegativeClick() {
         Log.d("TAG", "doNegativeClick: ");
-        return (dialog, which) -> {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        };
-
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
