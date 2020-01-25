@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
+/**
+ * POJO class to parse an array of picture from the result of he Most Popular NYT API.
+ */
 public class MetaDataPicture {
 
     @SerializedName("media-metadata")

@@ -226,7 +226,6 @@ public class Article {
     }
 
     /**
-     *
      * @return the url of an Article.
      * Theoretically UNDEFINED should be never return, but almost UNDEFINED
      * in this file are here to avoid an eventually NullPointerException.

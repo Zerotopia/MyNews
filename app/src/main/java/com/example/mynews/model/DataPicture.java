@@ -2,6 +2,9 @@ package com.example.mynews.model;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * POJO class to get information about the head picture of an article.
+ */
 public class DataPicture {
 
     @SerializedName("height")

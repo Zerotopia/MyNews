@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
+/**
+ * POJO class to parse the results of NYT API.
+ */
 public class Results {
 
     public Results(String status, ArrayList<Article> results) {
