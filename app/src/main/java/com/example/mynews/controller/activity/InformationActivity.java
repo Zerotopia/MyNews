@@ -8,6 +8,11 @@ import android.widget.TextView;
 
 import com.example.mynews.R;
 
+import static com.example.mynews.controller.activity.MainActivity.ACTIVITY;
+
+/**
+ * Activity launch when the user click on "About" or "Help".
+ */
 public class InformationActivity extends AppCompatActivity {
 
     private boolean mHelp;
@@ -19,7 +24,7 @@ public class InformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_information);
 
         Intent intent = getIntent();
-        mHelp = intent.getBooleanExtra("ACTIVITY", true);
+        mHelp = intent.getBooleanExtra(ACTIVITY, true);
 
         mTextView = findViewById(R.id.information_activity_text);
 

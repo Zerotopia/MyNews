@@ -206,8 +206,8 @@ public class Article {
             if (!existArray(arrayPicture)) return UNDEFINED;
         } else return UNDEFINED;
         DataPicture currentPicture = arrayPicture.get(0);
-        boolean goodSize = false;
-        int pictureIndex = 0;
+        boolean goodSize = (currentPicture.getHeight() == 75 && currentPicture.getWidth() == 75);
+        int pictureIndex = 1;
 
         while (!goodSize && pictureIndex < arrayPicture.size()) {
             currentPicture = arrayPicture.get(pictureIndex);
@@ -233,14 +233,14 @@ public class Article {
     public String urlArticle() {
         if (existString(mWebUrl)) return mWebUrl;
         else if (existString(mUrl)) return mUrl;
-        else return UNDEFINED;
+        else  return UNDEFINED;
     }
 
     /**
      * These two functions are used to have a more readable code.
      * If a value is not null that means it has been instanced
      * by the "GSON processus". And we check moreover if the
-     * instanced value are not empty.
+     * instanced value is not empty.
      */
     private boolean existString(String string) {
         return ((string != null) && !string.isEmpty());
