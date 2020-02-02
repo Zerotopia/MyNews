@@ -12,7 +12,8 @@ import com.example.mynews.controller.fragment.ApiFragment;
 
 import static com.example.mynews.controller.fragment.SearchFragment.ARGUMENTS;
 
-public class SearchResultActivity extends AppCompatActivity implements ApiFragment.NumberOfResultsListener, AlertDialogFragment.AlertDialogClickEvent {
+public class SearchResultActivity extends AppCompatActivity implements AlertDialogFragment.AlertDialogClickEvent {
+
 
     private String[] mArguments;
 
@@ -32,22 +33,12 @@ public class SearchResultActivity extends AppCompatActivity implements ApiFragme
         System.out.println("APRESGETFRAGMENT*********************************************");
     }
 
-    @Override
-    public void onNumberOfResultsChange(int numberOfResults) {
-        if (numberOfResults == 0) {
-            AlertDialogFragment alertDialogFragment = AlertDialogFragment.newInstance(AlertDialogFragment.NO_RESULT);
-            alertDialogFragment.show(getSupportFragmentManager(), "KEY");
-        }
-    }
 
     @Override
     public void doPositiveClick() {
         Log.d("TAG", "doPositiveClick: ");
 
         finish();
-        //Intent intent = new Intent(view.getContext(), SearchActivity.class);
-        //startActivity(intent);
-
     }
 
     @Override

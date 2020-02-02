@@ -13,17 +13,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mynews.R;
 import com.example.mynews.controller.adapteur.PageAdapter;
+import com.example.mynews.controller.fragment.AlertDialogFragment;
 import com.example.mynews.controller.fragment.ApiFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 import static com.example.mynews.controller.fragment.SearchFragment.SEARCH_PARAM;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ApiFragment.NumberOfResultsListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        AlertDialogFragment.AlertDialogClickEvent {
+    public static final String ACTIVITY = "ACTIVITY";
+
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -45,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mNavigationView = findViewById(R.id.main_activity_navigation_drawer);
 
         mViewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), getResources()));
+      //  mViewPager.addOnPageChangeListener(this);
         setTabLayout();
         setActionBar();
         mNavigationView.setNavigationItemSelectedListener(this);
@@ -152,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(this, InformationActivity.class);
             Log.d("TAG", "startNewActivity: ifF info ");
         }
-        intent.putExtra("ACTIVITY", activity);
+        intent.putExtra(ACTIVITY, activity);
         Log.d("TAG", "startNewActivity: putExtra ok ");
         startActivity(intent);
         Log.d("TAG", "startNewActivity: start ok");
@@ -166,7 +175,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onNumberOfResultsChange(int numberOfResults) {
+    public void doPositiveClick() {
+
+    }
+
+    @Override
+    public void doNegativeClick() {
 
     }
 }
