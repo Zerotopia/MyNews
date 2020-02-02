@@ -3,7 +3,6 @@ package com.example.mynews.controller.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -13,25 +12,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mynews.R;
 import com.example.mynews.controller.adapteur.PageAdapter;
 import com.example.mynews.controller.fragment.AlertDialogFragment;
-import com.example.mynews.controller.fragment.ApiFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-
 import static com.example.mynews.controller.fragment.SearchFragment.SEARCH_PARAM;
 
+/**
+ * In the main activity we defined :
+ * 1- The ViewPager that propose different lists of articles of the NewYork Times.
+ * 2- A Toolbar that allows to launch some other activity like the research of articles...
+ * 3- A Navigation Drawer that allows to navigate more easily in the application.
+ */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         AlertDialogFragment.AlertDialogClickEvent {
-    public static final String ACTIVITY = "ACTIVITY";
 
+    public static final String ACTIVITY = "ACTIVITY";
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -39,21 +39,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
 
-    // private static final String CHANNEL = "NotificationChannel";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mViewPager = findViewById(R.id.main_activity_viewpager);
-        mTabLayout = findViewById(R.id.main_activity_tablayout);
-        mToolbar = findViewById(R.id.main_activity_toolbar);
-        mDrawerLayout = findViewById(R.id.main_activity_drawer_layout);
-        mNavigationView = findViewById(R.id.main_activity_navigation_drawer);
+        bindView();
 
         mViewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), getResources()));
-      //  mViewPager.addOnPageChangeListener(this);
         setTabLayout();
         setActionBar();
         mNavigationView.setNavigationItemSelectedListener(this);
@@ -61,12 +54,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         resetSearchPreferences();
     }
 
+    /**
+     * Clear the Shared Preferences of search parameters to have a
+     * clean search interface.
+     */
     private void resetSearchPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences(SEARCH_PARAM, MODE_PRIVATE);
         SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
         sharedPreferencesEditor.clear().apply();
     }
 
+    /**
+     * Define the action bar of the main activity.
+     */
     private void setActionBar() {
         setSupportActionBar(mToolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -79,22 +79,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
     }
 
+    /**
+     * Define Tabs of the ViewPager.
+     */
     private void setTabLayout() {
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
 
+    /**
+     * perform all findViewById
+     */
+    private void bindView() {
+        mViewPager = findViewById(R.id.main_activity_viewpager);
+        mTabLayout = findViewById(R.id.main_activity_tablayout);
+        mToolbar = findViewById(R.id.main_activity_toolbar);
+        mDrawerLayout = findViewById(R.id.main_activity_drawer_layout);
+        mNavigationView = findViewById(R.id.main_activity_navigation_drawer);
+    }
+
+    /**
+     * Create the options Menu of the main activity.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main_activity, menu);
         return true;
     }
 
+    /**
+     * Define actions to perform when we clicked on an item of the menu.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_main_search_item:
-                Log.d("TAG", "onOptionsItemSelected: ");
                 startNewActivity(true, false);
                 return true;
             case R.id.menu_main_notification_item:
@@ -111,6 +130,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /**
+     * Define actions to perform when we clicked on an item of
+     * the Navigation Drawer's menu.
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
@@ -151,28 +174,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    /**
+     * This function launch an activity that depend of the boolean passed in parameters.
+     *
+     * @param searchActivity if this parameters is true then we start the SearchActivity else
+     *                       we start the InformationActivity.
+     * @param activity       This boolean is passed to the activity via an intent.
+     *                       For each activity, this boolean will be determined which "subactivity" launch.
+     *                       (Search article or notification for SearchActivity and
+     *                       About or Help for InformationActivity.)
+     */
     public void startNewActivity(boolean searchActivity, boolean activity) {
         Intent intent;
-        Log.d("TAG", "startNewActivity: AVANTIF");
-        if (searchActivity) {
-            intent = new Intent(this, SearchActivity.class);
-            Log.d("TAG", "startNewActivity: ifT serch ");
-        } else {
-            intent = new Intent(this, InformationActivity.class);
-            Log.d("TAG", "startNewActivity: ifF info ");
-        }
+        if (searchActivity) intent = new Intent(this, SearchActivity.class);
+        else intent = new Intent(this, InformationActivity.class);
+
         intent.putExtra(ACTIVITY, activity);
-        Log.d("TAG", "startNewActivity: putExtra ok ");
         startActivity(intent);
-        Log.d("TAG", "startNewActivity: start ok");
     }
 
+    /**
+     * This defined the comportment of the Back button if the
+     * Navigation Drawer is open.
+     */
     @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
         } else super.onBackPressed();
     }
+
 
     @Override
     public void doPositiveClick() {
