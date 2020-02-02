@@ -1,11 +1,9 @@
 package com.example.mynews.controller.fragment;
 
 
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,27 +23,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.mynews.R;
 import com.example.mynews.controller.activity.SearchResultActivity;
-import com.example.mynews.controller.broadcastreciever.NotificationWorker;
-import com.example.mynews.controller.broadcastreciever.Reciever;
+import com.example.mynews.controller.workermanager.NotificationWorker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import static android.content.Context.ALARM_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
-import static android.content.Context.NOTIFICATION_SERVICE;
 import static com.example.mynews.model.FormatMaker.d8DateFormat;
 import static com.example.mynews.model.FormatMaker.filterQueryFormat;
 import static com.example.mynews.model.FormatMaker.stringDateToMillis;
@@ -127,7 +123,6 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         setSearchButtonOnClickListener();
         setNotificationSwitchListener();
         restorePreferences();
-        Log.d("TAG", "onCreateView: ");
 
         return inflate_search_xml;
     }
@@ -135,8 +130,6 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     private void restorePreferences() {
         Set<String> topics;
 
-
-        Log.d("TAG", "restorePreferences: " + mNotification);
         if (mNotification) {
             mSharedPreferences = mContext.getSharedPreferences(NOTIFICATION_PARAM, MODE_PRIVATE);
             mSearchText.setText(mSharedPreferences.getString(KEYWORD, ""));
@@ -147,52 +140,36 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
             mBeginDate.setText(mSharedPreferences.getString(BEGIN_DATE, ""));
             mEndDate.setText(mSharedPreferences.getString(END_DATE, ""));
             topics = mSharedPreferences.getStringSet(TOPICS, new HashSet<>());
-            Log.d("TAG", "restorePreferences: " + topics.toString());
         }
 
         for (CheckBox checkBox : mTopics)
             if (topics.contains(checkBox.getText().toString())) {
-                Log.d("TAG", "restorePreferences: before setChecked");
                 checkBox.setChecked(true);
-                Log.d("TAG", "restorePreferences: after setChecked");
             }
     }
 
     private void setNotificationSwitchListener() {
         mNotificationSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            PeriodicWorkRequest notificationRequest =
+                    new PeriodicWorkRequest.Builder(NotificationWorker.class, 1, TimeUnit.DAYS)
+                            .addTag("NOTIFICATIONTAG")
+                            .setInitialDelay(10, TimeUnit.SECONDS)
+                            .build();
             if (isChecked) {
                 createNotificationChannel(mContext);
-                Log.d("TAG", "onViewCreated: Abc ");
-               /* Intent intent = new Intent(mContext, Reciever.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                        mContext,
-                        REQUEST_CODE,
-                        intent,
-                        PendingIntent.FLAG_UPDATE_CURRENT);
-                AlarmManager alarmManager = (AlarmManager) mContext.getSystemService(ALARM_SERVICE);
-                if (alarmManager != null)
-                    alarmManager.setRepeating(
-                            AlarmManager.RTC_WAKEUP,
-                            System.currentTimeMillis() + 15000,
-                            AlarmManager.INTERVAL_DAY,
-                            pendingIntent);
-*/
-                PeriodicWorkRequest notificationRequest =
-                        new PeriodicWorkRequest.Builder(NotificationWorker.class, 1, TimeUnit.DAYS)
-                                .addTag("NOTIFICATIONTAG")
-                                .setInitialDelay(10, TimeUnit.SECONDS)
-                                .build();
-
                 WorkManager.getInstance(mContext).enqueue(notificationRequest);
                 mNotificationTextView.setText(R.string.disable_notification);
+
+
             } else {
-              //  NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
-               // if (notificationManager != null) notificationManager.cancel(REQUEST_CODE);
 
                 mNotificationTextView.setText(R.string.enable_notification);
+               WorkManager.getInstance(mContext).cancelWorkById(notificationRequest.getId());
+
             }
         });
     }
+
 
     private void createNotificationChannel(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -205,7 +182,6 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
 
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
-
         }
     }
 
@@ -275,7 +251,6 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
     private void setCheckBoxesOnClickListener() {
         for (CheckBox checkBox : mTopics)
             checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                Log.d("TAG", "setCheckBoxesOnClickListener:  in");
                 refreshCheckBox();
                 changeStatusOfSearch(mEditText && mCheckbox);
             });
@@ -292,19 +267,16 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         mSearchText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 mEditText = (s != null) && !s.toString().trim().isEmpty();
                 changeStatusOfSearch(mEditText && mCheckbox);
-
             }
         });
     }
@@ -326,7 +298,6 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         mTopics = new CheckBox[idCheckbox.length()];
         for (int i = 0; i < mTopics.length; i++)
             mTopics[i] = view.findViewById(idCheckbox.getResourceId(i, -1));
-
         idCheckbox.recycle();
     }
 
@@ -340,33 +311,22 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         }
         mSearchButton.setEnabled(enable);
         mNotificationLayout.setEnabled(enable);
-
     }
 
     @Override
     public void onStop() {
-        Log.d("TAG", "onStop: PREF");
-        // mSharedPreferences = mContext.getSharedPreferences(SEARCH_PARAM, MODE_PRIVATE);
         SharedPreferences.Editor preferencesEditor = mSharedPreferences.edit();
 
         preferencesEditor
                 .putString(KEYWORD, mSearchText.getText().toString())
                 .putStringSet(TOPICS, topicsToStringSet())
                 .commit();
-        Log.d("TAG", "onStop: notif " + topicsToStringSet().toString());
         if (!mNotification) {
             preferencesEditor
                     .putString(BEGIN_DATE, mBeginDate.getText().toString())
                     .putString(END_DATE, mEndDate.getText().toString())
                     .commit();
-            Log.d("TAG", "onStop: search" + topicsToStringSet().toString());
         }
-        // preferencesEditor.
-        /*
-        if ((mBeginDate != null) && (mEndDate != null)) {
-            mBeginDate.setText("");
-            mEndDate.setText("");
-        }*/
         super.onStop();
     }
 
