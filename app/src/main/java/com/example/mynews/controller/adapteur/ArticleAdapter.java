@@ -2,6 +2,8 @@ package com.example.mynews.controller.adapteur;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.arch.core.util.Function;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -20,6 +23,9 @@ import com.example.mynews.controller.activity.WebActivity;
 import com.example.mynews.model.Article;
 
 import java.util.ArrayList;
+
+import static com.example.mynews.model.Article.NYT_HOME_URL;
+import static com.example.mynews.model.Article.UNDEFINED;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticlesViewHolder> {
 
@@ -52,7 +58,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.Articles
                 Intent intent = new Intent(sContext, WebActivity.class);
                 intent.putExtra("url", sArticleUrl);
                 sContext.startActivity(intent);
-
             });
         }
 
@@ -74,9 +79,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.Articles
     public void onBindViewHolder(@NonNull ArticlesViewHolder articlesViewHolder, int i) {
         Article article = mArticles.get(i);
         articlesViewHolder.setArticleUrl(article.urlArticle());
-        articlesViewHolder.sTopicsArticle.setText(article.topics());
-        articlesViewHolder.sSummaryArticle.setText(article.summary());
-        articlesViewHolder.sDateArticle.setText(article.publishedDate());
+        setSafeText(articlesViewHolder.sTopicsArticle, article.topics());
+        setSafeText(articlesViewHolder.sSummaryArticle, article.summary());
+        setSafeText(articlesViewHolder.sDateArticle, article.publishedDate());
 
         RequestOptions options = new RequestOptions().centerCrop()
                 .placeholder(R.mipmap.ic_launcher_round)
@@ -92,6 +97,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.Articles
     @Override
     public int getItemCount() {
         return mArticles.size();
+    }
+
+    private void setSafeText(TextView textView, String text) {
+        if (text.equals(UNDEFINED)) {
+            textView.setTypeface(null, Typeface.ITALIC);
+            textView.setText(R.string.undefined);
+        } else textView.setText(text);
     }
 }
 
