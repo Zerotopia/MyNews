@@ -26,8 +26,8 @@
     <string name="topic6">Health</string>
     <string name="topstories">TOP STORIES</string>
     <string name="mostpopular">MOST POPULAR</string>
+
     <string-array name="subjects">
-        <item>home</item>
         <item>@string/topstories</item>
         <item>@string/mostpopular</item>
         <item>@string/topic1</item>
@@ -42,12 +42,37 @@
 
     <string name="help_text">You can found help here.</string>
     <string name="about_text">Information about us and about  MyNews</string>
-    <string name="new_result">New results</string>
+    <plurals name="new_articles">
+        <item quantity="one">New Article</item>
+        <item quantity="other">New Articles</item>
+    </plurals>
+    <plurals name="notification_message">
+        <item quantity="one">There is %d new article that matches your research.</item>
+        <item quantity="other">There are %d new articles that match your research.</item>
+    </plurals>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_result_title">No Article</string>
-    <string name="no_result_message">There is no article that correspond to your research.</string>
+    <string name="no_result_message_search">There is no article that correspond to your research.</string>
     <string name="new_search">New Search</string>
     <string name="home">Back Home</string>
+    <string name="no_url_title">Missing URL</string>
+    <string name="no_url_message">It seems this article has no url. Very strange. If you continue, you will be redirected to the home page of the New York Times webpage.</string>
+    <string name="continu">Continue</string>
+    <string name="return_activity">Return</string>
+    <string name="no_result_message_main">sorry.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="error_400_title">Error 400</string>
+    <string name="error_400_message">Sorry send report</string>
+    <string name="send_report">Send Report</string>
+    <string name="error_500_title">Error 500</string>
+    <string name="error_500_message">Sorry NYT crash</string>
+    <string name="quit">Quit</string>
+    <string name="other_error_title">ERREUR</string>
+    <string name="other_error_message">Probleme</string>
+    <string name="error_429_title">ERROR 429</string>
+    <string name="error_429_message">Please don\'t spam.</string>
+
 </resources>
