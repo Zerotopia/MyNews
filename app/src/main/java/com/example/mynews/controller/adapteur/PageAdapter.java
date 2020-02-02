@@ -11,6 +11,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.mynews.R;
 import com.example.mynews.controller.fragment.ApiFragment;
 
+/**
+ * Page adapter for the View Pager.
+ */
 public class PageAdapter extends FragmentPagerAdapter {
 
     private Resources mResources;
@@ -20,24 +23,25 @@ public class PageAdapter extends FragmentPagerAdapter {
         mResources = resources;
     }
 
-
     @Override
     @NonNull
     public Fragment getItem(int position) {
-
-        return ApiFragment.newInstance(position,new String[4]);
+//        String[] par = {"aze","20200128","","news_desk:(\"Health\")"};
+//        if (position == 4)
+//        return ApiFragment.newInstance(9,par);
+//        else
+            return ApiFragment.newInstance(position, new String[4]);
     }
 
     @Override
     public int getCount() {
-        return 8;
+        return mResources.getStringArray(R.array.subjects).length;
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
         String[] title = mResources.getStringArray(R.array.subjects);
-                //ApiFragment.newInstance(position,new String[4]).Subjects();
-        return title[position + 1].toUpperCase();
+        return title[position].toUpperCase();
     }
 }
