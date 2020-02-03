@@ -9,11 +9,17 @@ import retrofit2.mock.BehaviorDelegate;
 import retrofit2.mock.MockRetrofit;
 import retrofit2.mock.NetworkBehavior;
 
+/**
+ * Here we define the retrofit client.
+ * The method getMock is use for test.
+ */
 public class RetrofitClient {
+
+    private static final String API_BASE_URL = "https://api.nytimes.com/svc/";
 
     private static Retrofit buildRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl("https://www.api.nytimes.com/")
+                .baseUrl(API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
@@ -30,7 +36,6 @@ public class RetrofitClient {
                 .build();
 
         BehaviorDelegate<NYService> delegate = mockRetrofit.create(NYService.class);
-
         return new NYServiceMock(delegate);
     }
 

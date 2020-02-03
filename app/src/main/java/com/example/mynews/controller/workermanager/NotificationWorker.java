@@ -61,7 +61,7 @@ public class NotificationWorker extends Worker {
                 filterQueryFormat(sharedPreferences.getStringSet(TOPICS, new HashSet<>()))
         );
 
-        ApiFragment apiFragment = ApiFragment.newInstance(9, intentExtra);
+        ApiFragment apiFragment = ApiFragment.newInstance(mContext.getResources().getStringArray(R.array.subjects).length, intentExtra);
         apiFragment.apiCall(Schedulers.trampoline(), Schedulers.trampoline());
 
         buildNotification(apiFragment.getNumberOfResults());
