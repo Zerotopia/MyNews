@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     /**
-     * perform all findViewById
+     * Perform all findViewById
      */
     private void bindView() {
         mViewPager = findViewById(R.id.main_activity_viewpager);

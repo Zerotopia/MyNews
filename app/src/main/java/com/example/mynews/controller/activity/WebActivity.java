@@ -9,9 +9,15 @@ import android.webkit.WebView;
 import com.example.mynews.R;
 import com.example.mynews.controller.fragment.AlertDialogFragment;
 
+import static com.example.mynews.controller.adapteur.ArticleAdapter.ArticlesViewHolder.URL_ARTICLE;
+import static com.example.mynews.controller.fragment.AlertDialogFragment.ALERT_DIALOG_TAG;
 import static com.example.mynews.model.Article.NYT_HOME_URL;
 import static com.example.mynews.model.Article.UNDEFINED;
 
+/**
+ * This activity show in a Webview the content of the selected article.
+ * If we not found a valid url then we show an AlertDialog.
+ */
 public class WebActivity extends AppCompatActivity implements AlertDialogFragment.AlertDialogClickEvent {
 
     private WebView mWebView;
@@ -23,10 +29,11 @@ public class WebActivity extends AppCompatActivity implements AlertDialogFragmen
 
         Intent intent = getIntent();
         Bundle extra = intent.getExtras();
-        String url = (extra != null) ? extra.getString("url") : NYT_HOME_URL;
+        String url = (extra != null) ? extra.getString(URL_ARTICLE) : NYT_HOME_URL;
+        url = (url == null) ? UNDEFINED : url;
         if (url.equals(UNDEFINED)) {
             AlertDialogFragment alertDialogFragment = AlertDialogFragment.newInstance(AlertDialogFragment.NO_URL);
-            alertDialogFragment.show(getSupportFragmentManager(),"KEY");
+            alertDialogFragment.show(getSupportFragmentManager(),ALERT_DIALOG_TAG);
         }
 
         mWebView = findViewById(R.id.web_activity_web_view);
