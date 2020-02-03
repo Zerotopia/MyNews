@@ -26,11 +26,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     @Override
     @NonNull
     public Fragment getItem(int position) {
-//        String[] par = {"aze","20200128","","news_desk:(\"Health\")"};
-//        if (position == 4)
-//        return ApiFragment.newInstance(9,par);
-//        else
-            return ApiFragment.newInstance(position, new String[4]);
+        return ApiFragment.newInstance(position, new String[4]);
     }
 
     @Override
