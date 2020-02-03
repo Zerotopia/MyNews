@@ -30,7 +30,8 @@ public class AlertDialogFragment extends DialogFragment {
     public static final int HTTP_ERROR_500 = 500;
     public static final int OTHER_ERROR = 600;
 
-    private static final String USAGE = "USAE";
+    private static final String USAGE = "USAGE";
+    public static final String ALERT_DIALOG_TAG = "ALERTTAG";
 
     private int mUsage;
     private int mTitleId;
