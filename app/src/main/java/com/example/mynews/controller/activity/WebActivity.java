@@ -33,7 +33,7 @@ public class WebActivity extends AppCompatActivity implements AlertDialogFragmen
         url = (url == null) ? UNDEFINED : url;
         if (url.equals(UNDEFINED)) {
             AlertDialogFragment alertDialogFragment = AlertDialogFragment.newInstance(AlertDialogFragment.NO_URL);
-            alertDialogFragment.show(getSupportFragmentManager(),ALERT_DIALOG_TAG);
+            alertDialogFragment.show(getSupportFragmentManager(), ALERT_DIALOG_TAG);
         }
 
         mWebView = findViewById(R.id.web_activity_web_view);

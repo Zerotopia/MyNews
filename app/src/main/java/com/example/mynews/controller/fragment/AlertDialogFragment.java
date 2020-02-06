@@ -1,56 +1,67 @@
 package com.example.mynews.controller.fragment;
 
-//import androidx.app.Dialog;
-
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.mynews.R;
 
 /**
- *
+ * Class that configure AlertDialog to inform the user of a potential problem.
  */
 public class AlertDialogFragment extends DialogFragment {
 
     private AlertDialogClickEvent mAlertDialogClickEvent;
+
+    /**
+     * These constants represent the different types of errors
+     * that will be handled. When a new instance of AlertDialogFragment
+     * is created one of this constants is passed in argument.
+     * That allow us to know which error has occur the alertDialog.
+     */
     public static final int NO_RESULT_SEARCH = 0;
     public static final int NO_RESULT_MAIN = 1;
     public static final int NO_URL = 2;
-    //public static final int HTTP_ERROR_300 = 300;
     public static final int HTTP_ERROR_400 = 400;
     public static final int HTTP_ERROR_429 = 429;
     public static final int HTTP_ERROR_500 = 500;
     public static final int OTHER_ERROR = 600;
 
+    /**
+     * Tag to put and get the argument passed in the constructor
+     */
     private static final String USAGE = "USAGE";
+
+    /**
+     * Tag passed in te second argument of the method show(fragmentManager,TAG)
+     */
     public static final String ALERT_DIALOG_TAG = "ALERTTAG";
 
+    /**
+     * This variable will contained the value of the integer passed in
+     * argument of the constructor newInstance. Hence we can known wath
+     * kind of error we treat.
+     */
     private int mUsage;
+
+    /**
+     * Variables destine to contains the id of content that will be display
+     * in the AlertDialog. All id are defined in R.string resource file.
+     */
     private int mTitleId;
     private int mMessageId;
     private int mTagPositiveButtonId;
     private int mTagNegativeButtonId;
 
     public AlertDialogFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        mAlertDialogClickEvent = (AlertDialogClickEvent) context;
     }
 
     /**
-     *
+     * Constructor of the AlertDialogFragment.
      */
     public static AlertDialogFragment newInstance(int usage) {
         AlertDialogFragment fragment = new AlertDialogFragment();
@@ -60,6 +71,15 @@ public class AlertDialogFragment extends DialogFragment {
         return fragment;
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mAlertDialogClickEvent = (AlertDialogClickEvent) context;
+    }
+
+    /**
+     * Creation of the AlertDialog.
+     */
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -67,20 +87,22 @@ public class AlertDialogFragment extends DialogFragment {
             mUsage = getArguments().getInt(USAGE);
             setDialogArguments();
         }
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(requireActivity());
         alertDialogBuilder
                 .setIcon(R.drawable.ic_mood_bad_black_24dp)
-                .setCancelable(false)
                 .setMessage(mMessageId)
                 .setTitle(mTitleId)
                 .setPositiveButton(mTagPositiveButtonId, (dialog, which) -> mAlertDialogClickEvent.doPositiveClick())
                 .setNegativeButton(mTagNegativeButtonId, (dialog, which) -> mAlertDialogClickEvent.doNegativeClick());
 
         return alertDialogBuilder.create();
-
-
     }
 
+    /**
+     * This method determine the title, the message, and tags buttons of the AlertDialog
+     * according to the variable mUsage.
+     * mUsage contains a value that determines which kind of error we treating.
+     */
     private void setDialogArguments() {
         switch (mUsage) {
             case NO_RESULT_SEARCH:

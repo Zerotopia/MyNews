@@ -24,9 +24,9 @@ import static com.example.mynews.controller.fragment.SearchFragment.KEYWORD;
 import static com.example.mynews.controller.fragment.SearchFragment.NOTIFICATION_PARAM;
 import static com.example.mynews.controller.fragment.SearchFragment.REQUEST_CODE;
 import static com.example.mynews.controller.fragment.SearchFragment.TOPICS;
-import static com.example.mynews.controller.fragment.SearchFragment.setSearchParameters;
 import static com.example.mynews.model.FormatMaker.d8DateFormat;
 import static com.example.mynews.model.FormatMaker.filterQueryFormat;
+import static com.example.mynews.network.NYService.NEWS_DESK;
 
 /**
  * This class implement the work that Workmanager should do in background,
@@ -34,11 +34,8 @@ import static com.example.mynews.model.FormatMaker.filterQueryFormat;
  */
 public class NotificationWorker extends Worker {
 
-    private Context mContext;
-
     public NotificationWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
-        mContext = context;
     }
 
     /**
@@ -51,20 +48,20 @@ public class NotificationWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        SharedPreferences sharedPreferences = mContext.getSharedPreferences(NOTIFICATION_PARAM, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(NOTIFICATION_PARAM, MODE_PRIVATE);
 
         String beginDate = getBeginDate();
-        String[] intentExtra = setSearchParameters(
+        String[] intentExtra = {
                 sharedPreferences.getString(KEYWORD, ""),
                 beginDate,
                 "",
                 filterQueryFormat(sharedPreferences.getStringSet(TOPICS, new HashSet<>()))
-        );
+        };
 
-        ApiFragment apiFragment = ApiFragment.newInstance(mContext.getResources().getStringArray(R.array.subjects).length, intentExtra);
+        ApiFragment apiFragment = ApiFragment.newInstance(NEWS_DESK.length + 1, intentExtra);
         apiFragment.apiCall(Schedulers.trampoline(), Schedulers.trampoline());
 
-        buildNotification(apiFragment.getNumberOfResults());
+        buildNotification(apiFragment.getNumberOfArticles());
 
         return Result.success();
     }
@@ -82,15 +79,15 @@ public class NotificationWorker extends Worker {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        return d8DateFormat(mContext.getString(R.string.date_format, day, (month + 1), year));
+        return d8DateFormat(getApplicationContext().getString(R.string.date_format, day, (month + 1), year));
     }
 
     private void buildNotification(int numberOfArticles) {
         if (numberOfArticles != 0) {
-            Resources resources = mContext.getResources();
-            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(mContext);
+            Resources resources = getApplicationContext().getResources();
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
             NotificationCompat.Builder notificationBuild =
-                    new NotificationCompat.Builder(mContext, CHANNEL)
+                    new NotificationCompat.Builder(getApplicationContext(), CHANNEL)
                             .setSmallIcon(R.drawable.ic_attach_file_black_24dp)
                             .setContentTitle(resources.getQuantityString(
                                     R.plurals.new_articles,

@@ -13,6 +13,7 @@ import retrofit2.http.Query;
 public interface NYService {
 
     String APIKEY = "QXGOAUP24YZUfNIg4Drn3qaYAnpuV6dh";
+    String[] NEWS_DESK = {"home", "science", "technology", "books", "travel", "food", "health"};
 
     @GET("search/v2/articlesearch.json")
     Observable<Results> searchArticle(

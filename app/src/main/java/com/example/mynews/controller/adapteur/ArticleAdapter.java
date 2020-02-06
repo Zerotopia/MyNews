@@ -38,6 +38,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.Articles
 
     public static class ArticlesViewHolder extends RecyclerView.ViewHolder {
 
+        /**
+         * Tag to putExtra an url to the WebActivity.
+         */
         public static final String URL_ARTICLE = "URLARTICLE";
 
         private TextView sTopicsArticle;
@@ -52,17 +55,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.Articles
             setOnArticleClickListener(context);
         }
 
-        private void bindView() {
-            sTopicsArticle = itemView.findViewById(R.id.row_article_topics);
-            sSummaryArticle = itemView.findViewById(R.id.row_article_summary);
-            sImageArticle = itemView.findViewById(R.id.row_article_image);
-            sDateArticle = itemView.findViewById(R.id.row_article_date);
-        }
-
         /**
          * When the user click on an article, we open a new activity that display
          * the content of the article in a WebView.
          * The case where the url is not valid is treat in the WebActivity.
+         *
          * @param context to launch the WebActivity.
          */
         private void setOnArticleClickListener(Context context) {
@@ -71,6 +68,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.Articles
                 intent.putExtra(URL_ARTICLE, sArticleUrl);
                 context.startActivity(intent);
             });
+        }
+
+        private void bindView() {
+            sTopicsArticle = itemView.findViewById(R.id.row_article_topics);
+            sSummaryArticle = itemView.findViewById(R.id.row_article_summary);
+            sImageArticle = itemView.findViewById(R.id.row_article_image);
+            sDateArticle = itemView.findViewById(R.id.row_article_date);
         }
     }
 

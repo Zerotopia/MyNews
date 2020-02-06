@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".controller.activity.InformationActivity">
 
-
     <TextView
+        android:id="@+id/information_activity_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:id="@+id/information_activity_text" />
+        android:layout_centerInParent="true" />
 </RelativeLayout>

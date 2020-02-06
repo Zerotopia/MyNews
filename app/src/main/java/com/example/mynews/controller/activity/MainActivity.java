@@ -30,7 +30,9 @@ import static com.example.mynews.controller.fragment.SearchFragment.SEARCH_PARAM
  */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         AlertDialogFragment.AlertDialogClickEvent {
-
+    /**
+     * Tag to putExtra a boolean in an intent.
+     */
     public static final String ACTIVITY = "ACTIVITY";
 
     private ViewPager mViewPager;

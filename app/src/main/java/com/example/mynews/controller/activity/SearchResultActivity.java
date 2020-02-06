@@ -10,6 +10,7 @@ import com.example.mynews.controller.fragment.AlertDialogFragment;
 import com.example.mynews.controller.fragment.ApiFragment;
 
 import static com.example.mynews.controller.fragment.SearchFragment.ARGUMENTS;
+import static com.example.mynews.network.NYService.NEWS_DESK;
 
 /**
  * This activity display the result of the SearchActivity.
@@ -23,7 +24,7 @@ public class SearchResultActivity extends AppCompatActivity implements AlertDial
 
         Intent intent = getIntent();
         String[] arguments = intent.getStringArrayExtra(ARGUMENTS);
-        ApiFragment searchResultFragment = ApiFragment.newInstance(getResources().getStringArray(R.array.subjects).length, arguments);
+        ApiFragment searchResultFragment = ApiFragment.newInstance(NEWS_DESK.length + 1, arguments);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, searchResultFragment)

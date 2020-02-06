@@ -233,7 +233,7 @@ public class Article {
     public String urlArticle() {
         if (existString(mWebUrl)) return mWebUrl;
         else if (existString(mUrl)) return mUrl;
-        else  return UNDEFINED;
+        else return UNDEFINED;
     }
 
     /**

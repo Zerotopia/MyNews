@@ -23,11 +23,11 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         Intent intent = getIntent();
-        mNotification = intent.getBooleanExtra(ACTIVITY,false);
+        mNotification = intent.getBooleanExtra(ACTIVITY, false);
         SearchFragment searchFragment = SearchFragment.newInstance(mNotification);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container,searchFragment)
+                .replace(R.id.container, searchFragment)
                 .commit();
     }
 }
