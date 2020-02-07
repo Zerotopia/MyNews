@@ -1,16 +1,19 @@
 <resources>
     <string name="app_name">MyNews</string>
-    <string name="undefined">unknown</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="undefined">unknown</string>
+    <string name="date_format">%1$02d/%2$02d/%3$d</string>
+
+    <!---Text for SearchActivity-->
     <string name="begin">Begin date</string>
     <string name="end">End date</string>
-
     <string name="enable_notification">Enable Notification</string>
     <string name="disable_notification">Disable Notification</string>
 
+    <!---Topics for title page of ViewPager, text of CheckBoxes, item title of navigation drawer-->
     <string name="search">Search</string>
     <string name="notification">Notification</string>
     <string name="topics">Topics</string>
@@ -24,8 +27,8 @@
     <string name="topic4">Travel</string>
     <string name="topic5">Food</string>
     <string name="topic6">Health</string>
-    <string name="topstories">TOP STORIES</string>
-    <string name="mostpopular">MOST POPULAR</string>
+    <string name="topstories">Top Stories</string>
+    <string name="mostpopular">Most Popular</string>
 
     <string-array name="subjects">
         <item>@string/topstories</item>
@@ -38,10 +41,11 @@
         <item>@string/topic6</item>
     </string-array>
 
-    <string name="date_format">%1$02d/%2$02d/%3$d</string>
-
+    <!---Text for InformationActivity-->
     <string name="help_text">You can found help here.</string>
     <string name="about_text">Information about us and about  MyNews</string>
+
+    <!---Notification messages-->
     <plurals name="new_articles">
         <item quantity="one">New Article</item>
         <item quantity="other">New Articles</item>
@@ -51,28 +55,35 @@
         <item quantity="other">There are %d new articles that match your research.</item>
     </plurals>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!---Error messages for AlertDialog-->
     <string name="no_result_title">No Article</string>
     <string name="no_result_message_search">There is no article that correspond to your research.</string>
+    <string name="no_result_message_main">Sorry, it seems that there is no article today in this section.
+    Do you want to be redirected to the NewYork Times website ?</string>
+    <string name="no_url_title">Missing URL</string>
+    <string name="no_url_message">Very strange. It seems this article has no url.
+        If you continue, you will be redirected to the home page of the New York Times webpage.</string>
+    <string name="error_400_title">Request problem.</string>
+    <string name="error_400_message">Sorry, it seems that our application send a bad request.
+        Please, report them, and we are sorry for the disagreement.</string>
+    <string name="error_500_title">Pray for the NewYork Times</string>
+    <string name="error_500_message">Unfortunately, it seems that the servers of the NewYork Times are encountered some problems.
+    Let\'s pray it gets better.</string>
+    <string name="error_429_title">Don\'t speed ! Be cool.</string>
+    <string name="error_429_message">Please, spam your screen will be send to many request in a short time, and you will get this error message.
+    For a better user experience, please take your time and smile.</string>
+    <string name="other_error_title">No ! It\'s a bug !</string>
+    <string name="other_error_message">Sorry, it seems that you are found a bug. Please, report them.</string>
+
+    <!---Button text for AlertDialog-->
     <string name="new_search">New Search</string>
     <string name="home">Back Home</string>
-    <string name="no_url_title">Missing URL</string>
-    <string name="no_url_message">It seems this article has no url. Very strange. If you continue, you will be redirected to the home page of the New York Times webpage.</string>
     <string name="continu">Continue</string>
     <string name="return_activity">Return</string>
-    <string name="no_result_message_main">sorry.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="error_400_title">Error 400</string>
-    <string name="error_400_message">Sorry send report</string>
     <string name="send_report">Send Report</string>
-    <string name="error_500_title">Error 500</string>
-    <string name="error_500_message">Sorry NYT crash</string>
     <string name="quit">Quit</string>
-    <string name="other_error_title">ERREUR</string>
-    <string name="other_error_message">Probleme</string>
-    <string name="error_429_title">ERROR 429</string>
-    <string name="error_429_message">Please don\'t spam.</string>
-
+    <string name="wait">Wait 3 sec.</string>
+    <string name="understand">I understand.</string>
 </resources>

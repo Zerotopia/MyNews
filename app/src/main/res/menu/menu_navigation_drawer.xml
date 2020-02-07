@@ -11,6 +11,12 @@
     <item android:title="@string/topics">
         <menu>
             <item
+                android:id="@+id/menu_nd_topstories_item"
+                android:title="@string/topstories" />
+            <item
+                android:id="@+id/menu_nd_mostpopular_item"
+                android:title="@string/mostpopular" />
+            <item
                 android:id="@+id/menu_nd_topic1_item"
                 android:title="@string/topic1" />
             <item

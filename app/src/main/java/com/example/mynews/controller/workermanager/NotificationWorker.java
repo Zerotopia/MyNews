@@ -19,6 +19,7 @@ import java.util.HashSet;
 import io.reactivex.schedulers.Schedulers;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.example.mynews.controller.fragment.ApiFragment.POSITION_SEARCH;
 import static com.example.mynews.controller.fragment.SearchFragment.CHANNEL;
 import static com.example.mynews.controller.fragment.SearchFragment.KEYWORD;
 import static com.example.mynews.controller.fragment.SearchFragment.NOTIFICATION_PARAM;
@@ -58,7 +59,7 @@ public class NotificationWorker extends Worker {
                 filterQueryFormat(sharedPreferences.getStringSet(TOPICS, new HashSet<>()))
         };
 
-        ApiFragment apiFragment = ApiFragment.newInstance(NEWS_DESK.length + 1, intentExtra);
+        ApiFragment apiFragment = ApiFragment.newInstance(POSITION_SEARCH, intentExtra);
         apiFragment.apiCall(Schedulers.trampoline(), Schedulers.trampoline());
 
         buildNotification(apiFragment.getNumberOfArticles());

@@ -20,7 +20,12 @@ import com.example.mynews.controller.fragment.AlertDialogFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import static com.example.mynews.controller.adapteur.ArticleAdapter.ArticlesViewHolder.URL_ARTICLE;
+import static com.example.mynews.controller.fragment.AlertDialogFragment.HTTP_ERROR_429;
+import static com.example.mynews.controller.fragment.AlertDialogFragment.HTTP_ERROR_500;
+import static com.example.mynews.controller.fragment.AlertDialogFragment.NO_RESULT_MAIN;
 import static com.example.mynews.controller.fragment.SearchFragment.SEARCH_PARAM;
+import static com.example.mynews.model.Article.NYT_HOME_URL;
 
 /**
  * In the main activity we defined :
@@ -145,6 +150,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_nd_notification_item:
                 startNewActivity(true, true);
                 break;
+            case R.id.menu_nd_topstories_item:
+                mViewPager.setCurrentItem(0,true);
+                break;
+            case R.id.menu_nd_mostpopular_item:
+                mViewPager.setCurrentItem(1,true);
+                break;
             case R.id.menu_nd_topic1_item:
                 mViewPager.setCurrentItem(2, true);
                 break;
@@ -208,13 +219,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     @Override
-    public void doPositiveClick() {
-
+    public void doPositiveClick(int usage) {
+        switch (usage) {
+            case NO_RESULT_MAIN:
+                Intent intent = new Intent(this, WebActivity.class);
+                intent.putExtra(URL_ARTICLE, NYT_HOME_URL);
+                startActivity(intent);
+                break;
+            case HTTP_ERROR_429:
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case HTTP_ERROR_500:
+                break;
+            default: //Send Report.
+                break;
+        }
     }
 
     @Override
-    public void doNegativeClick() {
-
+    public void doNegativeClick(int usage) {
+        if (usage == HTTP_ERROR_500) finish();
     }
 }
 

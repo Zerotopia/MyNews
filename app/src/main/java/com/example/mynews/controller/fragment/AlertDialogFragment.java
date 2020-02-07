@@ -92,8 +92,8 @@ public class AlertDialogFragment extends DialogFragment {
                 .setIcon(R.drawable.ic_mood_bad_black_24dp)
                 .setMessage(mMessageId)
                 .setTitle(mTitleId)
-                .setPositiveButton(mTagPositiveButtonId, (dialog, which) -> mAlertDialogClickEvent.doPositiveClick())
-                .setNegativeButton(mTagNegativeButtonId, (dialog, which) -> mAlertDialogClickEvent.doNegativeClick());
+                .setPositiveButton(mTagPositiveButtonId, (dialog, which) -> mAlertDialogClickEvent.doPositiveClick(mUsage))
+                .setNegativeButton(mTagNegativeButtonId, (dialog, which) -> mAlertDialogClickEvent.doNegativeClick(mUsage));
 
         return alertDialogBuilder.create();
     }
@@ -136,14 +136,14 @@ public class AlertDialogFragment extends DialogFragment {
                 configTextAlertDialog(
                         R.string.error_429_title,
                         R.string.error_429_message,
-                        R.string.send_report,
-                        R.string.home);
+                        R.string.wait,
+                        R.string.understand);
                 break;
             case HTTP_ERROR_500:
                 configTextAlertDialog(
                         R.string.error_500_title,
                         R.string.error_500_message,
-                        R.string.send_report,
+                        R.string.continu,
                         R.string.quit);
                 break;
             case OTHER_ERROR:
@@ -165,9 +165,13 @@ public class AlertDialogFragment extends DialogFragment {
         mTagNegativeButtonId = negativeTagId;
     }
 
+    /**
+     * Interface that should implement the activity that will display an AlertDialog.
+     * By this way, each activity decide what do positive and negative Button.
+     */
     public interface AlertDialogClickEvent {
-        void doPositiveClick();
+        void doPositiveClick(int usage);
 
-        void doNegativeClick();
+        void doNegativeClick(int usage);
     }
 }

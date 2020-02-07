@@ -47,6 +47,12 @@ import static com.example.mynews.network.NYService.NEWS_DESK;
 public class ApiFragment extends Fragment implements Observer<Results> {
 
     /**
+     * Constant for mPosition in the case where API call
+     * come from the Search Activity.
+     */
+    public static final int POSITION_SEARCH = NEWS_DESK.length + 1;
+
+    /**
      * Tag used by newInstance to save the parameters passed in
      * the arguments of the constructor.
      */
@@ -179,7 +185,7 @@ public class ApiFragment extends Fragment implements Observer<Results> {
 
         if (position == 0) observable = nyService.topArticle(NEWS_DESK[0], APIKEY);
         else if (position == 1) observable = nyService.popularArticle(APIKEY);
-        else if (position <= NEWS_DESK.length)
+        else if (position < POSITION_SEARCH)
             observable = nyService.topArticle(NEWS_DESK[position - 1], APIKEY);
         else observable = nyService.searchArticle(parameters[0],
                     parameters[1],
@@ -289,7 +295,7 @@ public class ApiFragment extends Fragment implements Observer<Results> {
      */
     private void noArticleFoundDialog(boolean resume) {
         if ((mNumberOfArticles == 0) && resume) {
-            mUsage = (mPosition == getResources().getStringArray(R.array.subjects).length) ? NO_RESULT_SEARCH : NO_RESULT_MAIN;
+            mUsage = (mPosition == POSITION_SEARCH) ? NO_RESULT_SEARCH : NO_RESULT_MAIN;
             generateAlertDialog();
         } else mOnNextDone = true;
     }
@@ -301,14 +307,13 @@ public class ApiFragment extends Fragment implements Observer<Results> {
      * @param resume boolean to know if the page "is Resume" or not.
      */
     private void errorDialog(int error, boolean resume) {
-        if (resume) {
-            if (500 <= error) {
-                mUsage = HTTP_ERROR_500;
-            } else if (400 <= error) {
-                mUsage = (error == 429) ? HTTP_ERROR_429 : HTTP_ERROR_400;
-            } else mUsage = OTHER_ERROR;
-            generateAlertDialog();
-        } else mOnErrorDone = true;
+        if (500 <= error) {
+            mUsage = HTTP_ERROR_500;
+        } else if (400 <= error) {
+            mUsage = (error == 429) ? HTTP_ERROR_429 : HTTP_ERROR_400;
+        } else mUsage = OTHER_ERROR;
+        if (resume) generateAlertDialog();
+        else mOnErrorDone = true;
     }
 
     /**
