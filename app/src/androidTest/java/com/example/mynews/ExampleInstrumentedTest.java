@@ -70,7 +70,7 @@ public class ExampleInstrumentedTest {
                 .perform(ViewPagerActions.scrollRight());
         Espresso.onView(AllOf.allOf(ViewMatchers.isSelected(),
                 ViewMatchers.withClassName(Matchers.equalTo(AppCompatTextView.class.getName()))))
-                .check(ViewAssertions.matches(ViewMatchers.withText(R.string.mostpopular)));
+                .check(ViewAssertions.matches(ViewMatchers.withText("MOST POPULAR")));
         Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
                 .perform(ViewPagerActions.scrollRight());
         Espresso.onView(ViewMatchers.withId(R.id.main_activity_viewpager))
