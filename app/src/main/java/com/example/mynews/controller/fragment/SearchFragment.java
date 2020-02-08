@@ -400,6 +400,7 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         } else {
             mSearchButton.setAlpha(0.5f);
             mNotificationLayout.setAlpha(0.5f);
+            mNotificationSwitch.setChecked(false);
         }
         mSearchButton.setEnabled(enable);
         mNotificationLayout.setEnabled(enable);
